@@ -432,14 +432,18 @@ section[id],
 
 .process-step {
     position: relative;
-    padding-left: 70px;
+    background: var(--bg-card);
+    padding: 25px 25px 25px 70px;
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
     min-height: 80px;
 }
 
 .step-number {
     position: absolute;
-    left: 0;
-    top: 0;
+    left: 20px;
+    top: 25px;
     width: 50px;
     height: 50px;
     background-color: var(--accent);
@@ -667,6 +671,12 @@ section[id],
 
 .cert-link:hover {
     text-decoration: none;
+}
+
+.cert-group + .cert-group {
+    margin-top: 25px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border-light);
 }
 
 /* Contact */
