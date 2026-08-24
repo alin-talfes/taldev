@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    root.setAttribute('data-theme', savedTheme);
+    updateToggleIcon(savedTheme);
+
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateToggleIcon(newTheme);
+    });
+
+    function updateToggleIcon(theme) {
+        themeToggle.setAttribute('aria-expanded', theme === 'dark');
+    }
+
     const typingTitle = document.getElementById('typing-title');
     if (typingTitle) {
         const text = "Site-uri. Aplicații. Automatizări.";
