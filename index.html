@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="ro" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,15 +49,19 @@
         <div class="logo">
             <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" width="220" height="72" role="img" aria-label="taldev() TALFEȘ DEVELOPMENT">
                 <text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800">
-                    <tspan fill="#0A2540">taldev</tspan>
-                    <tspan fill="#00C2CB">()</tspan>
+                    <tspan class="logo-text-dark">taldev</tspan>
+                    <tspan class="logo-accent-teal">()</tspan>
                 </text>
                 <text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3">
-                    <tspan font-weight="800" fill="#0A2540">TALFEȘ </tspan>
-                    <tspan font-weight="600" fill="#00A8AF">DEVELOPMENT</tspan>
+                    <tspan font-weight="800" class="logo-text-dark">TALFEȘ </tspan>
+                    <tspan font-weight="600" class="logo-accent-dark">DEVELOPMENT</tspan>
                 </text>
             </svg>
         </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Comută tema" aria-expanded="false">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <button class="nav-toggle" id="navToggle" aria-label="Deschide meniul" aria-expanded="false" aria-controls="navMenu">
             <span class="nav-toggle-bar"></span>
             <span class="nav-toggle-bar"></span>
