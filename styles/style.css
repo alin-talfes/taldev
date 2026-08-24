@@ -11,14 +11,14 @@
     --bg-end: #E9F2F6;
     --bg-card: #FFFFFF;
     --text-primary: #0A2540;
-    --text-secondary: #4A5C6D;
-    --text-muted: #8598A8;
+    --text-secondary: rgba(10, 37, 64, 0.7);
+    --text-muted: rgba(10, 37, 64, 0.5);
     --accent: #00C2CB;
     --accent-hover: #00A8AF;
-    --accent-rgb: 0,194,203;
-    --border-light: #DCE6EC;
-    --shadow-sm: 0 2px 8px rgba(10,37,64,0.05);
-    --shadow-md: 0 8px 24px rgba(10,37,64,0.08);
+    --accent-rgb: 0, 194, 203;
+    --border-light: rgba(10, 37, 64, 0.1);
+    --shadow-sm: 0 2px 8px rgba(10, 37, 64, 0.05);
+    --shadow-md: 0 8px 24px rgba(10, 37, 64, 0.08);
     --transition: 0.3s ease;
     --border-radius: 20px;
     --border-radius-sm: 12px;
@@ -169,7 +169,7 @@ button:focus-visible {
     z-index: 100;
     padding: 20px 0;
     border-bottom: 1px solid var(--border-light);
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
     transition: box-shadow var(--transition);
 }
@@ -711,20 +711,21 @@ section[id],
     font-weight: 800;
     font-size: 1.5rem;
     margin-bottom: 5px;
+    color: #fff;
 }
 
 .footer-brand p {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .footer-info p {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.9rem;
     margin-bottom: 5px;
 }
 
 .footer-info a {
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.7);
     transition: color var(--transition);
 }
 
@@ -735,8 +736,8 @@ section[id],
 .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: var(--text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.85rem;
 }
 
@@ -754,7 +755,7 @@ section[id],
     align-items: center;
     justify-content: center;
     color: #fff;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 999;
     transition: all var(--transition);
 }
