@@ -310,6 +310,22 @@ section[id],
     line-height: 1.2;
 }
 
+.hero-title::after {
+    content: '|';
+    color: var(--accent);
+    margin-left: 4px;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
 .hero-text {
     font-size: 1.1rem;
     color: var(--text-secondary);
