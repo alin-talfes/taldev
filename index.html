@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="taldev() — dezvoltare web pentru afaceri: site-uri, magazine online, aplicații web, automatizări. Soluții clare, adaptate nevoilor tale.">
+    <meta name="author" content="TALFEȘ REMUS-ALIN P.F.A.">
+    <meta name="keywords" content="taldev, TALFES DEVELOPMENT, dezvoltare web, site prezentare, magazin online, aplicatii web, automatizari, PFA">
+    <title>taldev() — Talfeș Development</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "TALFEȘ REMUS-ALIN P.F.A.",
+      "alternateName": "taldev()",
+      "description": "Dezvoltare web pentru afaceri: site-uri de prezentare, magazine online, aplicații web și automatizări.",
+      "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Next.js", "PHP", "Laravel", "Node.js", "SQL", "PostgreSQL", "Git", "GitHub", "Docker"],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Site de prezentare",
+          "price": "1000",
+          "priceCurrency": "RON"
+        },
+        {
+          "@type": "Offer",
+          "name": "Site business",
+          "price": "2000",
+          "priceCurrency": "RON"
+        },
+        {
+          "@type": "Offer",
+          "name": "Aplicație web",
+          "price": "3000",
+          "priceCurrency": "RON"
+        }
+      ]
+    }
+    </script>
+</head>
+<body>
+
+<header id="navbar">
+    <div class="container nav-container">
+        <div class="logo">
+            <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" width="220" height="72" role="img" aria-label="taldev() TALFEȘ DEVELOPMENT">
+                <text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800">
+                    <tspan fill="#0A2540">taldev</tspan>
+                    <tspan fill="#00C2CB">()</tspan>
+                </text>
+                <text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3">
+                    <tspan font-weight="800" fill="#0A2540">TALFEȘ </tspan>
+                    <tspan font-weight="600" fill="#00A8AF">DEVELOPMENT</tspan>
+                </text>
+            </svg>
+        </div>
+
+        <button class="nav-toggle" id="navToggle" aria-label="Deschide meniul" aria-expanded="false" aria-controls="navMenu">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav class="nav" id="navMenu">
+            <ul class="nav-list">
+                <li><a href="#servicii" class="nav-link">Servicii</a></li>
+                <li><a href="#pentru-cine" class="nav-link">Pentru cine</a></li>
+                <li><a href="#cum-lucram" class="nav-link">Cum lucrăm</a></li>
+                <li><a href="#pachete" class="nav-link">Pachete</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+
+        <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="btn btn-whatsapp btn-sm nav-cta">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            <span class="cta-text">WhatsApp</span>
+        </a>
+    </div>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title reveal">taldev<span class="logo-accent">()</span></h1>
+            <p class="hero-subtitle reveal">Site-uri. Aplicații. Automatizări.</p>
+            <p class="hero-text reveal">Dezvolt soluții web moderne pentru afaceri și proiecte care vor să lucreze mai simplu, mai eficient și mai profesionist.</p>
+            <div class="hero-actions reveal">
+                <a href="#contact" class="btn btn-primary">Solicită o ofertă</a>
+                <a href="#servicii" class="btn btn-secondary">Vezi serviciile</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicii -->
+    <section id="servicii" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Servicii</h2>
+            <p class="section-subtitle reveal">Ce poți obține pentru afacerea ta</p>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <h3>Site-uri web</h3>
+                    <p>Site-uri de prezentare moderne, responsive și optimizate pentru mobil.</p>
+                </div>
+                <div class="service-card reveal">
+                    <h3>Magazine online</h3>
+                    <p>Magazine adaptate produselor, catalogului și procesului de vânzare.</p>
+                </div>
+                <div class="service-card reveal">
+                    <h3>Aplicații web</h3>
+                    <p>Sisteme personalizate pentru gestionarea datelor și proceselor interne.</p>
+                </div>
+                <div class="service-card reveal">
+                    <h3>Automatizări & integrări</h3>
+                    <p>Automatizarea operațiunilor repetitive și conectarea serviciilor prin API-uri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pentru cine -->
+    <section id="pentru-cine" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Pentru cine este Talfeș Development?</h2>
+            <p class="section-subtitle reveal">Soluții potrivite pentru afaceri mici și mijlocii</p>
+            <div class="audience-grid">
+                <div class="audience-item reveal">
+                    <h3>Firme mici</h3>
+                    <p>Care au nevoie de o prezență online profesionistă sau de instrumente interne.</p>
+                </div>
+                <div class="audience-item reveal">
+                    <h3>Profesioniști independenți</h3>
+                    <p>Care vor un site sau o aplicație care să îi reprezinte corect.</p>
+                </div>
+                <div class="audience-item reveal">
+                    <h3>Servicii locale</h3>
+                    <p>Cabinete, firme de servicii, meșteșugari – afaceri care activează local.</p>
+                </div>
+                <div class="audience-item reveal">
+                    <h3>Antreprenori</h3>
+                    <p>Care își lansează un proiect nou și au nevoie de o bază digitală solidă.</p>
+                </div>
+                <div class="audience-item reveal">
+                    <h3>Afaceri care doresc automatizare</h3>
+                    <p>Care vor să reducă timpul pierdut cu sarcini repetitive.</p>
+                </div>
+                <div class="audience-item reveal">
+                    <h3>Proiecte noi</h3>
+                    <p>Care au nevoie de o soluție web de la zero, adaptată cerințelor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cum lucrăm -->
+    <section id="cum-lucram" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Cum lucrăm</h2>
+            <p class="section-subtitle reveal">Proces simplu și transparent, în 5 pași</p>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <span class="step-number">01</span>
+                    <h3>Discutăm proiectul</h3>
+                    <p>Înțelegem obiectivul și ce trebuie să facă soluția.</p>
+                </div>
+                <div class="process-step reveal">
+                    <span class="step-number">02</span>
+                    <h3>Stabilim soluția</h3>
+                    <p>Definim funcționalitățile, structura, costul și termenul.</p>
+                </div>
+                <div class="process-step reveal">
+                    <span class="step-number">03</span>
+                    <h3>Dezvoltare</h3>
+                    <p>Construiesc soluția conform funcționalităților stabilite și ofer actualizări pe parcurs.</p>
+                </div>
+                <div class="process-step reveal">
+                    <span class="step-number">04</span>
+                    <h3>Testare</h3>
+                    <p>Verific funcționalitatea și compatibilitatea înainte de lansare.</p>
+                </div>
+                <div class="process-step reveal">
+                    <span class="step-number">05</span>
+                    <h3>Lansare</h3>
+                    <p>Publicăm proiectul și predau informațiile și accesurile necesare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pachete -->
+    <section id="pachete" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Pachete</h2>
+            <p class="section-subtitle reveal">Prețuri orientative, stabilite în funcție de complexitatea proiectului</p>
+            <div class="pricing-grid">
+                <article class="pricing-card reveal">
+                    <h3>Site de prezentare</h3>
+                    <div class="price">de la 1.000 lei</div>
+                    <ul class="pricing-features">
+                        <li>structură și design responsive</li>
+                        <li>până la 5 pagini</li>
+                        <li>formular de contact</li>
+                        <li>integrare WhatsApp</li>
+                        <li>SEO tehnic de bază</li>
+                        <li>configurare domeniu/hosting (dacă este necesar)</li>
+                    </ul>
+                    <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="btn btn-primary">Solicită ofertă</a>
+                </article>
+                <article class="pricing-card pricing-card--featured reveal">
+                    <h3>Site business</h3>
+                    <div class="price">de la 2.000 lei</div>
+                    <ul class="pricing-features">
+                        <li>mai multe pagini</li>
+                        <li>design personalizat</li>
+                        <li>formulare</li>
+                        <li>integrare servicii externe</li>
+                        <li>SEO tehnic de bază</li>
+                        <li>Google Maps / Analytics etc.</li>
+                        <li>structură orientată spre conversii</li>
+                    </ul>
+                    <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="btn btn-primary">Solicită ofertă</a>
+                </article>
+                <article class="pricing-card reveal">
+                    <h3>Aplicație web</h3>
+                    <div class="price">de la 3.000 lei</div>
+                    <ul class="pricing-features">
+                        <li>funcționalități personalizate</li>
+                        <li>autentificare</li>
+                        <li>baze de date</li>
+                        <li>panou de administrare</li>
+                        <li>formulare și fluxuri de lucru</li>
+                        <li>integrare API-uri</li>
+                    </ul>
+                    <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="btn btn-primary">Solicită ofertă</a>
+                </article>
+            </div>
+            <p class="pricing-note reveal">Prețul final este stabilit în funcție de complexitatea și funcționalitățile proiectului.</p>
+        </div>
+    </section>
+
+    <!-- Ce este inclus -->
+    <section id="ce-este-inclus" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Ce este inclus</h2>
+            <p class="section-subtitle reveal">Elemente comune ale proiectelor</p>
+            <div class="included-grid">
+                <div class="included-item reveal">
+                    <h3>Design responsive</h3>
+                    <p>Site-ul se adaptează pe orice dispozitiv.</p>
+                </div>
+                <div class="included-item reveal">
+                    <h3>Compatibilitate mobil</h3>
+                    <p>Testat pe mobil și tabletă.</p>
+                </div>
+                <div class="included-item reveal">
+                    <h3>Testare înainte de lansare</h3>
+                    <p>Verific funcționalitatea înainte de publicare.</p>
+                </div>
+                <div class="included-item reveal">
+                    <h3>SEO tehnic de bază</h3>
+                    <p>Structură corectă pentru motoarele de căutare.</p>
+                </div>
+                <div class="included-item reveal">
+                    <h3>Configurare funcționalități</h3>
+                    <p>Tot ce este convenit în ofertă.</p>
+                </div>
+                <div class="included-item reveal">
+                    <h3>Predarea accesurilor</h3>
+                    <p>Primești toate datele de acces necesare.</p>
+                </div>
+            </div>
+            <p class="additional-costs reveal">Costuri suplimentare posibile: domeniu, hosting, servicii externe, licențe, servicii de email, API-uri plătite, mentenanță ulterioară.</p>
+        </div>
+    </section>
+
+    <!-- De ce TALDEV -->
+    <section id="de-ce" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">De ce Talfeș Development?</h2>
+            <div class="why-grid">
+                <div class="why-item reveal">
+                    <h3>Prețuri transparente</h3>
+                    <p>Știi de la început ce este inclus și ce poate influența costul.</p>
+                </div>
+                <div class="why-item reveal">
+                    <h3>Soluții adaptate</h3>
+                    <p>Proiectul este construit în funcție de cerințele reale, nu după un pachet rigid.</p>
+                </div>
+                <div class="why-item reveal">
+                    <h3>Comunicare directă</h3>
+                    <p>Discuți direct cu persoana care dezvoltă proiectul.</p>
+                </div>
+                <div class="why-item reveal">
+                    <h3>Fără complexitate inutilă</h3>
+                    <p>Sunt dezvoltate funcționalitățile necesare, fără costuri pentru lucruri inutile.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Despre TALDEV -->
+    <section id="despre" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Despre Talfeș Development</h2>
+            <div class="about-content reveal">
+                <p><strong>Talfeș Development (TALDEV) este un proiect independent de dezvoltare web, orientat către soluții clare, funcționale și ușor de utilizat.</strong></p>
+                <p>Dezvolt site-uri și aplicații web, de la proiecte de prezentare până la soluții conectate la baze de date și servicii externe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tehnologii -->
+    <section id="tehnologii" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Tehnologii</h2>
+            <p class="section-subtitle reveal">Instrumentele cu care lucrez</p>
+            <div class="tech-stack">
+                <div class="tech-group reveal">
+                    <h3>Frontend</h3>
+                    <p>HTML · CSS · JavaScript · React · Next.js</p>
+                </div>
+                <div class="tech-group reveal">
+                    <h3>Backend</h3>
+                    <p>PHP · Laravel · Node.js</p>
+                </div>
+                <div class="tech-group reveal">
+                    <h3>Baze de date</h3>
+                    <p>SQL · PostgreSQL</p>
+                </div>
+                <div class="tech-group reveal">
+                    <h3>Instrumente</h3>
+                    <p>Git · GitHub · Docker</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proiecte (mesaj onest) -->
+    <section id="proiecte" class="section">
+        <div class="container">
+            <h2 class="section-title reveal">Un proiect nou începe cu o discuție</h2>
+            <div class="about-content reveal">
+                <p>Talfeș Development este în etapa de construire a portofoliului comercial. Fiecare proiect nou este o oportunitate de a construi o soluție bine documentată și adaptată clientului.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificare -->
+    <section id="certificare" class="section section-cert">
+        <div class="container">
+            <h2 class="section-title reveal">Certificare</h2>
+            <div class="cert-small reveal">
+                <p><strong>Microsoft Technology Associate — HTML5 Application Development Fundamentals</strong></p>
+                <p>Microsoft · Exam 98-375 · 2018</p>
+                <a href="https://www.certiport.com/portal/pages/credentialverification.aspx" target="_blank" rel="noopener" class="cert-link">Verifică certificarea →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section">
+        <div class="container contact-container">
+            <h2 class="section-title reveal">Ai un proiect?</h2>
+            <p class="section-subtitle reveal">Spune-mi ce ai nevoie, iar împreună putem stabili soluția potrivită, costul estimativ și pașii următori.</p>
+            <div class="contact-buttons reveal">
+                <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="btn btn-whatsapp">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:alin.talfes@icloud.com" class="btn btn-email">Email</a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <p class="footer-logo">taldev<span class="logo-accent">()</span></p>
+            <p>Web development · Web applications · Automation</p>
+        </div>
+        <div class="footer-info">
+            <p>TALFEȘ REMUS-ALIN P.F.A.</p>
+            <p>CUI: 123456789</p>
+            <p>
+                <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener">WhatsApp</a> ·
+                <a href="mailto:alin.talfes@icloud.com">Email</a> ·
+                <a href="https://github.com/alin-talfes" target="_blank" rel="noopener">GitHub</a>
+            </p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 TALFEȘ REMUS-ALIN P.F.A.</p>
+    </div>
+</footer>
+
+<a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contact pe WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<button class="back-to-top" id="backToTop" aria-label="Înapoi sus">↑</button>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
