@@ -350,16 +350,16 @@ section[id],
 .service-card {
     background: var(--bg-card);
     padding: 25px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);          /* uniform cu cardurile de preț */
+    border: 2px solid var(--accent);               /* bordură groasă accent */
+    box-shadow: var(--shadow-md);
     transition: all var(--transition);
 }
 
 .service-card:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-md);
-    border-color: rgba(var(--accent-rgb), 0.3);
+    border-color: var(--accent-hover);
 }
 
 .service-card h3 {
@@ -459,15 +459,13 @@ section[id],
     padding: 30px;
     border-radius: var(--border-radius);
     text-align: center;
+    border: 2px solid var(--accent);                /* bordură groasă accent */
     box-shadow: var(--shadow-md);
-    border: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
 }
 
-.pricing-card--featured {
-    border: 2px solid var(--accent);
-}
+/* eliminat .pricing-card--featured pentru uniformitate totală */
 
 .pricing-card h3 {
     font-size: 1.4rem;
