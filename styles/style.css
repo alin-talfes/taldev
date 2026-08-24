@@ -10,10 +10,10 @@
     --bg-start: #F4F8FA;
     --bg-end: #E9F2F6;
     --bg-card: #FFFFFF;
-    --text-primary: #0A2540;          /* dark */
+    --text-primary: #0A2540;
     --text-secondary: rgba(10, 37, 64, 0.7);
     --text-muted: rgba(10, 37, 64, 0.5);
-    --accent: #00C2CB;                 /* light */
+    --accent: #00C2CB;
     --accent-hover: #00A8AF;
     --accent-rgb: 0, 194, 203;
     --border-light: rgba(10, 37, 64, 0.1);
@@ -85,8 +85,6 @@ a {
     font-size: 1.05rem;
 }
 
-/* Buttons */
-
 .btn {
     display: inline-flex;
     align-items: center;
@@ -157,14 +155,11 @@ a {
     transform: scale(0.96);
 }
 
-/* Focus visible pentru accesibilitate */
 a:focus-visible,
 button:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
-
-/* Header / navigare */
 
 #navbar {
     position: sticky;
@@ -232,8 +227,6 @@ button:focus-visible {
     font-weight: 600;
 }
 
-/* Buton hamburger */
-
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -253,13 +246,10 @@ button:focus-visible {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Ancore sub header sticky */
 section[id],
 .hero {
     scroll-margin-top: 80px;
 }
-
-/* Mobil */
 
 @media screen and (max-width: 767px) {
     .nav {
@@ -307,8 +297,6 @@ section[id],
     }
 }
 
-/* Hero */
-
 .hero {
     padding: 60px 0 40px;
     text-align: left;
@@ -342,7 +330,6 @@ section[id],
     max-width: 600px;
 }
 
-/* Carduri uniforme */
 .service-card,
 .pricing-card,
 .audience-item,
@@ -355,8 +342,6 @@ section[id],
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-md);
 }
-
-/* Services grid */
 
 .services-grid {
     display: grid;
@@ -385,8 +370,6 @@ section[id],
     font-size: 0.95rem;
 }
 
-/* Audience */
-
 .audience-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -407,8 +390,6 @@ section[id],
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
-
-/* Process */
 
 .process-grid {
     display: grid;
@@ -449,8 +430,6 @@ section[id],
     font-size: 0.95rem;
     margin: 0;
 }
-
-/* Pricing */
 
 .pricing-grid {
     display: grid;
@@ -514,8 +493,6 @@ section[id],
     margin-top: 20px;
 }
 
-/* Included */
-
 .included-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -544,8 +521,6 @@ section[id],
     text-align: center;
 }
 
-/* Why */
-
 .why-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -566,8 +541,6 @@ section[id],
     color: var(--text-secondary);
     font-size: 0.95rem;
 }
-
-/* Certification / Educatie */
 
 .section-cert {
     padding: 30px 0;
@@ -606,8 +579,6 @@ section[id],
     border-top: 1px solid var(--border-light);
 }
 
-/* Contact */
-
 .contact-section {
     background: var(--bg-card);
     border-top: 1px solid var(--border-light);
@@ -626,8 +597,6 @@ section[id],
     justify-content: center;
     margin-top: 20px;
 }
-
-/* Footer */
 
 .footer {
     padding: 40px 0 25px;
@@ -678,8 +647,6 @@ section[id],
     font-size: 0.85rem;
 }
 
-/* Floating WhatsApp button */
-
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
@@ -702,8 +669,6 @@ section[id],
     transform: scale(1.1);
     background-color: #1ebe5b;
 }
-
-/* Back to top */
 
 .back-to-top {
     position: fixed;
@@ -734,8 +699,6 @@ section[id],
     transform: translateY(-3px);
 }
 
-/* Animații reveal */
-
 .reveal {
     opacity: 0;
     transform: translateY(20px);
@@ -746,8 +709,6 @@ section[id],
     opacity: 1;
     transform: translateY(0);
 }
-
-/* Responsive */
 
 @media screen and (min-width: 640px) {
     .services-grid {
