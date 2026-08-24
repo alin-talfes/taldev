@@ -323,6 +323,14 @@ section[id],
     text-align: left;
 }
 
+.hero-title {
+    font-size: 2.8rem;
+    margin-bottom: 18px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
 .hero-subtitle {
     color: var(--accent);
     font-weight: 600;
@@ -330,13 +338,6 @@ section[id],
     text-transform: uppercase;
     margin-bottom: 12px;
     font-size: 0.85rem;
-}
-
-.hero-title {
-    font-size: 2.6rem;
-    margin-bottom: 18px;
-    font-family: var(--font-mono);
-    font-weight: 800;
 }
 
 .hero-text {
@@ -350,6 +351,13 @@ section[id],
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+}
+
+.hero-note {
+    margin-top: 30px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 600px;
 }
 
 /* Services grid */
@@ -624,7 +632,7 @@ section[id],
     max-width: 700px;
 }
 
-/* Certification */
+/* Certification / Educatie */
 
 .section-cert {
     padding: 30px 0;
