@@ -339,6 +339,20 @@ section[id],
     max-width: 600px;
 }
 
+/* Carduri uniforme */
+.service-card,
+.pricing-card,
+.audience-item,
+.included-item,
+.why-item,
+.process-step,
+.cert-small {
+    background: var(--bg-card);
+    border: 2px solid var(--accent);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
 /* Services grid */
 
 .services-grid {
@@ -348,17 +362,12 @@ section[id],
 }
 
 .service-card {
-    background: var(--bg-card);
     padding: 25px;
-    border-radius: var(--border-radius);          /* uniform cu cardurile de preț */
-    border: 2px solid var(--accent);               /* bordură groasă accent */
-    box-shadow: var(--shadow-md);
     transition: all var(--transition);
 }
 
 .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
     border-color: var(--accent-hover);
 }
 
@@ -382,11 +391,7 @@ section[id],
 }
 
 .audience-item {
-    background: var(--bg-card);
     padding: 25px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
 }
 
 .audience-item h3 {
@@ -409,11 +414,7 @@ section[id],
 }
 
 .process-step {
-    background: var(--bg-card);
     padding: 18px 20px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -455,17 +456,11 @@ section[id],
 }
 
 .pricing-card {
-    background: var(--bg-card);
     padding: 30px;
-    border-radius: var(--border-radius);
     text-align: center;
-    border: 2px solid var(--accent);                /* bordură groasă accent */
-    box-shadow: var(--shadow-md);
     display: flex;
     flex-direction: column;
 }
-
-/* eliminat .pricing-card--featured pentru uniformitate totală */
 
 .pricing-card h3 {
     font-size: 1.4rem;
@@ -525,11 +520,7 @@ section[id],
 }
 
 .included-item {
-    background: var(--bg-card);
     padding: 20px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
 }
 
 .included-item h3 {
@@ -559,11 +550,7 @@ section[id],
 }
 
 .why-item {
-    background: var(--bg-card);
     padding: 25px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
 }
 
 .why-item h3 {
@@ -584,11 +571,7 @@ section[id],
 }
 
 .cert-small {
-    background: var(--bg-card);
     padding: 20px 25px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
     text-align: center;
 }
 
