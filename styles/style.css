@@ -141,7 +141,7 @@ a {
 }
 
 .btn-email:hover {
-    background-color: #1a3650;
+    background-color: var(--accent-hover);
     transform: translateY(-2px);
 }
 
@@ -332,7 +332,7 @@ section[id],
 }
 
 .hero-subtitle {
-    color: var(--accent);
+    color: var(--text-secondary);
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -386,7 +386,7 @@ section[id],
 .service-card h3 {
     font-size: 1.2rem;
     margin-bottom: 8px;
-    color: var(--accent-hover);
+    color: var(--text-primary);
 }
 
 .service-card p {
