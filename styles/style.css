@@ -229,10 +229,6 @@ button:focus-visible {
     font-weight: 600;
 }
 
-.nav-cta {
-    flex: none;
-}
-
 /* Buton hamburger */
 
 .nav-toggle {
@@ -306,14 +302,6 @@ section[id],
     .nav-toggle.open .nav-toggle-bar:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
     }
-
-    .nav-cta {
-        padding: 8px 12px;
-    }
-
-    .nav-cta .cta-text {
-        display: none;
-    }
 }
 
 /* Hero */
@@ -329,15 +317,6 @@ section[id],
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
-}
-
-.hero-subtitle {
-    color: var(--text-secondary);
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    font-size: 0.85rem;
 }
 
 .hero-text {
@@ -427,39 +406,31 @@ section[id],
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
-    counter-reset: step;
 }
 
 .process-step {
-    position: relative;
     background: var(--bg-card);
-    padding: 25px 25px 25px 70px;
+    padding: 20px 25px;
     border-radius: var(--border-radius-sm);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-light);
-    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 .step-number {
-    position: absolute;
-    left: 20px;
-    top: 25px;
-    width: 50px;
-    height: 50px;
-    background-color: var(--accent);
-    color: #fff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: var(--font-heading);
     font-weight: 700;
     font-size: 1.2rem;
-    font-family: var(--font-heading);
+    color: var(--accent);
+    line-height: 1.3;
 }
 
 .process-step h3 {
     font-size: 1.1rem;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
+    color: var(--text-primary);
 }
 
 .process-step p {
@@ -598,42 +569,6 @@ section[id],
 .why-item p {
     color: var(--text-secondary);
     font-size: 0.95rem;
-}
-
-/* Tech stack */
-
-.tech-stack {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.tech-group {
-    background: var(--bg-card);
-    padding: 20px;
-    border-radius: var(--border-radius-sm);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-light);
-}
-
-.tech-group h3 {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
-    color: var(--accent-hover);
-}
-
-.tech-group p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-}
-
-/* About */
-
-.about-content p {
-    margin-bottom: 15px;
-    font-size: 1.05rem;
-    color: var(--text-secondary);
-    max-width: 700px;
 }
 
 /* Certification / Educatie */
@@ -829,9 +764,6 @@ section[id],
         grid-template-columns: repeat(2, 1fr);
     }
     .included-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .tech-stack {
         grid-template-columns: repeat(2, 1fr);
     }
     .why-grid {
