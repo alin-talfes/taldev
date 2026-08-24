@@ -459,7 +459,7 @@ section[id],
     padding: 30px;
     border-radius: var(--border-radius);
     text-align: center;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow-md);
     border: 1px solid var(--border-light);
     display: flex;
     flex-direction: column;
