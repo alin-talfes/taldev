@@ -1,5 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Elemente DOM
+    const typingTitle = document.getElementById('typing-title');
+    if (typingTitle) {
+        const text = "Site-uri. Aplicații. Automatizări.";
+        typingTitle.textContent = '';
+        let i = 0;
+        function type() {
+            if (i < text.length) {
+                typingTitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, 60);
+            }
+        }
+        type();
+    }
+
     const navToggle = document.getElementById('navToggle');
     const navMenu = document.getElementById('navMenu');
     const backToTop = document.getElementById('backToTop');
@@ -8,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const sections = document.querySelectorAll('section[id]');
     const revealElements = document.querySelectorAll('.reveal');
 
-    // 1. Meniu hamburger
     navToggle.addEventListener('click', function() {
         const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', !isOpen);
@@ -16,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         navMenu.classList.toggle('open', !isOpen);
     });
 
-    // 2. Închiderea meniului la click pe un link
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
             navMenu.classList.remove('open');
@@ -25,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 3. Închiderea meniului la click în afara lui
     document.addEventListener('click', function(event) {
         if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
             navMenu.classList.remove('open');
@@ -33,11 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navToggle.setAttribute('aria-expanded', 'false');
         }
     });
-
-    // 4. Link activ în meniu la scroll
-    const observerOptions = {
-        rootMargin: '-40% 0px -55% 0px'
-    };
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -48,38 +54,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         });
-    }, observerOptions);
+    }, { rootMargin: '-40% 0px -55% 0px' });
 
     sections.forEach(section => sectionObserver.observe(section));
 
-    // 5. Animații reveal
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target); // animăm doar o dată
+                revealObserver.unobserve(entry.target);
             }
         });
-    }, {
-        threshold: 0.15
-    });
+    }, { threshold: 0.15 });
 
     revealElements.forEach(el => revealObserver.observe(el));
 
-    // 6. Umbră pe header la scroll + butonul back-to-top
     window.addEventListener('scroll', function() {
-        // Umbră pe header
         navbar.classList.toggle('scrolled', window.scrollY > 10);
-
-        // Afișare back-to-top
         backToTop.classList.toggle('visible', window.scrollY > 400);
     });
 
-    // 7. Back-to-top click
     backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });
