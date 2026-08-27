@@ -1,6 +1,6 @@
-# taldev() — Site de prezentare
+# TALDEV — Site de prezentare
 
-Site de prezentare pentru **Talfeș Development (taldev())**, un proiect independent de dezvoltare web.  
+Site de prezentare pentru **TALDEV — Talfeș Development**, un proiect independent de dezvoltare web.
 Construit cu HTML, CSS și JavaScript vanilla, fără dependențe externe.  
 Scopul este de a prezenta serviciile, procesul de lucru, pachetele și datele de contact.
 
@@ -82,7 +82,7 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 - `meta description` – descriere pentru motoare de căutare.
 - `meta author` – TALFEȘ REMUS-ALIN P.F.A.
 - `meta keywords` – cuvinte cheie relevante.
-- `title` – „taldev() — Talfeș Development”
+- `title` – „TALDEV - Talfeș Development”
 - `link favicon` – `favicon.svg` (iconiță `<t>` pe fundal bleumarin).
 - `preconnect` și `link` către Google Fonts (Poppins, Inter, JetBrains Mono).
 - `script type="application/ld+json"` – date structurate `ProfessionalService` cu oferte.
@@ -105,11 +105,13 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 
 ### Servicii
 
-- Secțiune `section#servicii` cu grid de 4 carduri:
-  - Site-uri web
-  - Magazine online
+- Secțiune `section#servicii` cu grid de 6 carduri:
+  - Site-uri profesionale
   - Aplicații web
   - Automatizări & integrări
+  - Magazine online custom
+  - Design & branding
+  - Mentenanță & suport
 
 ### Pentru cine
 
@@ -133,16 +135,23 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 ### Pachete
 
 - Secțiune `section#pachete` cu 3 carduri:
-  - Site de prezentare – de la 1.000 lei
-  - Site business – de la 2.000 lei
-  - Aplicație web – de la 3.000 lei
+  - Site Start – de la 1.490 lei
+  - Site Business – de la 2.990 lei
+  - Aplicație web Custom – de la 4.990 lei
 - Fiecare card conține listă de caracteristici și buton „Solicită ofertă”.
+
+### Servicii suplimentare
+
+- Automatizări – de la 590 lei.
+- Design & branding – de la 390 lei.
+- Mentenanță – de la 149 lei/lună.
+- Dezvoltare și consultanță – 120 lei/oră.
 
 ### Ce este inclus
 
 - Secțiune `section#ce-este-inclus` cu 6 itemi:
   - Design responsive
-  - Compatibilitate mobil
+  - Performanță și accesibilitate
   - Testare înainte de lansare
   - SEO tehnic de bază
   - Configurare funcționalități
@@ -173,7 +182,7 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 ### Footer
 
 - Fundal bleumarin închis.
-- Logo taldev() + descriere.
+- Logo TALDEV + descriere.
 - Date PFA și CUI.
 - Linkuri către WhatsApp, Email, GitHub.
 - Text copyright.
@@ -265,7 +274,7 @@ Aceasta asigură un design uniform.
 
 ### Animația de scriere
 
-- La încărcare, elementul `#typing-title` este golit, apoi textul „Site-uri. Aplicații. Automatizări.” este scris caracter cu caracter (60ms per caracter).
+- La încărcare, elementul `#typing-title` este scris caracter cu caracter (42ms per caracter), exceptând utilizatorii care preferă mișcare redusă.
 - Cursorul intermitent este adăugat prin CSS `::after`.
 
 ### Meniu mobil
@@ -348,9 +357,6 @@ Asigură-te că aceste fișiere există în directorul `files/`.
 ## Contact
 
 - **WhatsApp**: [wa.me/alin.talfes](https://wa.me/alin.talfes)
-- **Email**: [alin.talfes@icloud.com](mailto:alin.talfes@icloud.com)
+- **Telefon**: [+40 770 823 386](tel:+40770823386)
+- **Email**: [alin.talfes@outlook.com](mailto:alin.talfes@outlook.com)
 - **GitHub**: [github.com/alin-talfes](https://github.com/alin-talfes)
-
----
-
-© 2026 TALFEȘ REMUS-ALIN P.F.A.

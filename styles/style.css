@@ -162,6 +162,19 @@ a {
     transform: translateY(-2px);
 }
 
+.btn-call {
+    color: #071d3b;
+    background: #ffffff;
+    border-color: #8da0b4;
+}
+
+.btn-call:hover {
+    color: #ffffff;
+    background: #075f9d;
+    border-color: #075f9d;
+    transform: translateY(-2px);
+}
+
 [data-theme="dark"] .btn-email {
     background-color: #FFFFFF;
     color: #0A2540;
@@ -751,14 +764,6 @@ section[id],
     color: var(--accent);
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.85rem;
-}
-
 .whatsapp-float {
     position: fixed;
     bottom: 25px;
@@ -1212,6 +1217,26 @@ body {
     background: linear-gradient(#08b8ee, #006bb3);
 }
 
+.service-kicker,
+.package-label {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--accent-hover);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.services-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-card h3 {
+    margin-bottom: 10px;
+}
+
 .service-card:hover,
 .audience-item:hover,
 .included-item:hover,
@@ -1238,6 +1263,67 @@ body {
     align-self: stretch;
 }
 
+.pricing-card:nth-child(2) {
+    position: relative;
+    border-color: var(--accent);
+    box-shadow: 0 20px 48px rgba(var(--accent-rgb), 0.16);
+}
+
+.pricing-card:nth-child(2)::before {
+    content: 'RECOMANDAT';
+    position: absolute;
+    top: -13px;
+    right: 22px;
+    padding: 5px 10px;
+    color: #ffffff;
+    background: #075f9d;
+    border-radius: 999px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.extras-section {
+    background: var(--bg-end);
+}
+
+.extras-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.extra-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 24px;
+    padding: 26px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.extra-card h3 {
+    font-size: 1.12rem;
+}
+
+.extra-card .package-label {
+    margin-bottom: 5px;
+}
+
+.extra-card strong {
+    align-self: center;
+    color: var(--accent-hover);
+    white-space: nowrap;
+}
+
+.extra-card p {
+    grid-column: 1 / -1;
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+}
+
 .cert-link {
     color: var(--accent-hover);
 }
@@ -1260,6 +1346,10 @@ body {
 
 .footer {
     background: #06182e;
+}
+
+.footer-content {
+    margin-bottom: 0;
 }
 
 .whatsapp-float {
@@ -1336,6 +1426,18 @@ body {
     .process-grid,
     .pricing-grid {
         grid-template-columns: 1fr;
+    }
+
+    .extras-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .extra-card {
+        grid-template-columns: 1fr;
+    }
+
+    .extra-card p {
+        grid-column: auto;
     }
 
     .hero-actions,
