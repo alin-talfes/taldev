@@ -58,6 +58,7 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 └── files/
     ├── cert.pdf
     ├── cv.pdf
+    ├── header.png
     └── studii.pdf
 ```
 
@@ -89,14 +90,15 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 ### Header și navigare
 
 - `header#navbar` – sticky, cu backdrop blur.
-- Conține logo-ul SVG (taldev() + TALFEȘ DEVELOPMENT).
+- Folosește logo-ul oficial din `files/header.png`.
+- Include comutator accesibil pentru tema luminoasă/întunecată.
 - Buton hamburger (`button#navToggle`) pentru mobil.
 - Meniul (`nav#navMenu`) cu linkuri către: `#servicii`, `#pentru-cine`, `#cum-lucram`, `#pachete`, `#contact`.
 - Fără buton WhatsApp în header (există doar butonul plutitor).
 
 ### Hero
 
-- `h1#typing-title` – textul „Site-uri. Aplicații. Automatizări.” este scris animat de JavaScript.
+- `h1#typing-title` – textul „Site-uri. Aplicații. Automatizări.” este animat doar când utilizatorul nu preferă mișcare redusă.
 - `p.hero-text` – descriere scurtă.
 - `div.hero-actions` – butoane CTA: „Solicită o ofertă” (contact) și „Vezi serviciile” (servicii).
 - `div.hero-note` – notă despre Talfeș Development.
@@ -337,7 +339,9 @@ Asigură-te că aceste fișiere există în directorul `files/`.
 - Focus vizibil personalizat.
 - Atribut `aria-expanded` pentru meniul mobil.
 - `aria-label` pentru butoanele flotante.
-- Suport `prefers-reduced-motion`.
+- Suport complet `prefers-reduced-motion`.
+- Contrast îmbunătățit pentru butoane și linkuri.
+- Meniul mobil poate fi închis cu tasta Escape.
 
 ---
 

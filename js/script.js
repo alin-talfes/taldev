@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navToggle.addEventListener('click', function() {
         const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
         navToggle.setAttribute('aria-expanded', !isOpen);
+        navToggle.setAttribute('aria-label', isOpen ? 'Deschide meniul' : 'Închide meniul');
         navToggle.classList.toggle('open', !isOpen);
         navMenu.classList.toggle('open', !isOpen);
     });
@@ -59,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('open');
             navToggle.classList.remove('open');
             navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Deschide meniul');
         });
     });
 
@@ -67,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('open');
             navToggle.classList.remove('open');
             navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Deschide meniul');
         }
     });
 
@@ -75,16 +78,15 @@ document.addEventListener('DOMContentLoaded', function() {
             navMenu.classList.remove('open');
             navToggle.classList.remove('open');
             navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Deschide meniul');
             navToggle.focus();
         }
     });
 
     if (!('IntersectionObserver' in window)) {
         revealElements.forEach(el => el.classList.add('visible'));
-        return;
-    }
-
-    document.documentElement.classList.add('reveal-ready');
+    } else {
+        document.documentElement.classList.add('reveal-ready');
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -108,7 +110,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, { threshold: 0.15 });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
 
     window.addEventListener('scroll', function() {
         navbar.classList.toggle('scrolled', window.scrollY > 10);

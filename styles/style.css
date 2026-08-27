@@ -1027,6 +1027,13 @@ body {
     border-color: var(--border-light);
 }
 
+.nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
 .nav-list {
     gap: 24px;
 }
