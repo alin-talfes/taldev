@@ -48,6 +48,8 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 │
 ├── index.html
 ├── favicon.svg
+├── demo/
+│   └── sacpfa.html
 │
 ├── styles/
 │   └── style.css
@@ -157,6 +159,12 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
   - Configurare funcționalități
   - Predarea accesurilor
 - Notă despre costuri suplimentare.
+
+### Demo S.A.C. - P.F.A.
+
+- Secțiunea `section#demo` prezintă proiectul demonstrativ.
+- `demo/sacpfa.html` conține dashboardul vizual al Sistemului de Administrare și Contabilitate al Persoanei Fizice Autorizate.
+- Datele din demonstrație sunt fictive, iar controalele nu execută operațiuni.
 
 ### De ce Talfeș Development
 

@@ -360,7 +360,7 @@ section[id],
     scroll-margin-top: 80px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 980px) {
     .nav {
         display: none;
         position: absolute;
@@ -1287,6 +1287,124 @@ body {
     background: var(--bg-end);
 }
 
+.demo-section {
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 88% 30%, rgba(8, 184, 238, 0.12), transparent 30%),
+        var(--bg-end);
+}
+
+.demo-showcase {
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1.12fr);
+    align-items: center;
+    gap: 70px;
+}
+
+.demo-copy h2 {
+    margin-bottom: 12px;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    letter-spacing: -0.045em;
+}
+
+.demo-copy > p {
+    max-width: 580px;
+    color: var(--text-secondary);
+}
+
+.demo-copy .demo-lead {
+    margin-bottom: 14px;
+    color: var(--text-primary);
+    font-size: 1.12rem;
+    font-weight: 600;
+}
+
+.demo-features {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px 20px;
+    margin: 26px 0;
+    color: var(--text-secondary);
+    list-style: none;
+}
+
+.demo-features li::before {
+    content: '✓';
+    margin-right: 8px;
+    color: var(--accent);
+    font-weight: 800;
+}
+
+.demo-copy small {
+    display: block;
+    margin-top: 12px;
+    color: var(--text-muted);
+}
+
+.demo-preview {
+    overflow: hidden;
+    min-height: 360px;
+    background: #f4f7f6;
+    border: 1px solid #9ebbb1;
+    border-radius: 20px;
+    box-shadow: 0 28px 68px rgba(7, 29, 59, 0.2);
+    transform: perspective(900px) rotateY(-4deg) rotateX(1deg);
+}
+
+.demo-preview-top {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 14px 17px;
+    color: #d8ebe4;
+    background: #0b2d26;
+}
+
+.demo-preview-top span {
+    width: 8px;
+    height: 8px;
+    background: #4fc39a;
+    border-radius: 50%;
+}
+
+.demo-preview-top span:nth-child(2) { opacity: 0.65; }
+.demo-preview-top span:nth-child(3) { opacity: 0.35; }
+.demo-preview-top strong { margin-left: auto; font-family: var(--font-mono); font-size: 0.72rem; }
+
+.demo-preview-body {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    min-height: 315px;
+}
+
+.demo-preview-sidebar {
+    display: grid;
+    align-content: start;
+    gap: 14px;
+    padding: 28px 18px;
+    background: #103c32;
+}
+
+.demo-preview-sidebar i {
+    height: 7px;
+    background: rgba(255,255,255,0.28);
+    border-radius: 999px;
+}
+
+.demo-preview-sidebar i:first-child { background: #70dbb4; }
+
+.demo-preview-main { padding: 28px 24px; }
+.demo-preview-heading { width: 44%; height: 15px; margin-bottom: 24px; background: #234a40; border-radius: 4px; }
+.demo-preview-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.demo-preview-stats b { height: 76px; background: #ffffff; border: 1px solid #d6e4df; border-radius: 9px; box-shadow: 0 5px 14px rgba(14,37,33,0.06); }
+.demo-preview-chart { display: flex; align-items: end; gap: 9px; height: 142px; margin-top: 18px; padding: 20px 18px 14px; background: #ffffff; border: 1px solid #d6e4df; border-radius: 9px; }
+.demo-preview-chart span { flex: 1; height: 45%; background: #8ad7ba; border-radius: 3px 3px 0 0; }
+.demo-preview-chart span:nth-child(2) { height: 68%; }
+.demo-preview-chart span:nth-child(3) { height: 54%; }
+.demo-preview-chart span:nth-child(4) { height: 82%; }
+.demo-preview-chart span:nth-child(5) { height: 66%; }
+.demo-preview-chart span:nth-child(6) { height: 92%; background: #2b9b72; }
+
 .extras-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1384,6 +1502,16 @@ body {
         transform: none;
     }
 
+    .demo-showcase {
+        grid-template-columns: 1fr;
+        gap: 46px;
+    }
+
+    .demo-preview {
+        max-width: 680px;
+        transform: none;
+    }
+
     .services-grid,
     .why-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1438,6 +1566,35 @@ body {
 
     .extra-card p {
         grid-column: auto;
+    }
+
+    .demo-features {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-preview {
+        min-height: 280px;
+    }
+
+    .demo-preview-body {
+        grid-template-columns: 72px 1fr;
+        min-height: 235px;
+    }
+
+    .demo-preview-sidebar {
+        padding-inline: 12px;
+    }
+
+    .demo-preview-main {
+        padding: 20px 14px;
+    }
+
+    .demo-preview-stats b {
+        height: 58px;
+    }
+
+    .demo-preview-chart {
+        height: 105px;
     }
 
     .hero-actions,
