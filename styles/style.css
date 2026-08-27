@@ -795,7 +795,7 @@ section[id],
     height: 45px;
     border-radius: 50%;
     background: var(--text-primary);
-    color: #FFFF00;
+    color: #000;
     border: 2px solid var(--accent);
     font-size: 1.2rem;
     display: none;
