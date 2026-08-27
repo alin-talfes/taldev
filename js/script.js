@@ -2,7 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const root = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
     
-    const savedTheme = localStorage.getItem('theme') || 'light';
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
     root.setAttribute('data-theme', savedTheme);
     updateToggleIcon(savedTheme);
 
@@ -15,22 +16,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function updateToggleIcon(theme) {
-        themeToggle.setAttribute('aria-expanded', theme === 'dark');
+        const isDark = theme === 'dark';
+        themeToggle.setAttribute('aria-pressed', String(isDark));
+        themeToggle.setAttribute('aria-label', isDark ? 'Activează tema luminoasă' : 'Activează tema întunecată');
     }
 
     const typingTitle = document.getElementById('typing-title');
     if (typingTitle) {
-        const text = "Site-uri. Aplicații. Automatizări.";
-        typingTitle.textContent = '';
-        let i = 0;
-        function type() {
-            if (i < text.length) {
-                typingTitle.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, 60);
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!reduceMotion) {
+            const text = typingTitle.textContent;
+            typingTitle.textContent = '';
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    typingTitle.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, 42);
+                }
             }
+            type();
         }
-        type();
     }
 
     const navToggle = document.getElementById('navToggle');
@@ -63,6 +69,22 @@ document.addEventListener('DOMContentLoaded', function() {
             navToggle.setAttribute('aria-expanded', 'false');
         }
     });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.focus();
+        }
+    });
+
+    if (!('IntersectionObserver' in window)) {
+        revealElements.forEach(el => el.classList.add('visible'));
+        return;
+    }
+
+    document.documentElement.classList.add('reveal-ready');
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

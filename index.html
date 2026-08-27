@@ -6,6 +6,12 @@
     <meta name="description" content="taldev() — dezvoltare web pentru afaceri: site-uri, magazine online, aplicații web, automatizări. Soluții clare, adaptate nevoilor tale.">
     <meta name="author" content="TALFEȘ REMUS-ALIN P.F.A.">
     <meta name="keywords" content="taldev, TALFES DEVELOPMENT, dezvoltare web, site prezentare, magazin online, aplicatii web, automatizari, PFA">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#071d3b">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ro_RO">
+    <meta property="og:title" content="TALDEV — Dezvoltare web și automatizări">
+    <meta property="og:description" content="Site-uri, aplicații web și automatizări construite clar, eficient și adaptat afacerii tale.">
     <title>taldev() — Talfeș Development</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,19 +52,10 @@
 <body>
 <header id="navbar">
     <div class="container nav-container">
-        <div class="logo">
-            <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130" width="220" height="72" role="img" aria-label="taldev() TALFEȘ DEVELOPMENT">
-                <text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800">
-                    <tspan class="logo-text-dark">taldev</tspan>
-                    <tspan class="logo-accent-teal">()</tspan>
-                </text>
-                <text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3">
-                    <tspan font-weight="800" class="logo-text-dark">TALFEȘ </tspan>
-                    <tspan font-weight="600" class="logo-accent-dark">DEVELOPMENT</tspan>
-                </text>
-            </svg>
-        </div>
-        <button class="theme-toggle" id="themeToggle" aria-label="Comută tema" aria-expanded="false">
+        <a class="logo" href="#top" aria-label="TALDEV — pagina principală">
+            <img class="logo-image" src="files/header.png" width="600" height="125" alt="TALDEV">
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Activează tema întunecată" aria-pressed="false">
             <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
             <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
@@ -79,16 +76,32 @@
     </div>
 </header>
 <main>
-    <section class="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title" id="typing-title" aria-label="Site-uri. Aplicații. Automatizări.">Site-uri. Aplicații. Automatizări.</h1>
-            <p class="hero-text reveal">Dezvolt soluții web moderne pentru afaceri și proiecte care vor să lucreze mai simplu, mai eficient și mai profesionist.</p>
-            <div class="hero-actions reveal">
-                <a href="#contact" class="btn btn-primary">Solicită o ofertă</a>
-                <a href="#servicii" class="btn btn-secondary">Vezi serviciile</a>
+    <section class="hero" id="top">
+        <div class="container hero-layout">
+            <div class="hero-content">
+                <p class="eyebrow reveal">Dezvoltare web pentru afaceri</p>
+                <h1 class="hero-title" id="typing-title">Site-uri. Aplicații. Automatizări.</h1>
+                <p class="hero-text reveal">Construiesc soluții digitale rapide, clare și ușor de folosit — de la primul ecran până la procesele care lucrează în fundal.</p>
+                <div class="hero-actions reveal">
+                    <a href="#contact" class="btn btn-primary">Discutăm proiectul</a>
+                    <a href="#servicii" class="btn btn-secondary">Vezi serviciile</a>
+                </div>
+                <ul class="hero-trust reveal" aria-label="Avantaje principale">
+                    <li>Comunicare directă</li>
+                    <li>Cost clar</li>
+                    <li>Design responsive</li>
+                </ul>
             </div>
-            <div class="hero-note reveal">
-                <p>Talfeș Development este un proiect independent de dezvoltare web, orientat către soluții clare și funcționale.</p>
+            <div class="code-card reveal" aria-label="Fluxul de dezvoltare TALDEV">
+                <div class="code-card-bar"><span></span><span></span><span></span><small>taldev / project</small></div>
+                <div class="code-lines" aria-hidden="true">
+                    <p><span class="code-muted">01</span><span class="code-blue">const</span> idee = <span class="code-string">„proiectul tău”</span>;</p>
+                    <p><span class="code-muted">02</span><span class="code-blue">const</span> soluție = clarifică(idee);</p>
+                    <p><span class="code-muted">03</span>design(soluție);</p>
+                    <p><span class="code-muted">04</span>dezvoltă(<span class="code-string">„simplu”</span>);</p>
+                    <p><span class="code-muted">05</span><span class="code-blue">return</span> rezultat;</p>
+                </div>
+                <div class="code-status"><span></span> Pregătit pentru lansare</div>
             </div>
         </div>
     </section>
@@ -250,8 +263,8 @@
                     <p>Site-ul se adaptează pe orice dispozitiv.</p>
                 </div>
                 <div class="included-item reveal">
-                    <h3>Compatibilitate mobil</h3>
-                    <p>Testat pe mobil și tabletă.</p>
+                    <h3>Performanță și accesibilitate</h3>
+                    <p>Experiență rapidă, lizibilă și ușor de folosit.</p>
                 </div>
                 <div class="included-item reveal">
                     <h3>Testare înainte de lansare</h3>
@@ -338,7 +351,6 @@
         </div>
         <div class="footer-info">
             <p>TALFEȘ REMUS-ALIN P.F.A.</p>
-            <p>CUI: 123456789</p>
             <p>
                 <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener">WhatsApp</a> ·
                 <a href="mailto:alin.talfes@icloud.com">Email</a> ·
