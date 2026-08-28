@@ -336,6 +336,11 @@ button:focus-visible {
     font-weight: 600;
 }
 
+.nav-link[aria-current="page"] {
+    color: var(--accent-hover);
+    font-weight: 700;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -358,6 +363,63 @@ button:focus-visible {
 section[id],
 .hero {
     scroll-margin-top: 80px;
+}
+
+.page-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 92px 0 78px;
+    background:
+        radial-gradient(circle at 86% 20%, rgba(8, 184, 238, 0.14), transparent 30%),
+        linear-gradient(135deg, var(--bg-start), var(--bg-end));
+}
+
+.page-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.2;
+    background-image: linear-gradient(rgba(0, 107, 179, 0.12) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 107, 179, 0.12) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to right, transparent, #000 75%);
+}
+
+.page-hero-layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+    align-items: end;
+    gap: 70px;
+}
+
+.page-title {
+    max-width: 780px;
+    margin-bottom: 20px;
+    font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+    line-height: 1.04;
+    letter-spacing: -0.055em;
+}
+
+.page-lead {
+    max-width: 720px;
+    color: var(--text-secondary);
+    font-size: 1.12rem;
+}
+
+.page-hero-actions {
+    display: grid;
+    gap: 12px;
+}
+
+.section-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 34px;
+}
+
+.home-services {
+    background: var(--bg-card);
 }
 
 @media screen and (max-width: 980px) {
@@ -1497,6 +1559,17 @@ body {
         gap: 48px;
     }
 
+    .page-hero-layout {
+        grid-template-columns: 1fr;
+        align-items: start;
+        gap: 38px;
+    }
+
+    .page-hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
     .code-card {
         max-width: 620px;
         transform: none;
@@ -1539,6 +1612,10 @@ body {
 
     .hero {
         padding: 74px 0 66px;
+    }
+
+    .page-hero {
+        padding: 72px 0 62px;
     }
 
     .hero-title {
@@ -1599,6 +1676,12 @@ body {
 
     .hero-actions,
     .hero-actions .btn {
+        width: 100%;
+    }
+
+    .page-hero-actions,
+    .page-hero-actions .btn,
+    .section-actions .btn {
         width: 100%;
     }
 

@@ -24,7 +24,7 @@ Scopul este de a prezenta serviciile, procesul de lucru, pachetele și datele de
 
 ## Prezentare generală
 
-Site-ul este o pagină de tip one-page, cu navigare prin ancore, design responsive și animații discrete.  
+Site-ul este organizat în mai multe pagini statice, cu navigare comună, design responsive și animații discrete.
 Este construit ca un site static, ușor de găzduit pe orice serviciu (Netlify, Vercel, GitHub Pages, hosting simplu).
 
 Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
@@ -47,9 +47,12 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 / (root)
 │
 ├── index.html
+├── servicii.html
 ├── favicon.svg
 ├── demo/
-│   └── sacpfa.html
+│   ├── index.html
+│   ├── sacpfa.html
+│   └── demo.css
 │
 ├── styles/
 │   └── style.css
@@ -85,7 +88,7 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 - `meta author` – TALFEȘ REMUS-ALIN P.F.A.
 - `meta keywords` – cuvinte cheie relevante.
 - `title` – „TALDEV - Talfeș Development”
-- `link favicon` – `favicon.svg` (iconiță `<t>` pe fundal bleumarin).
+- `link favicon` – `favicon.svg`, construit pe identitatea vizuală TALDEV.
 - `preconnect` și `link` către Google Fonts (Poppins, Inter, JetBrains Mono).
 - `script type="application/ld+json"` – date structurate `ProfessionalService` cu oferte.
 
@@ -95,19 +98,24 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 - Folosește logo-ul oficial din `files/header.png`.
 - Include comutator accesibil pentru tema luminoasă/întunecată.
 - Buton hamburger (`button#navToggle`) pentru mobil.
-- Meniul (`nav#navMenu`) cu linkuri către: `#servicii`, `#pentru-cine`, `#cum-lucram`, `#pachete`, `#contact`.
+- Meniul (`nav#navMenu`) oferă acces la: Acasă, Servicii, Demo-uri și Contact.
+- Pagina curentă este indicată semantic prin `aria-current="page"`.
 - Fără buton WhatsApp în header (există doar butonul plutitor).
 
 ### Hero
 
 - `h1#typing-title` – textul „Site-uri. Aplicații. Automatizări.” este animat doar când utilizatorul nu preferă mișcare redusă.
 - `p.hero-text` – descriere scurtă.
-- `div.hero-actions` – butoane CTA: „Solicită o ofertă” (contact) și „Vezi serviciile” (servicii).
-- `div.hero-note` – notă despre Talfeș Development.
+- `div.hero-actions` – butoane CTA către contact și pagina de servicii.
+- `ul.hero-trust` – avantajele principale ale colaborării.
+
+### Pagina principală
+
+- `index.html` conține prezentarea TALDEV, rezumatul serviciilor, publicul țintă, procesul de lucru, avantajele, certificările și contactul.
 
 ### Servicii
 
-- Secțiune `section#servicii` cu grid de 6 carduri:
+- `servicii.html` conține oferta comercială completă și gridul de 6 servicii:
   - Site-uri profesionale
   - Aplicații web
   - Automatizări & integrări
@@ -160,10 +168,11 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
   - Predarea accesurilor
 - Notă despre costuri suplimentare.
 
-### Demo S.A.C. - P.F.A.
+### Demo-uri
 
-- Secțiunea `section#demo` prezintă proiectul demonstrativ.
+- `demo/index.html` este catalogul demonstrațiilor.
 - `demo/sacpfa.html` conține dashboardul vizual al Sistemului de Administrare și Contabilitate al Persoanei Fizice Autorizate.
+- `demo/demo.css` conține exclusiv stilurile dashboardului demonstrativ.
 - Datele din demonstrație sunt fictive, iar controalele nu execută operațiuni.
 
 ### De ce Talfeș Development
@@ -185,15 +194,14 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 
 - Secțiune `section#contact`.
 - Titlu „Ai un proiect?” și descriere.
-- Butoane: WhatsApp (verde) și Email (bleumarin).
+- Butoane pentru telefon, e-mail și WhatsApp.
 
 ### Footer
 
 - Fundal bleumarin închis.
 - Logo TALDEV + descriere.
-- Date PFA și CUI.
+- Datele de identificare și contact ale PFA.
 - Linkuri către WhatsApp, Email, GitHub.
-- Text copyright.
 
 ### Butoane flotante
 
