@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo TALDEV pentru evidența timpului de muncă, pontaje, absențe și alerte bazate pe reguli din Codul muncii din România.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#10264b">
+  <title>Demo Pontaj RO - TALDEV</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pontaj.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><img src="../files/header.png?v=20260827" alt="TALDEV"><p>Pontaj și evidența timpului de muncă</p></div>
+      <nav class="nav" aria-label="Meniu aplicație">
+        <button class="active" type="button">Panou general</button>
+        <button type="button">Pontaj zilnic</button>
+        <button type="button">Centralizator lunar</button>
+        <button type="button">Program de lucru</button>
+        <button type="button">Concedii și absențe</button>
+        <button type="button">Rapoarte</button>
+        <button type="button">Configurare</button>
+      </nav>
+      <div class="sidebar-meta">PONTAJ RO · v1.0 DEMO<br>Datele afișate sunt fictive.</div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">Vineri, 28 august 2026</p><h1>Panou de pontaj</h1><p class="topbar-copy">Atelier Digital SRL · 8 salariați activi</p></div>
+        <div class="top-actions"><button class="btn" id="exportButton" type="button">Exportă pontajul</button><button class="btn btn-primary" id="clockButton" type="button" aria-pressed="false">Înregistrează intrarea</button></div>
+      </header>
+      <div class="demo-banner"><span><strong>DEMO INTERACTIV</strong> — acțiunile simulează fluxurile și nu salvează date.</span><a href="index.html">← Înapoi la demo-uri</a></div>
+      <section class="filters" aria-label="Filtre pontaj">
+        <div class="field"><label for="month">Luna</label><select id="month"><option>August 2026</option><option>Iulie 2026</option></select></div>
+        <div class="field"><label for="employeeFilter">Salariat</label><select id="employeeFilter"><option value="all">Toți salariații</option><option value="ana">Ana Marinescu</option><option value="mihai">Mihai Pop</option><option value="ioana">Ioana Radu</option><option value="vlad">Vlad Dumitru</option></select></div>
+        <div class="field"><label for="department">Departament</label><select id="department"><option>Toate departamentele</option><option>Operațional</option><option>Administrativ</option></select></div>
+      </section>
+      <section class="kpis" aria-label="Rezumat lunar">
+        <article class="card kpi"><span class="kpi-label">Ore planificate</span><strong class="kpi-value">160 h</strong><small>20 zile lucrătoare</small></article>
+        <article class="card kpi"><span class="kpi-label">Ore înregistrate</span><strong class="kpi-value">151 h 30 min</strong><small>94,7% din normă</small></article>
+        <article class="card kpi"><span class="kpi-label">Ore suplimentare</span><strong class="kpi-value">6 h 15 min</strong><small>Necesită compensare</small></article>
+        <article class="card kpi"><span class="kpi-label">Absențe</span><strong class="kpi-value">2 zile</strong><small>1 CO · 1 CM</small></article>
+      </section>
+      <div class="layout">
+        <section class="card">
+          <div class="card-head"><h2>Situația zilei</h2><span class="badge info">28 august 2026</span></div>
+          <div class="table-wrap"><table><thead><tr><th>Salariat</th><th>Program</th><th>Intrare</th><th>Ieșire</th><th>Lucrat</th><th>Stare</th></tr></thead>
+            <tbody id="timesheetRows">
+              <tr data-employee="ana"><td><div class="person"><span class="avatar">AM</span><strong>Ana Marinescu</strong></div></td><td>09:00–17:30</td><td>08:57</td><td>17:31</td><td>8 h 04 min</td><td><span class="badge ok">Complet</span></td></tr>
+              <tr data-employee="mihai"><td><div class="person"><span class="avatar">MP</span><strong>Mihai Pop</strong></div></td><td>08:00–16:30</td><td>08:03</td><td>—</td><td>În lucru</td><td><span class="badge info">Prezent</span></td></tr>
+              <tr data-employee="ioana"><td><div class="person"><span class="avatar">IR</span><strong>Ioana Radu</strong></div></td><td>09:00–17:30</td><td>09:01</td><td>17:28</td><td>7 h 57 min</td><td><span class="badge ok">Complet</span></td></tr>
+              <tr data-employee="vlad"><td><div class="person"><span class="avatar">VD</span><strong>Vlad Dumitru</strong></div></td><td>22:00–06:00</td><td>21:56</td><td>06:02</td><td>8 h 06 min</td><td><span class="badge warn">Muncă de noapte</span></td></tr>
+            </tbody>
+          </table></div>
+        </section>
+        <aside class="card">
+          <div class="card-head"><h2>Alerte de verificat</h2><span class="badge warn">3 active</span></div>
+          <ul class="alerts">
+            <li><span class="badge danger">Prioritate</span><strong>Mihai Pop · pontaj deschis</strong><p>Lipsește ora de sfârșit pentru ziua curentă. Art. 119 cere evidențierea orei de început și de sfârșit.</p></li>
+            <li><span class="badge warn">Atenție</span><strong>Vlad Dumitru · tură de noapte</strong><p>Intervalul 22:00–06:00 este încadrat separat pentru verificarea regulilor aplicabile.</p></li>
+            <li><span class="badge info">Planificare</span><strong>6 h 15 min suplimentare</strong><p>Planifică ore libere plătite în termenul legal sau verifică modalitatea de compensare.</p></li>
+          </ul>
+        </aside>
+        <section class="card legal-card">
+          <div class="card-head"><h2>Reguli urmărite de demonstrație</h2><span class="badge info">Codul muncii</span></div>
+          <div class="legal-grid">
+            <div class="legal-rule"><b>Art. 112–114</b><span>Normă întreagă: 8 ore/zi și 40 ore/săptămână; limita generală: 48 ore/săptămână, inclusiv orele suplimentare.</span></div>
+            <div class="legal-rule"><b>Art. 119</b><span>Evidență zilnică pentru fiecare salariat, inclusiv ora de început și ora de sfârșit.</span></div>
+            <div class="legal-rule"><b>Art. 120–123</b><span>Identificarea muncii suplimentare și urmărirea compensării cu ore libere plătite în termenul legal.</span></div>
+            <div class="legal-rule"><b>Art. 125</b><span>Separarea orelor lucrate în intervalul 22:00–06:00 și semnalarea salariaților de noapte.</span></div>
+          </div>
+        </section>
+      </div>
+      <p class="footnote"><strong>Important:</strong> demo-ul ilustrează funcții software și reguli generale, nu oferă consultanță juridică sau de salarizare. Configurarea finală trebuie validată pentru contractele, programul și domeniul angajatorului. Sursă consultată la 28 august 2026: <a href="https://legislatie.just.ro/Public/DetaliiDocumentAfis/255199" target="_blank" rel="noopener">Codul muncii — Portal Legislativ</a>.</p>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="pontaj.js"></script>
+</body>
+</html>

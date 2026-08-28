@@ -1363,6 +1363,45 @@ body {
     gap: 70px;
 }
 
+.demo-catalog {
+    display: grid;
+    gap: 90px;
+}
+
+.demo-showcase-alt {
+    padding-top: 80px;
+    border-top: 1px solid var(--border-light);
+}
+
+.demo-showcase-alt .demo-copy {
+    order: 2;
+}
+
+.demo-showcase-alt .demo-preview {
+    order: 1;
+}
+
+.time-preview {
+    background: #f5f7fb;
+    border-color: #b9c8df;
+}
+
+.time-preview .demo-preview-top { background: #10264b; }
+.time-preview .demo-preview-top span { background: #6eafff; }
+.time-preview-body { display: grid; grid-template-columns: 94px 1fr; min-height: 315px; }
+.time-preview-nav { display: grid; align-content: start; gap: 14px; padding: 28px 16px; background: #163361; }
+.time-preview-nav i { height: 7px; border-radius: 99px; background: rgba(255,255,255,.27); }
+.time-preview-nav i:first-child { background: #85bbff; }
+.time-preview-main { padding: 26px 22px; }
+.time-preview-toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
+.time-preview-toolbar b { width: 38%; height: 14px; border-radius: 4px; background: #1b3764; }
+.time-preview-toolbar em { width: 78px; height: 25px; border-radius: 7px; background: #216bd3; }
+.time-preview-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.time-preview-kpis span { height: 58px; border: 1px solid #dbe3ef; border-radius: 8px; background: #fff; }
+.time-preview-week { display: grid; grid-template-columns: repeat(5, 1fr); gap: 7px; margin-top: 16px; }
+.time-preview-week i { height: 92px; border-radius: 7px; background: linear-gradient(180deg, #dce9fb 12%, #fff 12%); border: 1px solid #dbe3ef; }
+.time-preview-alert { width: 54%; height: 28px; margin-top: 15px; border-radius: 7px; background: #fff1d7; border: 1px solid #f0d49c; }
+
 .demo-copy h2 {
     margin-bottom: 12px;
     font-size: clamp(2rem, 4vw, 3.4rem);
@@ -1614,6 +1653,9 @@ body {
         padding: 74px 0 66px;
     }
 
+    .demo-showcase-alt .demo-copy,
+    .demo-showcase-alt .demo-preview { order: initial; }
+
     .page-hero {
         padding: 72px 0 62px;
     }
@@ -1678,6 +1720,13 @@ body {
     .hero-actions .btn {
         width: 100%;
     }
+
+    .time-preview-body { grid-template-columns: 62px 1fr; min-height: 235px; }
+    .time-preview-nav { padding-inline: 10px; }
+    .time-preview-main { padding: 18px 12px; }
+    .time-preview-kpis { grid-template-columns: repeat(2, 1fr); }
+    .time-preview-kpis span { height: 42px; }
+    .time-preview-week i { height: 64px; }
 
     .page-hero-actions,
     .page-hero-actions .btn,
