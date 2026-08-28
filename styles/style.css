@@ -1402,6 +1402,24 @@ body {
 .time-preview-week i { height: 92px; border-radius: 7px; background: linear-gradient(180deg, #dce9fb 12%, #fff 12%); border: 1px solid #dbe3ef; }
 .time-preview-alert { width: 54%; height: 28px; margin-top: 15px; border-radius: 7px; background: #fff1d7; border: 1px solid #f0d49c; }
 
+.mru-showcase .demo-copy,
+.mru-showcase .demo-preview { order: initial; }
+.mru-preview { background: #f8f6fb; border-color: #cdbfdf; }
+.mru-preview .demo-preview-top { background: #34235b; }
+.mru-preview .demo-preview-top span { background: #b69ae5; }
+.mru-preview-body { display: grid; grid-template-columns: 94px 1fr; min-height: 315px; }
+.mru-preview-sidebar { display: grid; align-content: start; gap: 14px; padding: 28px 16px; background: #463173; }
+.mru-preview-sidebar i { height: 7px; border-radius: 99px; background: rgba(255,255,255,.27); }
+.mru-preview-sidebar i:first-child { background: #c9b5ec; }
+.mru-preview-main { padding: 26px 22px; }
+.mru-preview-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.mru-preview-head b { width: 36%; height: 14px; border-radius: 4px; background: #4c3677; }
+.mru-preview-head em { width: 74px; height: 25px; border-radius: 7px; background: #7351ac; }
+.mru-preview-summary { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+.mru-preview-summary span { height: 54px; border: 1px solid #e0d8eb; border-radius: 8px; background: #fff; }
+.mru-preview-people { display: grid; gap: 7px; }
+.mru-preview-people i { height: 38px; border: 1px solid #e0d8eb; border-radius: 7px; background: linear-gradient(90deg,#e6ddf3 11%,#fff 11%); }
+
 .demo-copy h2 {
     margin-bottom: 12px;
     font-size: clamp(2rem, 4vw, 3.4rem);
@@ -1727,6 +1745,11 @@ body {
     .time-preview-kpis { grid-template-columns: repeat(2, 1fr); }
     .time-preview-kpis span { height: 42px; }
     .time-preview-week i { height: 64px; }
+    .mru-preview-body { grid-template-columns: 62px 1fr; min-height: 235px; }
+    .mru-preview-sidebar { padding-inline: 10px; }
+    .mru-preview-main { padding: 18px 12px; }
+    .mru-preview-summary span { height: 42px; }
+    .mru-preview-people i { height: 29px; }
 
     .page-hero-actions,
     .page-hero-actions .btn,

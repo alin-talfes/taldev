@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Demo M.R.U. TALDEV — aplicație pentru managementul resurselor umane și baza de date a angajaților.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#34235b">
+  <title>Demo M.R.U. - Management Resurse Umane</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mru.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><img src="../files/header.png?v=20260827" alt="TALDEV"><p>M.R.U. · Management Resurse Umane</p></div>
+      <nav class="side-nav" aria-label="Meniu M.R.U.">
+        <button class="active" type="button">Panou general</button>
+        <button type="button">Angajați</button>
+        <button type="button">Contracte</button>
+        <button type="button">Documente</button>
+        <button type="button">Concedii</button>
+        <button type="button">Organigramă</button>
+        <button type="button">Rapoarte</button>
+        <button type="button">Configurare</button>
+      </nav>
+      <div class="side-footer">M.R.U. · v1.0 DEMO<br>Toate persoanele sunt fictive.</div>
+    </aside>
+    <main class="main">
+      <header class="topbar">
+        <div><p class="eyebrow">Management Resurse Umane</p><h1>Baza de date a angajaților</h1><p class="subtitle">Atelier Digital SRL · Actualizat la 28 august 2026</p></div>
+        <button class="btn btn-primary" id="addEmployee" type="button">+ Angajat nou</button>
+      </header>
+      <div class="demo-note"><span><strong>DEMO INTERACTIV</strong> — datele și acțiunile sunt strict demonstrative.</span><a href="index.html">← Înapoi la demo-uri</a></div>
+      <section class="stats" aria-label="Indicatori resurse umane">
+        <article class="card stat"><span>Angajați activi</span><strong>24</strong><small>+2 în ultimele 90 zile</small></article>
+        <article class="card stat"><span>Departamente</span><strong>5</strong><small>Operațional · Tehnic · Suport</small></article>
+        <article class="card stat"><span>În concediu azi</span><strong>3</strong><small>2 CO · 1 CM</small></article>
+        <article class="card stat"><span>Termene apropiate</span><strong class="warning-value">4</strong><small>În următoarele 30 zile</small></article>
+      </section>
+      <section class="toolbar" aria-label="Filtrare angajați">
+        <label class="search"><span class="sr-only">Caută angajat</span><input id="searchEmployee" type="search" placeholder="Caută după nume, funcție sau e-mail…"></label>
+        <label><span class="sr-only">Departament</span><select id="departmentFilter"><option value="all">Toate departamentele</option><option value="Tehnic">Tehnic</option><option value="Operațional">Operațional</option><option value="Administrativ">Administrativ</option><option value="Vânzări">Vânzări</option></select></label>
+        <label><span class="sr-only">Stare</span><select id="statusFilter"><option value="all">Toate stările</option><option value="Activ">Activ</option><option value="Concediu">În concediu</option></select></label>
+      </section>
+      <div class="content-grid">
+        <section class="card employees-card">
+          <div class="card-head"><div><h2>Angajați</h2><p id="resultCount">6 înregistrări afișate</p></div><button class="btn" id="exportEmployees" type="button">Exportă lista</button></div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>Angajat</th><th>Funcție</th><th>Departament</th><th>Contract</th><th>Stare</th><th></th></tr></thead>
+            <tbody id="employeeRows">
+              <tr data-name="Ana Marinescu" data-role="Manager operațional" data-department="Operațional" data-status="Activ"><td><div class="person"><span class="avatar purple">AM</span><div><strong>Ana Marinescu</strong><small>ana.marinescu@demo.ro</small></div></div></td><td>Manager operațional</td><td>Operațional</td><td>Nedeterminat</td><td><span class="badge active-badge">Activ</span></td><td><button class="view-profile" type="button" data-person="ana">Vezi dosarul</button></td></tr>
+              <tr data-name="Mihai Pop" data-role="Dezvoltator web" data-department="Tehnic" data-status="Activ"><td><div class="person"><span class="avatar blue">MP</span><div><strong>Mihai Pop</strong><small>mihai.pop@demo.ro</small></div></div></td><td>Dezvoltator web</td><td>Tehnic</td><td>Nedeterminat</td><td><span class="badge active-badge">Activ</span></td><td><button class="view-profile" type="button" data-person="mihai">Vezi dosarul</button></td></tr>
+              <tr data-name="Ioana Radu" data-role="Specialist HR" data-department="Administrativ" data-status="Activ"><td><div class="person"><span class="avatar rose">IR</span><div><strong>Ioana Radu</strong><small>ioana.radu@demo.ro</small></div></div></td><td>Specialist HR</td><td>Administrativ</td><td>Nedeterminat</td><td><span class="badge active-badge">Activ</span></td><td><button class="view-profile" type="button" data-person="ioana">Vezi dosarul</button></td></tr>
+              <tr data-name="Vlad Dumitru" data-role="Analist suport" data-department="Tehnic" data-status="Concediu"><td><div class="person"><span class="avatar green">VD</span><div><strong>Vlad Dumitru</strong><small>vlad.dumitru@demo.ro</small></div></div></td><td>Analist suport</td><td>Tehnic</td><td>Determinat</td><td><span class="badge leave-badge">Concediu</span></td><td><button class="view-profile" type="button" data-person="vlad">Vezi dosarul</button></td></tr>
+              <tr data-name="Elena Stoica" data-role="Account manager" data-department="Vânzări" data-status="Activ"><td><div class="person"><span class="avatar amber">ES</span><div><strong>Elena Stoica</strong><small>elena.stoica@demo.ro</small></div></div></td><td>Account manager</td><td>Vânzări</td><td>Nedeterminat</td><td><span class="badge active-badge">Activ</span></td><td><button class="view-profile" type="button" data-person="elena">Vezi dosarul</button></td></tr>
+              <tr data-name="Radu Neagu" data-role="Coordonator logistică" data-department="Operațional" data-status="Activ"><td><div class="person"><span class="avatar navy">RN</span><div><strong>Radu Neagu</strong><small>radu.neagu@demo.ro</small></div></div></td><td>Coordonator logistică</td><td>Operațional</td><td>Determinat</td><td><span class="badge active-badge">Activ</span></td><td><button class="view-profile" type="button" data-person="radu">Vezi dosarul</button></td></tr>
+            </tbody>
+          </table></div>
+          <p class="empty-state" id="emptyState" hidden>Nu există angajați care corespund filtrelor selectate.</p>
+        </section>
+        <aside class="card deadlines">
+          <div class="card-head"><div><h2>Termene și alerte</h2><p>Următoarele 30 zile</p></div><span class="badge warning-badge">4</span></div>
+          <ul>
+            <li><time datetime="2026-09-04">04 SEP</time><div><strong>Contract pe durată determinată</strong><small>Radu Neagu · verificare prelungire</small></div></li>
+            <li><time datetime="2026-09-10">10 SEP</time><div><strong>Control medical periodic</strong><small>3 angajați · documente necesare</small></div></li>
+            <li><time datetime="2026-09-18">18 SEP</time><div><strong>Evaluare anuală</strong><small>Departamentul Tehnic</small></div></li>
+            <li><time datetime="2026-09-25">25 SEP</time><div><strong>Actualizare document</strong><small>Vlad Dumitru · fișă de post</small></div></li>
+          </ul>
+        </aside>
+      </div>
+      <p class="privacy-note"><strong>Notă:</strong> versiunea reală poate include roluri de acces, jurnal de activitate, termene de păstrare și export controlat. Acestea se configurează în funcție de procedurile organizației și cerințele aplicabile privind datele personale.</p>
+    </main>
+  </div>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="profile-drawer" id="profileDrawer" aria-labelledby="profileName" aria-hidden="true">
+    <button class="drawer-close" id="closeDrawer" type="button" aria-label="Închide dosarul">×</button>
+    <div class="profile-header"><span class="avatar large" id="profileAvatar">AM</span><p>Dosar digital angajat</p><h2 id="profileName">Ana Marinescu</h2><span class="badge active-badge" id="profileStatus">Activ</span></div>
+    <dl class="profile-data"><div><dt>Funcție</dt><dd id="profileRole">Manager operațional</dd></div><div><dt>Departament</dt><dd id="profileDepartment">Operațional</dd></div><div><dt>Tip contract</dt><dd id="profileContract">Nedeterminat · normă întreagă</dd></div><div><dt>Data angajării</dt><dd id="profileHire">12 februarie 2022</dd></div><div><dt>Manager direct</dt><dd id="profileManager">Andrei Pavel</dd></div><div><dt>Documente</dt><dd><span class="complete">8 din 8 complete</span></dd></div></dl>
+    <button class="btn btn-primary full" id="openFullProfile" type="button">Deschide dosarul complet</button>
+  </aside>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="mru.js"></script>
+</body>
+</html>
