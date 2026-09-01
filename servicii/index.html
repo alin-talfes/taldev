@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Servicii TALDEV: site-uri profesionale, aplicații web, automatizări, magazine online custom, design, mentenanță și consultanță.">
+    <title>Servicii web și prețuri | TALDEV</title>
+    <meta name="description" content="Servicii TALDEV: site-uri profesionale de la 990 lei, aplicații web, automatizări, magazine online, design și mentenanță pentru afaceri din Hunedoara, Deva și România.">
     <meta name="author" content="TALFEȘ REMUS-ALIN P.F.A.">
-    <meta name="keywords" content="taldev, TALFES DEVELOPMENT, dezvoltare web, site prezentare, magazin online, aplicatii web, automatizari, PFA">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#071d3b">
+    <link rel="canonical" href="https://alin-talfes.github.io/taldev/servicii/">
+
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ro_RO">
-    <meta property="og:title" content="Servicii și pachete - TALDEV">
-    <meta property="og:description" content="Servicii TALDEV: site-uri profesionale, aplicații web, automatizări, magazine online custom, design, mentenanță și consultanță.">
-    <title>Servicii și pachete - TALDEV</title>
+    <meta property="og:site_name" content="TALDEV">
+    <meta property="og:title" content="Servicii web și prețuri | TALDEV">
+    <meta property="og:description" content="Site-uri profesionale, aplicații web, automatizări și magazine online, cu prețuri clare și soluții adaptate afacerii tale.">
+    <meta property="og:url" content="https://alin-talfes.github.io/taldev/servicii/">
+    <meta property="og:image" content="https://alin-talfes.github.io/taldev/files/header.png">
+    <meta property="og:image:alt" content="TALDEV - servicii de dezvoltare web">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Servicii web și prețuri | TALDEV">
+    <meta name="twitter:description" content="Site-uri, aplicații web, automatizări, magazine online și mentenanță pentru afaceri.">
+    <meta name="twitter:image" content="https://alin-talfes.github.io/taldev/files/header.png">
+    <meta name="twitter:image:alt" content="TALDEV - servicii de dezvoltare web">
+
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,53 +33,37 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "TALFEȘ REMUS-ALIN P.F.A.",
-      "alternateName": "TALDEV",
-      "description": "Dezvoltare web la comandă pentru afaceri: site-uri profesionale, aplicații web, automatizări, mentenanță și identitate vizuală.",
-      "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Next.js", "PHP", "Laravel", "Node.js", "SQL", "PostgreSQL", "Git", "GitHub", "Docker"],
-      "offers": [
+      "@graph": [
         {
-          "@type": "Offer",
-          "name": "Site Start",
-          "price": "990",
-          "priceCurrency": "RON"
+          "@type": "ProfessionalService",
+          "@id": "https://alin-talfes.github.io/taldev/#business",
+          "name": "TALDEV",
+          "alternateName": "Talfeș Development",
+          "legalName": "TALFEȘ REMUS-ALIN P.F.A.",
+          "url": "https://alin-talfes.github.io/taldev/",
+          "telephone": "+40770823386",
+          "email": "alin.talfes@outlook.com",
+          "areaServed": [
+            {"@type": "City", "name": "Hunedoara"},
+            {"@type": "City", "name": "Deva"},
+            {"@type": "Country", "name": "România"}
+          ],
+          "offers": [
+            {"@type": "Offer", "name": "Site Start", "price": "990", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#pachete"},
+            {"@type": "Offer", "name": "Site Business", "price": "1490", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#pachete"},
+            {"@type": "Offer", "name": "Business+ / aplicație web", "price": "2490", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#pachete"},
+            {"@type": "Offer", "name": "Magazin online custom", "price": "3490", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#servicii"},
+            {"@type": "Offer", "name": "Automatizări software", "price": "390", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#servicii-suplimentare"},
+            {"@type": "Offer", "name": "Design și branding", "price": "290", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#servicii-suplimentare"},
+            {"@type": "Offer", "name": "Mentenanță lunară", "price": "99", "priceCurrency": "RON", "url": "https://alin-talfes.github.io/taldev/servicii/#servicii-suplimentare"}
+          ]
         },
         {
-          "@type": "Offer",
-          "name": "Site Business",
-          "price": "1490",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Business+ / aplicație web",
-          "price": "2490",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Magazin online custom",
-          "price": "3490",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Automatizări software",
-          "price": "390",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Design și branding",
-          "price": "290",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Mentenanță lunară",
-          "price": "99",
-          "priceCurrency": "RON"
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://alin-talfes.github.io/taldev/"},
+            {"@type": "ListItem", "position": 2, "name": "Servicii", "item": "https://alin-talfes.github.io/taldev/servicii/"}
+          ]
         }
       ]
     }
@@ -106,7 +102,7 @@
             <div>
                 <p class="eyebrow reveal">Cu ce te pot ajuta</p>
                 <h1 class="page-title reveal">Construim ceea ce are nevoie afacerea ta, fără complicații de dragul tehnologiei.</h1>
-                <p class="page-lead reveal">Poate ai nevoie de un site care să te prezinte bine. Poate vrei o aplicație care să-ți simplifice munca. Începem cu problema pe care vrei s-o rezolvi, apoi alegem împreună varianta potrivită și un buget clar.</p>
+                <p class="page-lead reveal">Poate ai nevoie de un site care să te prezinte bine. Poate vrei o aplicație care să-ți simplifice munca. Începem cu problema pe care vrei s-o rezolvi, apoi alegem împreună varianta potrivită și un buget clar. Lucrez cu proiecte din Hunedoara, Deva și din restul țării.</p>
             </div>
             <div class="page-hero-actions reveal">
                 <a href="#pachete" class="btn btn-primary">Compară pachetele</a>
@@ -120,36 +116,12 @@
             <h2 class="section-title reveal">Servicii</h2>
             <p class="section-subtitle reveal">Spune-mi unde vrei să ajungi, iar eu mă ocup de partea tehnică.</p>
             <div class="services-grid">
-                <div class="service-card reveal">
-                    <span class="service-kicker">de la 990 lei</span>
-                    <h3>Site-uri profesionale</h3>
-                    <p>Un site care explică limpede cine ești, ce oferi și cum pot clienții să ajungă la tine.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-kicker">de la 2.490 lei</span>
-                    <h3>Aplicații web</h3>
-                    <p>Instrumente făcute pentru felul în care lucrezi: programări, administrare, documente sau rapoarte.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-kicker">de la 390 lei</span>
-                    <h3>Automatizări & integrări</h3>
-                    <p>Leg serviciile pe care le folosești și automatizez pașii care îți consumă timpul.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-kicker">de la 3.490 lei</span>
-                    <h3>Magazine online custom</h3>
-                    <p>Un magazin construit în jurul produselor și clienților tăi, nu în jurul limitelor unui șablon.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-kicker">de la 290 lei</span>
-                    <h3>Design & branding</h3>
-                    <p>O identitate vizuală care te reprezintă și păstrează aceeași voce peste tot.</p>
-                </div>
-                <div class="service-card reveal">
-                    <span class="service-kicker">de la 99 lei/lună</span>
-                    <h3>Mentenanță & suport</h3>
-                    <p>Rămân alături de tine și după lansare pentru actualizări, copii de siguranță și intervenții.</p>
-                </div>
+                <div class="service-card reveal"><span class="service-kicker">de la 990 lei</span><h3>Site-uri profesionale</h3><p>Un site care explică limpede cine ești, ce oferi și cum pot clienții să ajungă la tine.</p></div>
+                <div class="service-card reveal"><span class="service-kicker">de la 2.490 lei</span><h3>Aplicații web</h3><p>Instrumente făcute pentru felul în care lucrezi: programări, administrare, documente sau rapoarte.</p></div>
+                <div class="service-card reveal"><span class="service-kicker">de la 390 lei</span><h3>Automatizări & integrări</h3><p>Leg serviciile pe care le folosești și automatizez pașii care îți consumă timpul.</p></div>
+                <div class="service-card reveal"><span class="service-kicker">de la 3.490 lei</span><h3>Magazine online custom</h3><p>Un magazin construit în jurul produselor și clienților tăi, nu în jurul limitelor unui șablon.</p></div>
+                <div class="service-card reveal"><span class="service-kicker">de la 290 lei</span><h3>Design & branding</h3><p>O identitate vizuală care te reprezintă și păstrează aceeași voce peste tot.</p></div>
+                <div class="service-card reveal"><span class="service-kicker">de la 99 lei/lună</span><h3>Mentenanță & suport</h3><p>Rămân alături de tine și după lansare pentru actualizări, copii de siguranță și intervenții.</p></div>
             </div>
         </div>
     </section>
@@ -158,62 +130,23 @@
         <div class="container">
             <h2 class="section-title reveal">Pachete</h2>
             <p class="section-subtitle reveal">Prețuri de lansare TALDEV pentru primele 5 proiecte. După ce discutăm, primești o ofertă adaptată exact proiectului tău.</p>
-
             <div class="pricing-grid">
                 <article class="pricing-card reveal">
-                    <span class="package-label">START</span>
-                    <h3>Site de prezentare</h3>
-                    <div class="price">de la 990 lei</div>
-                    <ul class="pricing-features">
-                        <li>până la 3 pagini</li>
-                        <li>design responsive</li>
-                        <li>formular de contact</li>
-                        <li>buton WhatsApp</li>
-                        <li>SEO tehnic de bază</li>
-                        <li>Google Maps și social media</li>
-                        <li>configurare domeniu și hosting</li>
-                        <li>1 rundă de modificări</li>
-                        <li>14 zile suport pentru bug-uri</li>
-                    </ul>
+                    <span class="package-label">START</span><h3>Site de prezentare</h3><div class="price">de la 990 lei</div>
+                    <ul class="pricing-features"><li>până la 3 pagini</li><li>design responsive</li><li>formular de contact</li><li>buton WhatsApp</li><li>SEO tehnic de bază</li><li>Google Maps și social media</li><li>configurare domeniu și hosting</li><li>1 rundă de modificări</li><li>14 zile suport pentru bug-uri</li></ul>
                     <a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="btn btn-primary">Solicită ofertă</a>
                 </article>
-
                 <article class="pricing-card reveal">
-                    <span class="package-label">BUSINESS</span>
-                    <h3>Site business</h3>
-                    <div class="price">de la 1.490 lei</div>
-                    <ul class="pricing-features">
-                        <li>până la 5 pagini</li>
-                        <li>design personalizat</li>
-                        <li>animații și interacțiuni</li>
-                        <li>formular avansat</li>
-                        <li>galerie sau portofoliu</li>
-                        <li>SEO tehnic de bază</li>
-                        <li>Analytics și configurare hosting</li>
-                        <li>2 runde de modificări</li>
-                        <li>30 zile suport pentru bug-uri</li>
-                    </ul>
+                    <span class="package-label">BUSINESS</span><h3>Site business</h3><div class="price">de la 1.490 lei</div>
+                    <ul class="pricing-features"><li>până la 5 pagini</li><li>design personalizat</li><li>animații și interacțiuni</li><li>formular avansat</li><li>galerie sau portofoliu</li><li>SEO tehnic de bază</li><li>Analytics și configurare hosting</li><li>2 runde de modificări</li><li>30 zile suport pentru bug-uri</li></ul>
                     <a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="btn btn-primary">Solicită ofertă</a>
                 </article>
-
                 <article class="pricing-card reveal">
-                    <span class="package-label">BUSINESS+</span>
-                    <h3>Site avansat / aplicație web</h3>
-                    <div class="price">de la 2.490 lei</div>
-                    <ul class="pricing-features">
-                        <li>funcționalități personalizate</li>
-                        <li>programări, formulare sau fluxuri custom</li>
-                        <li>bază de date, dacă este necesară</li>
-                        <li>autentificare și roluri, dacă proiectul le cere</li>
-                        <li>panou de administrare</li>
-                        <li>rapoarte și exporturi</li>
-                        <li>API-uri și automatizări</li>
-                        <li>Supabase / PostgreSQL, după caz</li>
-                    </ul>
+                    <span class="package-label">BUSINESS+</span><h3>Site avansat / aplicație web</h3><div class="price">de la 2.490 lei</div>
+                    <ul class="pricing-features"><li>funcționalități personalizate</li><li>programări, formulare sau fluxuri custom</li><li>bază de date, dacă este necesară</li><li>autentificare și roluri, dacă proiectul le cere</li><li>panou de administrare</li><li>rapoarte și exporturi</li><li>API-uri și automatizări</li><li>Supabase / PostgreSQL, după caz</li></ul>
                     <a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="btn btn-primary">Solicită ofertă</a>
                 </article>
             </div>
-
             <p class="pricing-note reveal">Prețurile de mai sus sunt tarife de lansare pentru primele 5 proiecte TALDEV și reprezintă puncte de pornire. Pentru pachetele Start și Business, tu îmi trimiți textele, fotografiile și logo-ul, iar eu le așez într-o prezentare coerentă. Pentru proiectele Business+ și aplicațiile personalizate, prețul final depinde de funcționalitățile necesare. Emit factură fiscală prin TALFEȘ REMUS-ALIN P.F.A., neplătitor de TVA; peste prețurile afișate nu se adaugă TVA.</p>
         </div>
     </section>
@@ -222,43 +155,11 @@
         <div class="container">
             <h2 class="section-title reveal">Servicii suplimentare</h2>
             <p class="section-subtitle reveal">Putem completa proiectul acum sau putem continua colaborarea după lansare.</p>
-
             <div class="extras-grid">
-                <article class="extra-card reveal">
-                    <div>
-                        <span class="package-label">AUTOMATIZĂRI</span>
-                        <h3>Fluxuri și integrări</h3>
-                    </div>
-                    <strong>de la 390 lei</strong>
-                    <p>Automatizări software și integrări API, evaluate în funcție de complexitate.</p>
-                </article>
-
-                <article class="extra-card reveal">
-                    <div>
-                        <span class="package-label">DESIGN</span>
-                        <h3>Logo și identitate vizuală</h3>
-                    </div>
-                    <strong>de la 290 lei</strong>
-                    <p>Logo simplu sau sistem vizual coerent pentru prezența digitală.</p>
-                </article>
-
-                <article class="extra-card reveal">
-                    <div>
-                        <span class="package-label">MENTENANȚĂ</span>
-                        <h3>Suport după lansare</h3>
-                    </div>
-                    <strong>de la 99 lei/lună</strong>
-                    <p>Planuri de mentenanță adaptate volumului de intervenții necesare. Orele incluse în abonament nu se reportează.</p>
-                </article>
-
-                <article class="extra-card reveal">
-                    <div>
-                        <span class="package-label">LA CERERE</span>
-                        <h3>Dezvoltare și consultanță</h3>
-                    </div>
-                    <strong>90 lei/oră</strong>
-                    <p>Pentru modificări suplimentare, analiză tehnică și intervenții în afara pachetului.</p>
-                </article>
+                <article class="extra-card reveal"><div><span class="package-label">AUTOMATIZĂRI</span><h3>Fluxuri și integrări</h3></div><strong>de la 390 lei</strong><p>Automatizări software și integrări API, evaluate în funcție de complexitate.</p></article>
+                <article class="extra-card reveal"><div><span class="package-label">DESIGN</span><h3>Logo și identitate vizuală</h3></div><strong>de la 290 lei</strong><p>Logo simplu sau sistem vizual coerent pentru prezența digitală.</p></article>
+                <article class="extra-card reveal"><div><span class="package-label">MENTENANȚĂ</span><h3>Suport după lansare</h3></div><strong>de la 99 lei/lună</strong><p>Planuri de mentenanță adaptate volumului de intervenții necesare. Orele incluse în abonament nu se reportează.</p></article>
+                <article class="extra-card reveal"><div><span class="package-label">LA CERERE</span><h3>Dezvoltare și consultanță</h3></div><strong>90 lei/oră</strong><p>Pentru modificări suplimentare, analiză tehnică și intervenții în afara pachetului.</p></article>
             </div>
         </div>
     </section>
@@ -267,72 +168,23 @@
         <div class="container">
             <h2 class="section-title reveal">Ce este inclus</h2>
             <p class="section-subtitle reveal">Lucrurile de bază pe care te poți baza, indiferent de pachet.</p>
-
             <div class="included-grid">
-                <div class="included-item reveal">
-                    <h3>Design responsive</h3>
-                    <p>Site-ul se adaptează pe orice dispozitiv.</p>
-                </div>
-                <div class="included-item reveal">
-                    <h3>Performanță și accesibilitate</h3>
-                    <p>Experiență rapidă, lizibilă și ușor de folosit.</p>
-                </div>
-                <div class="included-item reveal">
-                    <h3>Testare înainte de lansare</h3>
-                    <p>Verific funcționalitatea înainte de publicare.</p>
-                </div>
-                <div class="included-item reveal">
-                    <h3>SEO tehnic de bază</h3>
-                    <p>Structură corectă pentru motoarele de căutare.</p>
-                </div>
-                <div class="included-item reveal">
-                    <h3>Configurare funcționalități</h3>
-                    <p>Tot ce este convenit în ofertă.</p>
-                </div>
-                <div class="included-item reveal">
-                    <h3>Predarea accesurilor</h3>
-                    <p>Primești toate datele de acces necesare.</p>
-                </div>
+                <div class="included-item reveal"><h3>Design responsive</h3><p>Site-ul se adaptează pe orice dispozitiv.</p></div>
+                <div class="included-item reveal"><h3>Performanță și accesibilitate</h3><p>Experiență rapidă, lizibilă și ușor de folosit.</p></div>
+                <div class="included-item reveal"><h3>Testare înainte de lansare</h3><p>Verific funcționalitatea înainte de publicare.</p></div>
+                <div class="included-item reveal"><h3>SEO tehnic de bază</h3><p>Structură corectă pentru motoarele de căutare.</p></div>
+                <div class="included-item reveal"><h3>Configurare funcționalități</h3><p>Tot ce este convenit în ofertă.</p></div>
+                <div class="included-item reveal"><h3>Predarea accesurilor</h3><p>Primești toate datele de acces necesare.</p></div>
             </div>
-
             <p class="additional-costs reveal">Ca să nu existe surprize: domeniul, găzduirea, licențele, emailul sau serviciile externe plătite nu sunt incluse automat. Dacă proiectul are nevoie de ele, îți spun înainte cât costă și de ce sunt necesare. Emit factură fiscală, iar PFA-ul este neplătitor de TVA.</p>
         </div>
     </section>
 
-    <section class="section contact-section">
-        <div class="container contact-container">
-            <h2 class="section-title reveal">Nu știi ce variantă ți se potrivește?</h2>
-            <p class="section-subtitle reveal">E în regulă. Spune-mi ce vrei să rezolvi, iar eu îți recomand un punct de pornire și îți explic de ce.</p>
-            <div class="contact-buttons reveal">
-                <a href="../#contact" class="btn btn-call">Hai să discutăm</a>
-                <a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="btn btn-whatsapp">Scrie-mi pe WhatsApp</a>
-            </div>
-        </div>
-    </section>
+    <section class="section contact-section"><div class="container contact-container"><h2 class="section-title reveal">Nu știi ce variantă ți se potrivește?</h2><p class="section-subtitle reveal">E în regulă. Spune-mi ce vrei să rezolvi, iar eu îți recomand un punct de pornire și îți explic de ce.</p><div class="contact-buttons reveal"><a href="../#contact" class="btn btn-call">Hai să discutăm</a><a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="btn btn-whatsapp">Scrie-mi pe WhatsApp</a></div></div></section>
 </main>
 
-<footer class="footer">
-    <div class="container footer-content">
-        <div class="footer-brand">
-            <p class="footer-logo">TALDEV</p>
-            <p>Web development · Web applications · Automation</p>
-        </div>
-        <div class="footer-info">
-            <p>TALFEȘ REMUS-ALIN P.F.A.</p>
-            <p><a href="tel:+40770823386">+40 770 823 386</a></p>
-            <p>
-                <a href="https://wa.me/40770823386" target="_blank" rel="noopener">WhatsApp</a> ·
-                <a href="mailto:alin.talfes@outlook.com">alin.talfes@outlook.com</a> ·
-                <a href="https://github.com/alin-talfes" target="_blank" rel="noopener">GitHub</a>
-            </p>
-        </div>
-    </div>
-</footer>
-
-<a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contact pe WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
-
+<footer class="footer"><div class="container footer-content"><div class="footer-brand"><p class="footer-logo">TALDEV</p><p>Web development · Web applications · Automation</p></div><div class="footer-info"><p>TALFEȘ REMUS-ALIN P.F.A.</p><p><a href="tel:+40770823386">+40 770 823 386</a></p><p><a href="https://wa.me/40770823386" target="_blank" rel="noopener">WhatsApp</a> · <a href="mailto:alin.talfes@outlook.com">alin.talfes@outlook.com</a> · <a href="https://github.com/alin-talfes" target="_blank" rel="noopener">GitHub</a></p></div></div></footer>
+<a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contact pe WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <button class="back-to-top" id="backToTop" aria-label="Înapoi sus">↑</button>
 <script src="../js/script.js"></script>
 </body>
