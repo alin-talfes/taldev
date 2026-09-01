@@ -1,6 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const root = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
+
+    const whatsappUrl = 'https://wa.me/alin.talfes';
+    document.querySelectorAll('a[href^="https://wa.me/"]').forEach(link => {
+        link.href = whatsappUrl;
+    });
     
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const savedTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
