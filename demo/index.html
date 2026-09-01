@@ -3,16 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explorează demonstrațiile de aplicații web TALDEV, construite cu date fictive pentru a prezenta interfețe și fluxuri business.">
+    <title>Demo aplicații web | TALDEV</title>
+    <meta name="description" content="Explorează demo-urile TALDEV pentru administrare PFA, pontaj și resurse umane. Exemple de aplicații web construite cu date fictive pentru a prezenta interfețe și fluxuri business.">
     <meta name="author" content="TALFEȘ REMUS-ALIN P.F.A.">
-    <meta name="keywords" content="taldev, TALFES DEVELOPMENT, dezvoltare web, site prezentare, magazin online, aplicatii web, automatizari, PFA">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="theme-color" content="#071d3b">
+    <link rel="canonical" href="https://alin-talfes.github.io/taldev/demo/">
+
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ro_RO">
-    <meta property="og:title" content="Demo-uri - TALDEV">
-    <meta property="og:description" content="Explorează demonstrațiile de aplicații web TALDEV, construite cu date fictive pentru a prezenta interfețe și fluxuri business.">
-    <title>Demo-uri - TALDEV</title>
+    <meta property="og:site_name" content="TALDEV">
+    <meta property="og:title" content="Demo aplicații web | TALDEV">
+    <meta property="og:description" content="Testează exemple TALDEV pentru administrare PFA, pontaj și managementul resurselor umane.">
+    <meta property="og:url" content="https://alin-talfes.github.io/taldev/demo/">
+    <meta property="og:image" content="https://alin-talfes.github.io/taldev/files/header.png">
+    <meta property="og:image:alt" content="TALDEV - demo aplicații web">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Demo aplicații web | TALDEV">
+    <meta name="twitter:description" content="Exemple de aplicații web TALDEV pentru PFA, pontaj și resurse umane.">
+    <meta name="twitter:image" content="https://alin-talfes.github.io/taldev/files/header.png">
+    <meta name="twitter:image:alt" content="TALDEV - demo aplicații web">
+
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,47 +33,29 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "TALFEȘ REMUS-ALIN P.F.A.",
-      "alternateName": "TALDEV",
-      "description": "Dezvoltare web la comandă pentru afaceri: site-uri profesionale, aplicații web, automatizări, mentenanță și identitate vizuală.",
-      "knowsAbout": ["HTML", "CSS", "JavaScript", "React", "Next.js", "PHP", "Laravel", "Node.js", "SQL", "PostgreSQL", "Git", "GitHub", "Docker"],
-      "offers": [
+      "@graph": [
         {
-          "@type": "Offer",
-          "name": "Site Start",
-          "price": "1490",
-          "priceCurrency": "RON"
+          "@type": "CollectionPage",
+          "@id": "https://alin-talfes.github.io/taldev/demo/#page",
+          "url": "https://alin-talfes.github.io/taldev/demo/",
+          "name": "Demo aplicații web TALDEV",
+          "description": "Exemple demonstrative de aplicații web TALDEV cu date fictive.",
+          "inLanguage": "ro-RO",
+          "mainEntity": {
+            "@type": "ItemList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "S.A.C. - P.F.A.", "url": "https://alin-talfes.github.io/taldev/demo/sacpfa/"},
+              {"@type": "ListItem", "position": 2, "name": "E.P.A. - Evidență Pontaje Angajați", "url": "https://alin-talfes.github.io/taldev/demo/pontaj/"},
+              {"@type": "ListItem", "position": 3, "name": "M.R.U. - Management Resurse Umane", "url": "https://alin-talfes.github.io/taldev/demo/mru/"}
+            ]
+          }
         },
         {
-          "@type": "Offer",
-          "name": "Site business",
-          "price": "2990",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Aplicație web personalizată",
-          "price": "4990",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Automatizări software",
-          "price": "590",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Design și branding",
-          "price": "390",
-          "priceCurrency": "RON"
-        },
-        {
-          "@type": "Offer",
-          "name": "Mentenanță lunară",
-          "price": "149",
-          "priceCurrency": "RON"
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://alin-talfes.github.io/taldev/"},
+            {"@type": "ListItem", "position": 2, "name": "Demo-uri", "item": "https://alin-talfes.github.io/taldev/demo/"}
+          ]
         }
       ]
     }
@@ -70,144 +64,23 @@
 <body>
 <header id="navbar">
     <div class="container nav-container">
-        <a class="logo" href="../" aria-label="TALDEV — pagina principală">
-            <img class="logo-image" src="../files/header.png?v=20260827" width="600" height="125" alt="TALDEV">
-        </a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Activează tema întunecată" aria-pressed="false">
-            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-        <button class="nav-toggle" id="navToggle" aria-label="Deschide meniul" aria-expanded="false" aria-controls="navMenu">
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-        </button>
-        <nav class="nav" id="navMenu">
-            <ul class="nav-list">
-                <li><a href="../" class="nav-link">Acasă</a></li>
-                <li><a href="../servicii/" class="nav-link">Servicii</a></li>
-                <li><a href="../despre/" class="nav-link">Despre</a></li>
-                <li><a href="./" class="nav-link" aria-current="page">Demo-uri</a></li>
-                <li><a href="../#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
+        <a class="logo" href="../" aria-label="TALDEV — pagina principală"><img class="logo-image" src="../files/header.png?v=20260827" width="600" height="125" alt="TALDEV"></a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Activează tema întunecată" aria-pressed="false"><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="nav-toggle" id="navToggle" aria-label="Deschide meniul" aria-expanded="false" aria-controls="navMenu"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+        <nav class="nav" id="navMenu"><ul class="nav-list"><li><a href="../" class="nav-link">Acasă</a></li><li><a href="../servicii/" class="nav-link">Servicii</a></li><li><a href="../despre/" class="nav-link">Despre</a></li><li><a href="./" class="nav-link" aria-current="page">Demo-uri</a></li><li><a href="../#contact" class="nav-link">Contact</a></li></ul></nav>
     </div>
 </header>
 <main>
-    <section class="page-hero" id="top">
-        <div class="container page-hero-layout">
-<div><p class="eyebrow reveal">Încearcă înainte să-ți imaginezi</p><h1 class="page-title reveal">Câteva exemple concrete, nu doar promisiuni.</h1><p class="page-lead reveal">Am construit aceste demo-uri ca să poți vedea și testa felul în care aș organiza o aplicație de business. Toate datele sunt fictive, dar experiența și fluxurile sunt cât se poate de reale.</p></div>
-<div class="page-hero-actions reveal"><a href="#catalog-demo" class="btn btn-primary">Explorează demo-urile</a><a href="../#contact" class="btn btn-secondary">Solicită un proiect similar</a></div>
-        </div>
-    </section>
-<section id="catalog-demo" class="section demo-section">
-        <div class="container demo-catalog">
-          <article class="demo-showcase">
-            <div class="demo-copy reveal">
-                <span class="package-label">DEMO DISPONIBIL</span>
-                <h2>S.A.C. - P.F.A.</h2>
-                <p class="demo-lead">Sistemul de Administrare și Contabilitate al Persoanei Fizice Autorizate.</p>
-                <p>În loc să cauți informațiile prin fișiere și tabele separate, le ai într-un singur loc: facturi, încasări, cheltuieli, registre, documente și situația fiscală.</p>
-                <ul class="demo-features" aria-label="Funcționalități prezentate în demo">
-                    <li>Dashboard financiar</li>
-                    <li>Facturi și parteneri</li>
-                    <li>Registre și inventar</li>
-                    <li>Rapoarte și documente</li>
-                </ul>
-                <a href="sacpfa/" class="btn btn-primary">Deschide demonstrația</a>
-                <small>Demonstrație strict vizuală, cu date fictive.</small>
-            </div>
-            <div class="demo-preview reveal" aria-hidden="true">
-                <div class="demo-preview-top"><span></span><span></span><span></span><strong>S.A.C. - P.F.A.</strong></div>
-                <div class="demo-preview-body">
-                    <div class="demo-preview-sidebar"><i></i><i></i><i></i><i></i><i></i></div>
-                    <div class="demo-preview-main">
-                        <div class="demo-preview-heading"></div>
-                        <div class="demo-preview-stats"><b></b><b></b><b></b></div>
-                        <div class="demo-preview-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-                    </div>
-                </div>
-            </div>
-          </article>
-          <article class="demo-showcase demo-showcase-alt">
-            <div class="demo-copy reveal">
-                <span class="package-label">DEMO NOU</span>
-                <h2>E.P.A.</h2>
-                <p class="demo-lead">Evidență Pontaje Angajați, cu verificări inspirate din Codul muncii.</p>
-                <p>Vezi dintr-o privire cine a lucrat, ce program era planificat și unde trebuie să fii atent la ore suplimentare, muncă de noapte sau absențe.</p>
-                <ul class="demo-features" aria-label="Funcționalități prezentate în demo">
-                    <li>Intrări și ieșiri zilnice</li>
-                    <li>Centralizator lunar</li>
-                    <li>Alerte pentru limite legale</li>
-                    <li>Concedii și absențe</li>
-                </ul>
-                <a href="pontaj/" class="btn btn-primary">Deschide demonstrația</a>
-                <small>Demonstrație funcțională local, cu date fictive. Nu constituie consultanță juridică.</small>
-            </div>
-            <div class="demo-preview time-preview reveal" aria-hidden="true">
-                <div class="demo-preview-top"><span></span><span></span><span></span><strong>E.P.A.</strong></div>
-                <div class="time-preview-body">
-                    <div class="time-preview-nav"><i></i><i></i><i></i><i></i></div>
-                    <div class="time-preview-main">
-                        <div class="time-preview-toolbar"><b></b><em></em></div>
-                        <div class="time-preview-kpis"><span></span><span></span><span></span><span></span></div>
-                        <div class="time-preview-week"><i></i><i></i><i></i><i></i><i></i></div>
-                        <div class="time-preview-alert"></div>
-                    </div>
-                </div>
-            </div>
-          </article>
-          <article class="demo-showcase demo-showcase-alt mru-showcase">
-            <div class="demo-copy reveal">
-                <span class="package-label">DEMO NOU</span>
-                <h2>M.R.U.</h2>
-                <p class="demo-lead">Management Resurse Umane — baza de date a angajaților.</p>
-                <p>Dosarele angajaților, contractele, documentele, concediile și termenele importante stau împreună, într-o interfață ușor de urmărit.</p>
-                <ul class="demo-features" aria-label="Funcționalități prezentate în demo">
-                    <li>Dosare digitale de personal</li>
-                    <li>Contracte și funcții</li>
-                    <li>Documente și termene</li>
-                    <li>Concedii și rapoarte</li>
-                </ul>
-                <a href="mru/" class="btn btn-primary">Deschide demonstrația</a>
-                <small>Demonstrație interactivă, cu persoane și date complet fictive.</small>
-            </div>
-            <div class="demo-preview mru-preview reveal" aria-hidden="true">
-                <div class="demo-preview-top"><span></span><span></span><span></span><strong>M.R.U.</strong></div>
-                <div class="mru-preview-body">
-                    <div class="mru-preview-sidebar"><i></i><i></i><i></i><i></i><i></i></div>
-                    <div class="mru-preview-main">
-                        <div class="mru-preview-head"><b></b><em></em></div>
-                        <div class="mru-preview-summary"><span></span><span></span><span></span></div>
-                        <div class="mru-preview-people"><i></i><i></i><i></i><i></i></div>
-                    </div>
-                </div>
-            </div>
-          </article>
-        </div>
-    </section>
+    <section class="page-hero" id="top"><div class="container page-hero-layout"><div><p class="eyebrow reveal">Încearcă înainte să-ți imaginezi</p><h1 class="page-title reveal">Câteva exemple concrete, nu doar promisiuni.</h1><p class="page-lead reveal">Am construit aceste demo-uri ca să poți vedea și testa felul în care aș organiza o aplicație de business. Toate datele sunt fictive, dar experiența și fluxurile sunt cât se poate de reale.</p></div><div class="page-hero-actions reveal"><a href="#catalog-demo" class="btn btn-primary">Explorează demo-urile</a><a href="../#contact" class="btn btn-secondary">Solicită un proiect similar</a></div></div></section>
+    <section id="catalog-demo" class="section demo-section"><div class="container demo-catalog">
+        <article class="demo-showcase"><div class="demo-copy reveal"><span class="package-label">DEMO DISPONIBIL</span><h2>S.A.C. - P.F.A.</h2><p class="demo-lead">Sistemul de Administrare și Contabilitate al Persoanei Fizice Autorizate.</p><p>În loc să cauți informațiile prin fișiere și tabele separate, le ai într-un singur loc: facturi, încasări, cheltuieli, registre, documente și situația fiscală.</p><ul class="demo-features" aria-label="Funcționalități prezentate în demo"><li>Dashboard financiar</li><li>Facturi și parteneri</li><li>Registre și inventar</li><li>Rapoarte și documente</li></ul><a href="sacpfa/" class="btn btn-primary">Deschide demonstrația</a><small>Demonstrație strict vizuală, cu date fictive.</small></div><div class="demo-preview reveal" aria-hidden="true"><div class="demo-preview-top"><span></span><span></span><span></span><strong>S.A.C. - P.F.A.</strong></div><div class="demo-preview-body"><div class="demo-preview-sidebar"><i></i><i></i><i></i><i></i><i></i></div><div class="demo-preview-main"><div class="demo-preview-heading"></div><div class="demo-preview-stats"><b></b><b></b><b></b></div><div class="demo-preview-chart"><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div></div></article>
+        <article class="demo-showcase demo-showcase-alt"><div class="demo-copy reveal"><span class="package-label">DEMO NOU</span><h2>E.P.A.</h2><p class="demo-lead">Evidență Pontaje Angajați, cu verificări inspirate din Codul muncii.</p><p>Vezi dintr-o privire cine a lucrat, ce program era planificat și unde trebuie să fii atent la ore suplimentare, muncă de noapte sau absențe.</p><ul class="demo-features" aria-label="Funcționalități prezentate în demo"><li>Intrări și ieșiri zilnice</li><li>Centralizator lunar</li><li>Alerte pentru limite legale</li><li>Concedii și absențe</li></ul><a href="pontaj/" class="btn btn-primary">Deschide demonstrația</a><small>Demonstrație funcțională local, cu date fictive. Nu constituie consultanță juridică.</small></div><div class="demo-preview time-preview reveal" aria-hidden="true"><div class="demo-preview-top"><span></span><span></span><span></span><strong>E.P.A.</strong></div><div class="time-preview-body"><div class="time-preview-nav"><i></i><i></i><i></i><i></i></div><div class="time-preview-main"><div class="time-preview-toolbar"><b></b><em></em></div><div class="time-preview-kpis"><span></span><span></span><span></span><span></span></div><div class="time-preview-week"><i></i><i></i><i></i><i></i><i></i></div><div class="time-preview-alert"></div></div></div></div></article>
+        <article class="demo-showcase demo-showcase-alt mru-showcase"><div class="demo-copy reveal"><span class="package-label">DEMO NOU</span><h2>M.R.U.</h2><p class="demo-lead">Management Resurse Umane — baza de date a angajaților.</p><p>Dosarele angajaților, contractele, documentele, concediile și termenele importante stau împreună, într-o interfață ușor de urmărit.</p><ul class="demo-features" aria-label="Funcționalități prezentate în demo"><li>Dosare digitale de personal</li><li>Contracte și funcții</li><li>Documente și termene</li><li>Concedii și rapoarte</li></ul><a href="mru/" class="btn btn-primary">Deschide demonstrația</a><small>Demonstrație interactivă, cu persoane și date complet fictive.</small></div><div class="demo-preview mru-preview reveal" aria-hidden="true"><div class="demo-preview-top"><span></span><span></span><span></span><strong>M.R.U.</strong></div><div class="mru-preview-body"><div class="mru-preview-sidebar"><i></i><i></i><i></i><i></i><i></i></div><div class="mru-preview-main"><div class="mru-preview-head"><b></b><em></em></div><div class="mru-preview-summary"><span></span><span></span><span></span></div><div class="mru-preview-people"><i></i><i></i><i></i><i></i></div></div></div></div></article>
+    </div></section>
     <section class="section contact-section"><div class="container contact-container"><h2 class="section-title reveal">Ți-ar fi utilă o aplicație asemănătoare?</h2><p class="section-subtitle reveal">Nu trebuie să arate sau să funcționeze exact ca demo-ul. O construim în jurul echipei și proceselor tale.</p><div class="contact-buttons reveal"><a href="../#contact" class="btn btn-call">Povestește-mi ce ai nevoie</a></div></div></section>
 </main>
-<footer class="footer">
-    <div class="container footer-content">
-        <div class="footer-brand">
-            <p class="footer-logo">TALDEV</p>
-            <p>Web development · Web applications · Automation</p>
-        </div>
-        <div class="footer-info">
-            <p>TALFEȘ REMUS-ALIN P.F.A.</p>
-            <p><a href="tel:+40770823386">+40 770 823 386</a></p>
-            <p>
-                <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener">WhatsApp</a> ·
-                <a href="mailto:alin.talfes@outlook.com">alin.talfes@outlook.com</a> ·
-                <a href="https://github.com/alin-talfes" target="_blank" rel="noopener">GitHub</a>
-            </p>
-        </div>
-    </div>
-</footer>
-<a href="https://wa.me/alin.talfes" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contact pe WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<footer class="footer"><div class="container footer-content"><div class="footer-brand"><p class="footer-logo">TALDEV</p><p>Web development · Web applications · Automation</p></div><div class="footer-info"><p>TALFEȘ REMUS-ALIN P.F.A.</p><p><a href="tel:+40770823386">+40 770 823 386</a></p><p><a href="https://wa.me/40770823386" target="_blank" rel="noopener">WhatsApp</a> · <a href="mailto:alin.talfes@outlook.com">alin.talfes@outlook.com</a> · <a href="https://github.com/alin-talfes" target="_blank" rel="noopener">GitHub</a></p></div></div></footer>
+<a href="https://wa.me/40770823386" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Contact pe WhatsApp"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.064 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
 <button class="back-to-top" id="backToTop" aria-label="Înapoi sus">↑</button>
 <script src="../js/script.js"></script>
 </body>
