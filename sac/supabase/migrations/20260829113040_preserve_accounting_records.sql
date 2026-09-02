@@ -106,3 +106,4 @@ drop policy if exists storage_update_own_documents on storage.objects;
 drop policy if exists storage_delete_own_documents on storage.objects;
 
 commit;
+

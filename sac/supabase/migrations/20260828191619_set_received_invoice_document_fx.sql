@@ -13,3 +13,4 @@ begin
 end $$;
 revoke all on function public.set_received_invoice_document_fx(uuid,numeric,date,text) from public,anon;
 grant execute on function public.set_received_invoice_document_fx(uuid,numeric,date,text) to authenticated;
+

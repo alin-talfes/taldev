@@ -169,3 +169,4 @@ grant select on public.rjip_view to authenticated;
 comment on column public.financial_transactions.fiscal_amount_ron is 'Canonical fiscal/accounting value in RON, derived by trigger.';
 comment on column public.financial_transactions.fx_difference_ron is 'Raw bank_amount_ron minus fiscal_amount_ron; not automatically fiscal.';
 comment on column public.transaction_allocations.allocated_amount is 'Amount in the document currency; controls document balance.';
+
