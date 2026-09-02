@@ -1,0 +1,5 @@
+# Database dumps may contain production data, authentication records, and tokens.
+files/database-backup*.sql
+*.dump
+*.backup
+
