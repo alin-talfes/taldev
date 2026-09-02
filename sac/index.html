@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.A.C. - P.F.A.</title>
+    <link rel="icon" type="image/svg+xml" href="files/favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Ecran de autentificare -->
+        <div id="auth-container" class="auth-container">
+            <div class="auth-card">
+                <img class="auth-logo" src="files/header.png" alt="TALDEV">
+                <h1>Bine ai revenit!</h1>
+                <p class="auth-subtitle">Sistemul de Administrare și Contabilitate al Persoanei Fizice Autorizate</p>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Adresă de e-mail:</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Parolă:</label>
+                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Autentificare</button>
+                </form>
+                <button id="reset-password-link" class="btn-link">Am uitat parola</button>
+                <div id="auth-error" class="error-message" role="alert" aria-live="polite" style="display:none;"></div>
+            </div>
+        </div>
+
+        <!-- Layout principal -->
+        <div id="main-container" style="display:none;">
+            <!-- Buton hamburger pentru mobil -->
+            <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Deschide meniul">☰</button>
+
+            <!-- Sidebar -->
+            <nav class="sidebar" id="sidebar">
+                <div class="sidebar-header" id="sidebar-header">
+                    <img id="sidebar-logo" src="files/header.png" alt="Logo firmă" style="display: none; max-width: 180px; max-height: 50px; width: auto; height: auto; margin: 0 auto;">
+                    <h2 id="sidebar-title">S.A.C. - P.F.A.</h2>
+                    <p class="sidebar-subtitle">Sistemul de Administrare și Contabilitate al Persoanei Fizice Autorizate</p>
+                </div>
+                <ul class="nav-list">
+                    <li><a href="#/dashboard" data-route="dashboard"><span class="nav-icon" aria-hidden="true">⌂</span><span>Meniu principal</span></a></li>
+                    <li class="nav-group-title">Facturare</li>
+                    <li><a href="#/invoices" data-route="invoices"><span class="nav-icon" aria-hidden="true">↗</span><span>Facturi emise</span></a></li>
+                    <li><a href="#/received-invoices" data-route="received-invoices"><span class="nav-icon" aria-hidden="true">↙</span><span>Facturi primite</span></a></li>
+                    <li><a href="#/proformas" data-route="proformas"><span class="nav-icon" aria-hidden="true">◇</span><span>Proforme</span></a></li>
+                    <li><a href="#/other-operations" data-route="other-operations"><span class="nav-icon" aria-hidden="true">±</span><span>Alte încasări / cheltuieli</span></a></li>
+                    <li class="nav-group-title">Parteneri</li>
+                    <li><a href="#/clients" data-route="clients"><span class="nav-icon" aria-hidden="true">◎</span><span>Clienți</span></a></li>
+                    <li><a href="#/suppliers" data-route="suppliers"><span class="nav-icon" aria-hidden="true">◉</span><span>Furnizori</span></a></li>
+                    <li class="nav-group-title">Registre</li>
+                    <li><a href="#/rjip" data-route="rjip"><span class="nav-icon" aria-hidden="true">▤</span><span>RJIP</span></a></li>
+                    <li><a href="#/inventory" data-route="inventory"><span class="nav-icon" aria-hidden="true">□</span><span>Inventar</span></a></li>
+                    <li><a href="#/fixed-assets" data-route="fixed-assets"><span class="nav-icon" aria-hidden="true">▦</span><span>Mijloace fixe</span></a></li>
+                    <li class="nav-group-title">Fiscal</li>
+                    <li><a href="#/fiscal" data-route="fiscal"><span class="nav-icon" aria-hidden="true">%</span><span>Situație fiscală</span></a></li>
+                    <li class="nav-group-title">Altele</li>
+                    <li><a href="#/aporturi" data-route="aporturi"><span class="nav-icon" aria-hidden="true">＋</span><span>Aport propriu</span></a></li>
+                    <li><a href="#/documents" data-route="documents"><span class="nav-icon" aria-hidden="true">≡</span><span>Documente</span></a></li>
+                    <li><a href="#/reports" data-route="reports"><span class="nav-icon" aria-hidden="true">▥</span><span>Rapoarte</span></a></li>
+                    <li><a href="#/settings" data-route="settings"><span class="nav-icon" aria-hidden="true">⚙</span><span>Configurare</span></a></li>
+                </ul>
+                <div class="sidebar-footer">
+                    <span id="user-email-display"></span>
+                    <button id="theme-toggle" class="theme-toggle">
+                        <span id="theme-toggle-icon">🌙</span> <span id="theme-toggle-text">Mod întunecat</span>
+                    </button>
+                    <button id="logout-btn" class="btn btn-sm btn-outline">Deconectare</button>
+                    <span id="app-version"></span>
+                    <div class="sidebar-legal">
+                        <span>&copy; 2026 Remus-Alin Talfeș</span>
+                        <a href="https://wa.me/alin.talfes" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Conținut principal -->
+            <main class="content" id="content">
+                <div id="page-container"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Încarcă Supabase ca UMD global -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+
+    <!-- Modul principal -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
