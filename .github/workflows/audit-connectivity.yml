@@ -8,7 +8,7 @@ on:
       - .github/workflows/audit-connectivity.yml
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
@@ -18,21 +18,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
-
-      - name: Fix remaining stale references
-        shell: bash
-        run: |
-          set -euo pipefail
-          sed -i 's#https://wa\.me/alin\.talfes#https://wa.me/40770823386#g' js/script.js README.md
-          sed -i 's#https://github.com/alin-talfes/taldev-site\.git#https://github.com/alin-talfes/taldev.git#g' README.md
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add js/script.js README.md
-          if ! git diff --cached --quiet; then
-            git commit -m "Fix remaining stale links after migration"
-            git push origin HEAD:main
-          fi
 
       - name: Validate local references
         shell: bash
@@ -90,8 +75,7 @@ jobs:
           for file in root.rglob('*.css'):
               text = file.read_text(encoding='utf-8')
               for raw in css_url.findall(text):
-                  value = raw.strip().strip('"\'')
-                  check_ref(file, value)
+                  check_ref(file, raw.strip().strip('"\''))
 
           import_re = re.compile(r'(?:from\s+|import\s*\()([\'\"])(\.{1,2}/[^\'\"]+)\1')
           for file in root.rglob('*.js'):
@@ -99,10 +83,7 @@ jobs:
               for _, value in import_re.findall(text):
                   check_ref(file, value)
 
-          forbidden = [
-              'https://wa.me/alin.talfes',
-              'https://github.com/alin-talfes/taldev-site.git'
-          ]
+          forbidden = ['https://wa.me/alin.talfes', 'https://github.com/alin-talfes/taldev-site.git']
           for token in forbidden:
               for file in list(root.rglob('*.html')) + list(root.rglob('*.js')) + list(root.rglob('*.md')):
                   try: text = file.read_text(encoding='utf-8')
@@ -117,7 +98,6 @@ jobs:
           PY
 
       - name: Verify S.A.C. syntax and tests
-        shell: bash
         run: |
           npm --prefix sac run check
           npm --prefix sac test
@@ -144,7 +124,7 @@ jobs:
           check 'https://wa.me/40770823386'
           check 'https://github.com/alin-talfes/taldev'
 
-      - name: Verify Supabase Auth and REST endpoints
+      - name: Verify Supabase endpoint reachability and protection
         shell: bash
         env:
           SUPABASE_URL: https://bqwwjnorzgoaksxfkixo.supabase.co
@@ -154,9 +134,11 @@ jobs:
           auth_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/auth/v1/health")
           echo "Auth health: $auth_code"
           test "$auth_code" = "200"
+
           rest_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/rest/v1/")
-          echo "REST API: $rest_code"
-          test "$rest_code" = "200"
-          edge_code=$(curl --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/functions/v1/bnr-rate")
-          echo "BNR Edge without user JWT (expected protected response): $edge_code"
+          echo "REST anonymous request: $rest_code"
+          case "$rest_code" in 200|401|403) ;; *) echo "Unexpected REST status"; exit 1 ;; esac
+
+          edge_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/functions/v1/bnr-rate")
+          echo "BNR Edge anonymous request: $edge_code"
           case "$edge_code" in 401|403) ;; *) echo "Unexpected Edge protection status"; exit 1 ;; esac
