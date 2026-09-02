@@ -139,6 +139,6 @@ jobs:
           echo "REST anonymous request: $rest_code"
           case "$rest_code" in 200|401|403) ;; *) echo "Unexpected REST status"; exit 1 ;; esac
 
-          edge_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/functions/v1/bnr-rate")
-          echo "BNR Edge anonymous request: $edge_code"
+          edge_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -X POST -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H 'Content-Type: application/json' --data '{"currency":"EUR","operation_date":"2026-09-02"}' "$SUPABASE_URL/functions/v1/bnr-rate")
+          echo "BNR Edge POST without user JWT: $edge_code"
           case "$edge_code" in 401|403) ;; *) echo "Unexpected Edge protection status"; exit 1 ;; esac
