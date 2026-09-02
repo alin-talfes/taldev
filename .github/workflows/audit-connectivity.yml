@@ -1,0 +1,141 @@
+name: Audit links and connectivity
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/audit-connectivity.yml
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate local references
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from html.parser import HTMLParser
+          from urllib.parse import urlsplit, unquote
+          import re, sys
+
+          root = Path('.').resolve()
+          errors = []
+
+          class Parser(HTMLParser):
+              def __init__(self, file):
+                  super().__init__()
+                  self.file = file
+              def handle_starttag(self, tag, attrs):
+                  attrs = dict(attrs)
+                  for key in ('href','src'):
+                      value = attrs.get(key)
+                      if value:
+                          check_ref(self.file, value)
+
+          def check_ref(file, value):
+              value = value.strip()
+              if not value or value.startswith(('#','mailto:','tel:','javascript:','data:')):
+                  return
+              p = urlsplit(value)
+              if p.scheme in ('http','https') or value.startswith('//'):
+                  return
+              clean = unquote(p.path)
+              if not clean:
+                  return
+              target = (file.parent / clean).resolve()
+              try:
+                  target.relative_to(root)
+              except ValueError:
+                  errors.append(f'{file}: reference escapes repo: {value}')
+                  return
+              if clean.endswith('/'):
+                  target = target / 'index.html'
+              if target.is_dir():
+                  target = target / 'index.html'
+              if not target.exists():
+                  errors.append(f'{file}: missing local target {value} -> {target.relative_to(root)}')
+
+          for file in root.rglob('*.html'):
+              try:
+                  Parser(file).feed(file.read_text(encoding='utf-8'))
+              except UnicodeDecodeError:
+                  errors.append(f'{file}: not valid UTF-8')
+
+          css_url = re.compile(r'url\(([^)]+)\)')
+          for file in root.rglob('*.css'):
+              text = file.read_text(encoding='utf-8')
+              for raw in css_url.findall(text):
+                  value = raw.strip().strip('"\'')
+                  check_ref(file, value)
+
+          import_re = re.compile(r'(?:from\s+|import\s*\()([\'\"])(\.{1,2}/[^\'\"]+)\1')
+          for file in root.rglob('*.js'):
+              text = file.read_text(encoding='utf-8')
+              for _, value in import_re.findall(text):
+                  check_ref(file, value)
+
+          forbidden = ['https://wa.me/alin.talfes', 'taldev-pfa']
+          for token in forbidden:
+              for file in list(root.rglob('*.html')) + list(root.rglob('*.js')) + list(root.rglob('*.md')):
+                  try: text = file.read_text(encoding='utf-8')
+                  except UnicodeDecodeError: continue
+                  if token in text:
+                      errors.append(f'{file}: forbidden stale reference: {token}')
+
+          if errors:
+              print('\n'.join(errors))
+              sys.exit(1)
+          print('Local reference audit: OK')
+          PY
+
+      - name: Verify S.A.C. syntax and tests
+        shell: bash
+        run: |
+          npm --prefix sac run check
+          npm --prefix sac test
+
+      - name: Verify published pages and external runtime dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          check() {
+            url="$1"
+            code=$(curl -L --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' "$url")
+            echo "$code $url"
+            case "$code" in 200|204|301|302|303|307|308) ;; *) exit 1 ;; esac
+          }
+          check 'https://alin-talfes.github.io/taldev/'
+          check 'https://alin-talfes.github.io/taldev/servicii/'
+          check 'https://alin-talfes.github.io/taldev/despre/'
+          check 'https://alin-talfes.github.io/taldev/demo/'
+          check 'https://alin-talfes.github.io/taldev/demo/sacpfa/'
+          check 'https://alin-talfes.github.io/taldev/demo/pontaj/'
+          check 'https://alin-talfes.github.io/taldev/demo/mru/'
+          check 'https://alin-talfes.github.io/taldev/sac/'
+          check 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js'
+          check 'https://wa.me/40770823386'
+
+      - name: Verify Supabase Auth and REST endpoints
+        shell: bash
+        env:
+          SUPABASE_URL: https://bqwwjnorzgoaksxfkixo.supabase.co
+          SUPABASE_PUBLISHABLE_KEY: sb_publishable_w3zQo_2r3vX2wJYgtiUvTA_iVQKCqok
+        run: |
+          set -euo pipefail
+          auth_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' "$SUPABASE_URL/auth/v1/health")
+          echo "Auth health: $auth_code"
+          test "$auth_code" = "200"
+          rest_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/rest/v1/")
+          echo "REST API: $rest_code"
+          test "$rest_code" = "200"
+          edge_code=$(curl --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL/functions/v1/bnr-rate")
+          echo "BNR Edge without user JWT (expected protected response): $edge_code"
+          case "$edge_code" in 401|403) ;; *) echo "Unexpected Edge protection status"; exit 1 ;; esac
