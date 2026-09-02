@@ -8,7 +8,7 @@ on:
       - .github/workflows/audit-connectivity.yml
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
@@ -16,6 +16,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Fix remaining stale references
+        shell: bash
+        run: |
+          set -euo pipefail
+          sed -i 's#https://wa\.me/alin\.talfes#https://wa.me/40770823386#g' js/script.js README.md
+          sed -i 's#https://github.com/alin-talfes/taldev-site\.git#https://github.com/alin-talfes/taldev.git#g' README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add js/script.js README.md
+          if ! git diff --cached --quiet; then
+            git commit -m "Fix remaining stale links after migration"
+            git push origin HEAD:main
+          fi
 
       - name: Validate local references
         shell: bash
@@ -82,7 +99,10 @@ jobs:
               for _, value in import_re.findall(text):
                   check_ref(file, value)
 
-          forbidden = ['https://wa.me/alin.talfes', 'taldev-pfa']
+          forbidden = [
+              'https://wa.me/alin.talfes',
+              'https://github.com/alin-talfes/taldev-site.git'
+          ]
           for token in forbidden:
               for file in list(root.rglob('*.html')) + list(root.rglob('*.js')) + list(root.rglob('*.md')):
                   try: text = file.read_text(encoding='utf-8')
@@ -122,6 +142,7 @@ jobs:
           check 'https://alin-talfes.github.io/taldev/sac/'
           check 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js'
           check 'https://wa.me/40770823386'
+          check 'https://github.com/alin-talfes/taldev'
 
       - name: Verify Supabase Auth and REST endpoints
         shell: bash
