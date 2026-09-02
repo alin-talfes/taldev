@@ -8,6 +8,22 @@ import {
   totalsByCurrency,
   transactionCashAmountRon
 } from '../js/utils.js';
+import { normalizeBnrRate } from '../js/services/fx-accounting.js';
+
+test('normalizează și validează răspunsul Edge Function BNR', () => {
+  assert.deepEqual(
+    normalizeBnrRate({ currency: 'EUR', rate: 5.2575, rate_date: '2026-09-01', source: 'BNR' }, 'EUR', '2026-09-02'),
+    { rate: 5.2575, rateDate: '2026-09-01', source: 'BNR' }
+  );
+  assert.throws(
+    () => normalizeBnrRate({ currency: 'USD', rate: 4.5, rate_date: '2026-09-01' }, 'EUR', '2026-09-02'),
+    /altă monedă/
+  );
+  assert.throws(
+    () => normalizeBnrRate({ currency: 'EUR', rate: 5.2, rate_date: '2026-09-02' }, 'EUR', '2026-09-02'),
+    /anterioară/
+  );
+});
 import { isValidCUI } from '../js/utils.js';
 import {
   CIUS_RO_CUSTOMIZATION_ID,
