@@ -10,7 +10,7 @@ import { calculateInvoiceTotals, calculateLineTotals, formatCurrency, formatDate
 import { createModal, renderStatusBadge, confirmDialog, renderTable, renderSkeleton, renderEmptyState, renderError } from '../ui.js';
 import { previewInvoice } from '../services/pdf-service.js';
 import { EFACTURA_EXPORT_VALIDATED, generateEfacturaXml, downloadXml } from '../services/xml-service.js';
-import { bindFxPreview, fxFieldsHtml, readFxParams } from '../services/fx-accounting.js';
+import { bindBnrRateAutofill, bindFxPreview, fxFieldsHtml, readFxParams } from '../services/fx-accounting.js';
 
 let currentInvoices = [];
 let currentPage = 1;
@@ -372,6 +372,7 @@ async function openInvoiceModal(invoice = null) {
         <div class="form-group"><label>Data cursului documentului</label><input type="date" name="document_exchange_rate_date" value="${invoice?.document_exchange_rate_date || ''}"></div>
         <div class="form-group"><label>Sursa cursului</label><input name="document_exchange_rate_source" value="${escapeHtml(invoice?.document_exchange_rate_source || 'BNR')}"></div>
       </div>
+      <div class="alert alert-info" data-document-bnr-status>Selectează EUR/USD și data emiterii pentru completarea automată.</div>
       <div class="form-group">
         <label>Note</label>
         <textarea name="notes">${invoice ? escapeHtml(invoice.notes || '') : ''}</textarea>
@@ -411,6 +412,14 @@ async function openInvoiceModal(invoice = null) {
       }
       return true;
     }
+  });
+
+  bindBnrRateAutofill(modalElement.querySelector('#invoice-form'), {
+    dateName: 'issue_date',
+    rateName: 'document_exchange_rate',
+    rateDateName: 'document_exchange_rate_date',
+    sourceName: 'document_exchange_rate_source',
+    statusSelector: '[data-document-bnr-status]'
   });
 
   const addLine = (lineData = {}) => {
@@ -705,7 +714,9 @@ async function openReceiptModal(invoice) {
   `;
 
   const { modalElement, close } = createModal({ title: 'Înregistrează încasare', content, closeOnOverlayClick: false });
-  bindFxPreview(modalElement.querySelector('#receipt-form'));
+  const receiptForm = modalElement.querySelector('#receipt-form');
+  bindFxPreview(receiptForm);
+  bindBnrRateAutofill(receiptForm, { currency: invoice.currency });
   modalElement.querySelector('#receipt-cancel').addEventListener('click', close);
   modalElement.querySelector('#receipt-form').addEventListener('submit', async (e) => {
     e.preventDefault();

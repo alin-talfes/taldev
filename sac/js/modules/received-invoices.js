@@ -10,7 +10,7 @@ import { receivedInvoicesApi, suppliersApi, transactionsApi, documentsApi } from
 import { getSupabase } from '../supabase.js';
 import { calculateInvoiceTotals, calculateLineTotals, formatCurrency, formatDate, toInputDate, showToast, escapeHtml } from '../utils.js';
 import { createModal, renderStatusBadge, confirmDialog, renderTable, renderSkeleton, renderEmptyState } from '../ui.js';
-import { bindFxPreview, fxFieldsHtml, readFxParams } from '../services/fx-accounting.js';
+import { bindBnrRateAutofill, bindFxPreview, fxFieldsHtml, readFxParams } from '../services/fx-accounting.js';
 
 let currentReceivedInvoices = [];
 let filters = {
@@ -424,6 +424,7 @@ async function openReceivedInvoiceModal(invoice = null) {
         <div class="form-group"><label>Data cursului documentului</label><input type="date" name="document_exchange_rate_date" value="${invoice?.document_exchange_rate_date || ''}"></div>
         <div class="form-group"><label>Sursa cursului</label><input name="document_exchange_rate_source" value="${escapeHtml(invoice?.document_exchange_rate_source || 'BNR')}"></div>
       </div>
+      <div class="alert alert-info" data-document-bnr-status>Selectează EUR/USD și data documentului pentru completarea automată.</div>
       <div class="form-group">
         <label>Note</label>
         <textarea name="notes">${invoice ? escapeHtml(invoice.notes || '') : ''}</textarea>
@@ -463,6 +464,14 @@ async function openReceivedInvoiceModal(invoice = null) {
       }
       return true;
     }
+  });
+
+  bindBnrRateAutofill(modalElement.querySelector('#received-invoice-form'), {
+    dateName: 'document_date',
+    rateName: 'document_exchange_rate',
+    rateDateName: 'document_exchange_rate_date',
+    sourceName: 'document_exchange_rate_source',
+    statusSelector: '[data-document-bnr-status]'
   });
 
   const addLine = (lineData = {}) => {
@@ -917,7 +926,9 @@ async function openPaymentModal(invoice) {
   `;
 
   const { modalElement, close } = createModal({ title: 'Înregistrează plată', content, closeOnOverlayClick: false });
-  bindFxPreview(modalElement.querySelector('#payment-form'));
+  const paymentForm = modalElement.querySelector('#payment-form');
+  bindFxPreview(paymentForm);
+  bindBnrRateAutofill(paymentForm, { currency: invoice.currency });
   modalElement.querySelector('#payment-cancel').addEventListener('click', close);
   modalElement.querySelector('#payment-form').addEventListener('submit', async (e) => {
     e.preventDefault();
