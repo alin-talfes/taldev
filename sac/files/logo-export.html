@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TALDEV — Descarcă logo-uri SVG</title>
+<style>
+  :root {
+    --bg: #0b1420;
+    --panel: #101c2c;
+    --panel-2: #142336;
+    --border: #223349;
+    --text: #e7edf5;
+    --muted: #93a4bb;
+    --accent1: #00D7E8;
+    --accent2: #0A84FF;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 600px at 20% -10%, #12233a 0%, var(--bg) 55%), var(--bg);
+    color: var(--text);
+    padding: 32px 16px 80px;
+  }
+  header {
+    max-width: 1080px;
+    margin: 0 auto 32px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 28px;
+    margin: 0 0 8px;
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+  header p {
+    color: var(--muted);
+    margin: 0;
+    font-size: 14px;
+  }
+  .grid {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .card {
+    background: linear-gradient(180deg, var(--panel-2), var(--panel));
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .preview {
+    background:
+      linear-gradient(45deg, #182739 25%, transparent 25%),
+      linear-gradient(-45deg, #182739 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #182739 75%),
+      linear-gradient(-45deg, transparent 75%, #182739 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+    background-color: #0e1926;
+    border-radius: 10px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: 1px solid var(--border);
+  }
+  .preview img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .card h2 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: 600;
+  }
+  .meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: -10px;
+  }
+  .row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .row label {
+    font-size: 12px;
+    color: var(--muted);
+    width: 62px;
+    flex-shrink: 0;
+  }
+  .row input {
+    flex: 1;
+    background: #0c1826;
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 13px;
+    width: 0;
+  }
+  .row input:focus {
+    outline: none;
+    border-color: var(--accent2);
+  }
+  .presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .presets button {
+    background: #0c1826;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    padding: 5px 9px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .presets button:hover {
+    border-color: var(--accent2);
+    color: var(--text);
+  }
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .btn {
+    flex: 1;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .1s ease, opacity .15s ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent1), var(--accent2));
+    color: #041018;
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-secondary:hover { border-color: var(--accent2); }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>TALDEV — Logo Kit</h1>
+  <p>Descarcă orice variantă ca PNG la rezoluția dorită, sau ca SVG original (vectorial, orice mărime).</p>
+</header>
+
+<div class="grid" id="grid"></div>
+
+<footer>Randare 100% locală, în browser — fișierele nu părăsesc acest dispozitiv.</footer>
+
+<script>
+const ITEMS = [{"file": "taldev-favicon-transparent.svg", "label": "Favicon Transparent", "w": 120.0, "h": 120.0, "b64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRBTERFViBmYXZpY29uIj4KCjxkZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0idGVjaCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwRDdFOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMEE4NEZGIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgoKCgo8Zz4KICA8cGF0aCBkPSJNMTYgMjIgSDEwNCBMODkgMzggSDkgWiIgZmlsbD0idXJsKCN0ZWNoKSIvPgogIDxwYXRoIGQ9Ik0zMSAzOCBINTEgVjcyIEwzMSA5MSBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CiAgPHBhdGggZD0iTTUxIDM4IEg3MQogICAgICAgICAgIEM5MSAzOCAxMDMgNDggMTAzIDY0CiAgICAgICAgICAgQzEwMyA4MSA5MCA5MiA3MCA5MgogICAgICAgICAgIEgzOSBMNTUgNzYgSDcwCiAgICAgICAgICAgQzgwIDc2IDg2IDcyIDg2IDY0CiAgICAgICAgICAgQzg2IDU3IDgwIDUzIDcwIDUzCiAgICAgICAgICAgSDUxIFoiIGZpbGw9IiMwNjJCNTciLz4KICA8cmVjdCB4PSIxNCIgeT0iNjkiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHJ4PSIxIiBmaWxsPSIjMDBEN0U4Ii8+CiAgPHJlY3QgeD0iMjMiIHk9Ijc5IiB3aWR0aD0iNyIgaGVpZ2h0PSI3IiByeD0iMSIgZmlsbD0iIzBBODRGRiIvPgo8L2c+Cgo8L3N2Zz4K"}, {"file": "taldev-favicon-white.svg", "label": "Favicon White", "w": 120.0, "h": 120.0, "b64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRBTERFViBmYXZpY29uIG9uIHdoaXRlIj4KCjxkZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0idGVjaCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwRDdFOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMEE4NEZGIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgoKPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEyMCIgaGVpZ2h0PSIxMjAiIGZpbGw9IiNGRkZGRkYiLz4KCjxnPgogIDxwYXRoIGQ9Ik0xNiAyMiBIMTA0IEw4OSAzOCBIOSBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CiAgPHBhdGggZD0iTTMxIDM4IEg1MSBWNzIgTDMxIDkxIFoiIGZpbGw9InVybCgjdGVjaCkiLz4KICA8cGF0aCBkPSJNNTEgMzggSDcxCiAgICAgICAgICAgQzkxIDM4IDEwMyA0OCAxMDMgNjQKICAgICAgICAgICBDMTAzIDgxIDkwIDkyIDcwIDkyCiAgICAgICAgICAgSDM5IEw1NSA3NiBINzAKICAgICAgICAgICBDODAgNzYgODYgNzIgODYgNjQKICAgICAgICAgICBDODYgNTcgODAgNTMgNzAgNTMKICAgICAgICAgICBINTEgWiIgZmlsbD0iIzA2MkI1NyIvPgogIDxyZWN0IHg9IjE0IiB5PSI2OSIgd2lkdGg9IjgiIGhlaWdodD0iOCIgcng9IjEiIGZpbGw9IiMwMEQ3RTgiLz4KICA8cmVjdCB4PSIyMyIgeT0iNzkiIHdpZHRoPSI3IiBoZWlnaHQ9IjciIHJ4PSIxIiBmaWxsPSIjMEE4NEZGIi8+CjwvZz4KCjwvc3ZnPgo="}, {"file": "taldev-logo-transparent.svg", "label": "Logo Transparent", "w": 225.0, "h": 205.0, "b64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjUgMjA1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRBTERFViBsb2dvIG1hcmsiPgoKPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJ0ZWNoIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDBEN0U4Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwQTg0RkYiLz4KICA8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+CgoKPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQgMTApIHNjYWxlKDEuNzgpIj4KPGcgaWQ9InRkLW1hcmsiPgogIDwhLS0gdG9wIFQgLS0+CiAgPHBhdGggZD0iTTEwIDEyIEgxMDIgTDg2IDI5IEgwIFoiIGZpbGw9InVybCgjdGVjaCkiLz4KICA8IS0tIFQgc3RlbSAtLT4KICA8cGF0aCBkPSJNMjcgMjkgSDQ5IFY3MiBMMjcgOTYgWiIgZmlsbD0idXJsKCN0ZWNoKSIvPgogIDwhLS0gRCBib2R5IC0tPgogIDxwYXRoIGQ9Ik00OSAyOSBINzIKICAgICAgICAgICBDOTYgMjkgMTEwIDQyIDExMCA2MQogICAgICAgICAgIEMxMTAgODIgOTQgOTYgNzAgOTYKICAgICAgICAgICBIMzYgTDU0IDc4IEg3MAogICAgICAgICAgIEM4MiA3OCA5MCA3MSA5MCA2MQogICAgICAgICAgIEM5MCA1MSA4MyA0NiA3MCA0NgogICAgICAgICAgIEg0OSBaIiBmaWxsPSIjMDYyQjU3Ii8+CiAgPCEtLSBwaXhlbHMgLS0+CiAgPHJlY3QgeD0iNiIgeT0iNzAiIHdpZHRoPSI5IiBoZWlnaHQ9IjkiIHJ4PSIxIiBmaWxsPSIjMDBEN0U4Ii8+CiAgPHJlY3QgeD0iMTciIHk9IjgxIiB3aWR0aD0iOCIgaGVpZ2h0PSI4IiByeD0iMSIgZmlsbD0iIzAwRDdFOCIvPgogIDxyZWN0IHg9IjciIHk9IjkwIiB3aWR0aD0iNiIgaGVpZ2h0PSI2IiByeD0iMSIgZmlsbD0iIzBBODRGRiIvPgo8L2c+CjwvZz4KPC9zdmc+Cg=="}, {"file": "taldev-logo-white.svg", "label": "Logo White", "w": 225.0, "h": 205.0, "b64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMjUgMjA1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRBTERFViBsb2dvIG1hcmsgb24gd2hpdGUiPgoKPGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJ0ZWNoIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMDBEN0U4Ii8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwQTg0RkYiLz4KICA8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjI1IiBoZWlnaHQ9IjIwNSIgZmlsbD0iI0ZGRkZGRiIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNCAxMCkgc2NhbGUoMS43OCkiPgo8ZyBpZD0idGQtbWFyayI+CiAgPCEtLSB0b3AgVCAtLT4KICA8cGF0aCBkPSJNMTAgMTIgSDEwMiBMODYgMjkgSDAgWiIgZmlsbD0idXJsKCN0ZWNoKSIvPgogIDwhLS0gVCBzdGVtIC0tPgogIDxwYXRoIGQ9Ik0yNyAyOSBINDkgVjcyIEwyNyA5NiBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CiAgPCEtLSBEIGJvZHkgLS0+CiAgPHBhdGggZD0iTTQ5IDI5IEg3MgogICAgICAgICAgIEM5NiAyOSAxMTAgNDIgMTEwIDYxCiAgICAgICAgICAgQzExMCA4MiA5NCA5NiA3MCA5NgogICAgICAgICAgIEgzNiBMNTQgNzggSDcwCiAgICAgICAgICAgQzgyIDc4IDkwIDcxIDkwIDYxCiAgICAgICAgICAgQzkwIDUxIDgzIDQ2IDcwIDQ2CiAgICAgICAgICAgSDQ5IFoiIGZpbGw9IiMwNjJCNTciLz4KICA8IS0tIHBpeGVscyAtLT4KICA8cmVjdCB4PSI2IiB5PSI3MCIgd2lkdGg9IjkiIGhlaWdodD0iOSIgcng9IjEiIGZpbGw9IiMwMEQ3RTgiLz4KICA8cmVjdCB4PSIxNyIgeT0iODEiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHJ4PSIxIiBmaWxsPSIjMDBEN0U4Ii8+CiAgPHJlY3QgeD0iNyIgeT0iOTAiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjMEE4NEZGIi8+CjwvZz4KPC9nPgo8L3N2Zz4K"}, {"file": "taldev-logo-wordmark-transparent.svg", "label": "Logo Wordmark Transparent", "w": 600.0, "h": 125.0, "b64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTI1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRBTERFViBsb2dvIj4KCjxkZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0idGVjaCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwRDdFOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMEE4NEZGIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgoKCgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxOCAxNikgc2NhbGUoMC45NikiPgogIAo8ZyBpZD0idGQtbWFyayI+CiAgPCEtLSB0b3AgVCAtLT4KICA8cGF0aCBkPSJNMTAgMTIgSDEwMiBMODYgMjkgSDAgWiIgZmlsbD0idXJsKCN0ZWNoKSIvPgogIDwhLS0gVCBzdGVtIC0tPgogIDxwYXRoIGQ9Ik0yNyAyOSBINDkgVjcyIEwyNyA5NiBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CiAgPCEtLSBEIGJvZHkgLS0+CiAgPHBhdGggZD0iTTQ5IDI5IEg3MgogICAgICAgICAgIEM5NiAyOSAxMTAgNDIgMTEwIDYxCiAgICAgICAgICAgQzExMCA4MiA5NCA5NiA3MCA5NgogICAgICAgICAgIEgzNiBMNTQgNzggSDcwCiAgICAgICAgICAgQzgyIDc4IDkwIDcxIDkwIDYxCiAgICAgICAgICAgQzkwIDUxIDgzIDQ2IDcwIDQ2CiAgICAgICAgICAgSDQ5IFoiIGZpbGw9IiMwNjJCNTciLz4KICA8IS0tIHBpeGVscyAtLT4KICA8cmVjdCB4PSI2IiB5PSI3MCIgd2lkdGg9IjkiIGhlaWdodD0iOSIgcng9IjEiIGZpbGw9IiMwMEQ3RTgiLz4KICA8cmVjdCB4PSIxNyIgeT0iODEiIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHJ4PSIxIiBmaWxsPSIjMDBEN0U4Ii8+CiAgPHJlY3QgeD0iNyIgeT0iOTAiIHdpZHRoPSI2IiBoZWlnaHQ9IjYiIHJ4PSIxIiBmaWxsPSIjMEE4NEZGIi8+CjwvZz4KCjwvZz4KPHJlY3QgeD0iMTQwIiB5PSIyOSIgd2lkdGg9IjMiIGhlaWdodD0iNjYiIHJ4PSIxLjUiIGZpbGw9IiMwMEQ3RTgiLz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTY4IDgpIj4KICAKPGcgaWQ9InRhbGRldi13b3JkbWFyayIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAwKSI+CiAgPCEtLSBUIC0tPgogIDxwYXRoIGQ9Ik0wIDI0IEg1NCBWMzUgSDM0IFY4MiBIMjAgVjM1IEgwIFoiIGZpbGw9IiMwNjJCNTciLz4KICA8IS0tIEEgLS0+CiAgPHBhdGggZD0iTTY2IDgyIEw5MSAyNCBIMTA2IEwxMzEgODIgSDExNiBMMTExIDY5IEg4NiBMODEgODIgWgogICAgICAgICAgIE05MSA1NyBIMTA2IEw5OC41IDM4IFoiIGZpbGw9IiMwNjJCNTciIGZpbGwtcnVsZT0iZXZlbm9kZCIvPgogIDwhLS0gTCAtLT4KICA8cGF0aCBkPSJNMTQ0IDI0IEgxNTggVjcwIEgxOTAgVjgyIEgxNDQgWiIgZmlsbD0iIzA2MkI1NyIvPgogIDwhLS0gRCAtLT4KICA8cGF0aCBkPSJNMjA0IDI0IEgyMjkKICAgICAgICAgICBDMjUyIDI0IDI2NiAzNSAyNjYgNTMKICAgICAgICAgICBDMjY2IDcxIDI1MiA4MiAyMjkgODIKICAgICAgICAgICBIMjA0IFoKICAgICAgICAgICBNMjE4IDM2IFY3MCBIMjI4CiAgICAgICAgICAgQzI0MyA3MCAyNTIgNjQgMjUyIDUzCiAgICAgICAgICAgQzI1MiA0MiAyNDMgMzYgMjI4IDM2IFoiCiAgICAgICAgZmlsbD0idXJsKCN0ZWNoKSIgZmlsbC1ydWxlPSJldmVub2RkIi8+CiAgPCEtLSBFIC0tPgogIDxwYXRoIGQ9Ik0yNzkgMjQgSDMyOCBWMzYgSDI5MyBWNDcgSDMyMyBWNTggSDI5MyBWNzAgSDMzMCBWODIgSDI3OSBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CiAgPCEtLSBWIC0tPgogIDxwYXRoIGQ9Ik0zNDAgMjQgSDM1NSBMMzczIDY1IEwzOTEgMjQgSDQwNiBMMzgwIDgyIEgzNjYgWiIgZmlsbD0idXJsKCN0ZWNoKSIvPgo8L2c+Cgo8L2c+Cgo8L3N2Zz4K"}, {"file": "taldev-logo-wordmark-white.svg", "label": "Logo Wordmark White", "w": 600.0, "h": 125.0, "b64": "PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MDAgMTI1IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRBTERFViBsb2dvIG9uIHdoaXRlIj4KCjxkZWZzPgogIDxsaW5lYXJHcmFkaWVudCBpZD0idGVjaCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwRDdFOCIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMEE4NEZGIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgoKPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjYwMCIgaGVpZ2h0PSIxMjUiIGZpbGw9IiNGRkZGRkYiLz4KCjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE4IDE2KSBzY2FsZSgwLjk2KSI+CiAgCjxnIGlkPSJ0ZC1tYXJrIj4KICA8IS0tIHRvcCBUIC0tPgogIDxwYXRoIGQ9Ik0xMCAxMiBIMTAyIEw4NiAyOSBIMCBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CiAgPCEtLSBUIHN0ZW0gLS0+CiAgPHBhdGggZD0iTTI3IDI5IEg0OSBWNzIgTDI3IDk2IFoiIGZpbGw9InVybCgjdGVjaCkiLz4KICA8IS0tIEQgYm9keSAtLT4KICA8cGF0aCBkPSJNNDkgMjkgSDcyCiAgICAgICAgICAgQzk2IDI5IDExMCA0MiAxMTAgNjEKICAgICAgICAgICBDMTEwIDgyIDk0IDk2IDcwIDk2CiAgICAgICAgICAgSDM2IEw1NCA3OCBINzAKICAgICAgICAgICBDODIgNzggOTAgNzEgOTAgNjEKICAgICAgICAgICBDOTAgNTEgODMgNDYgNzAgNDYKICAgICAgICAgICBINDkgWiIgZmlsbD0iIzA2MkI1NyIvPgogIDwhLS0gcGl4ZWxzIC0tPgogIDxyZWN0IHg9IjYiIHk9IjcwIiB3aWR0aD0iOSIgaGVpZ2h0PSI5IiByeD0iMSIgZmlsbD0iIzAwRDdFOCIvPgogIDxyZWN0IHg9IjE3IiB5PSI4MSIgd2lkdGg9IjgiIGhlaWdodD0iOCIgcng9IjEiIGZpbGw9IiMwMEQ3RTgiLz4KICA8cmVjdCB4PSI3IiB5PSI5MCIgd2lkdGg9IjYiIGhlaWdodD0iNiIgcng9IjEiIGZpbGw9IiMwQTg0RkYiLz4KPC9nPgoKPC9nPgo8cmVjdCB4PSIxNDAiIHk9IjI5IiB3aWR0aD0iMyIgaGVpZ2h0PSI2NiIgcng9IjEuNSIgZmlsbD0iIzAwRDdFOCIvPgo8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNjggOCkiPgogIAo8ZyBpZD0idGFsZGV2LXdvcmRtYXJrIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDApIj4KICA8IS0tIFQgLS0+CiAgPHBhdGggZD0iTTAgMjQgSDU0IFYzNSBIMzQgVjgyIEgyMCBWMzUgSDAgWiIgZmlsbD0iIzA2MkI1NyIvPgogIDwhLS0gQSAtLT4KICA8cGF0aCBkPSJNNjYgODIgTDkxIDI0IEgxMDYgTDEzMSA4MiBIMTE2IEwxMTEgNjkgSDg2IEw4MSA4MiBaCiAgICAgICAgICAgTTkxIDU3IEgxMDYgTDk4LjUgMzggWiIgZmlsbD0iIzA2MkI1NyIgZmlsbC1ydWxlPSJldmVub2RkIi8+CiAgPCEtLSBMIC0tPgogIDxwYXRoIGQ9Ik0xNDQgMjQgSDE1OCBWNzAgSDE5MCBWODIgSDE0NCBaIiBmaWxsPSIjMDYyQjU3Ii8+CiAgPCEtLSBEIC0tPgogIDxwYXRoIGQ9Ik0yMDQgMjQgSDIyOQogICAgICAgICAgIEMyNTIgMjQgMjY2IDM1IDI2NiA1MwogICAgICAgICAgIEMyNjYgNzEgMjUyIDgyIDIyOSA4MgogICAgICAgICAgIEgyMDQgWgogICAgICAgICAgIE0yMTggMzYgVjcwIEgyMjgKICAgICAgICAgICBDMjQzIDcwIDI1MiA2NCAyNTIgNTMKICAgICAgICAgICBDMjUyIDQyIDI0MyAzNiAyMjggMzYgWiIKICAgICAgICBmaWxsPSJ1cmwoI3RlY2gpIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KICA8IS0tIEUgLS0+CiAgPHBhdGggZD0iTTI3OSAyNCBIMzI4IFYzNiBIMjkzIFY0NyBIMzIzIFY1OCBIMjkzIFY3MCBIMzMwIFY4MiBIMjc5IFoiIGZpbGw9InVybCgjdGVjaCkiLz4KICA8IS0tIFYgLS0+CiAgPHBhdGggZD0iTTM0MCAyNCBIMzU1IEwzNzMgNjUgTDM5MSAyNCBINDA2IEwzODAgODIgSDM2NiBaIiBmaWxsPSJ1cmwoI3RlY2gpIi8+CjwvZz4KCjwvZz4KCjwvc3ZnPgo="}];
+
+const grid = document.getElementById('grid');
+
+ITEMS.forEach((item, idx) => {
+  const ratio = item.w / item.h;
+  const dataUri = 'data:image/svg+xml;base64,' + item.b64;
+
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  card.innerHTML = `
+    <div class="preview">
+      <img src="${dataUri}" alt="${item.label}">
+    </div>
+    <h2>${item.label}</h2>
+    <div class="meta">Original: ${item.w}×${item.h}px &middot; ${item.file}</div>
+    <div class="row">
+      <label>Lățime</label>
+      <input type="number" min="1" step="1" value="${Math.round(item.w * 4)}" data-role="width" id="w-${idx}">
+      <span style="color:var(--muted);font-size:12px;">px</span>
+    </div>
+    <div class="row">
+      <label>Înălțime</label>
+      <input type="number" min="1" step="1" value="${Math.round(item.h * 4)}" data-role="height" id="h-${idx}">
+      <span style="color:var(--muted);font-size:12px;">px</span>
+    </div>
+    <div class="presets" id="presets-${idx}"></div>
+    <div class="actions">
+      <button class="btn btn-primary" id="png-${idx}">Descarcă PNG</button>
+      <button class="btn btn-secondary" id="svg-${idx}">Descarcă SVG</button>
+    </div>
+  `;
+
+  grid.appendChild(card);
+
+  const wInput = card.querySelector(`#w-${idx}`);
+  const hInput = card.querySelector(`#h-${idx}`);
+  let lock = false;
+
+  wInput.addEventListener('input', () => {
+    if (lock) return;
+    lock = true;
+    hInput.value = Math.round(parseFloat(wInput.value || 0) / ratio) || '';
+    lock = false;
+  });
+  hInput.addEventListener('input', () => {
+    if (lock) return;
+    lock = true;
+    wInput.value = Math.round(parseFloat(hInput.value || 0) * ratio) || '';
+    lock = false;
+  });
+
+  // preset resolution buttons
+  const presetsDiv = card.querySelector(`#presets-${idx}`);
+  const presets = [1, 2, 4, 8];
+  presets.forEach(mult => {
+    const b = document.createElement('button');
+    const pw = Math.round(item.w * mult);
+    const ph = Math.round(item.h * mult);
+    b.textContent = `${pw}×${ph}`;
+    b.addEventListener('click', () => {
+      wInput.value = pw;
+      hInput.value = ph;
+    });
+    presetsDiv.appendChild(b);
+  });
+
+  // download SVG original
+  card.querySelector(`#svg-${idx}`).addEventListener('click', () => {
+    const link = document.createElement('a');
+    link.href = dataUri;
+    link.download = item.file;
+    link.click();
+  });
+
+  // download PNG at chosen resolution
+  card.querySelector(`#png-${idx}`).addEventListener('click', () => {
+    const targetW = Math.max(1, parseInt(wInput.value, 10) || Math.round(item.w));
+    const targetH = Math.max(1, parseInt(hInput.value, 10) || Math.round(item.h));
+
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = targetW;
+      canvas.height = targetH;
+      const ctx = canvas.getContext('2d');
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+      ctx.drawImage(img, 0, 0, targetW, targetH);
+      canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        const baseName = item.file.replace(/\.svg$/i, '');
+        link.href = url;
+        link.download = `${baseName}-${targetW}x${targetH}.png`;
+        link.click();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      }, 'image/png');
+    };
+    img.src = dataUri;
+  });
+});
+</script>
+
+</body>
+</html>
