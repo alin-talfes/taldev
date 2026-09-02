@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const root = document.documentElement;
     const themeToggle = document.getElementById('themeToggle');
 
-    const whatsappUrl = 'https://wa.me/alin.talfes';
+    const whatsappUrl = 'https://wa.me/40770823386';
     document.querySelectorAll('a[href^="https://wa.me/"]').forEach(link => {
         link.href = whatsappUrl;
     });

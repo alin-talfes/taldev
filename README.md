@@ -73,7 +73,7 @@ Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
 
 1. Clonează repository-ul:
    ```bash
-   git clone https://github.com/alin-talfes/taldev-site.git
+   git clone https://github.com/alin-talfes/taldev.git
    ```
 2. Deschide `index.html` direct în browser sau folosește un server local (ex: Live Server în VS Code).
 3. Nu necesită build, dependențe sau configurare.
@@ -372,7 +372,7 @@ Asigură-te că aceste fișiere există în directorul `files/`.
 
 ## Contact
 
-- **WhatsApp**: [wa.me/alin.talfes](https://wa.me/alin.talfes)
+- **WhatsApp**: [wa.me/alin.talfes](https://wa.me/40770823386)
 - **Telefon**: [+40 770 823 386](tel:+40770823386)
 - **Email**: [alin.talfes@outlook.com](mailto:alin.talfes@outlook.com)
 - **GitHub**: [github.com/alin-talfes](https://github.com/alin-talfes)
