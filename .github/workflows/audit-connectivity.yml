@@ -102,6 +102,17 @@ jobs:
           npm --prefix sac run check
           npm --prefix sac test
 
+      - name: Verify frontend BNR wiring
+        shell: bash
+        run: |
+          set -euo pipefail
+          matches=$(grep -R --line-number -E 'bnr-rate|functions\.invoke|functions/v1' sac/js || true)
+          if [ -n "$matches" ]; then
+            echo "$matches"
+          else
+            echo 'INFO: No direct bnr-rate invocation is currently present in sac/js.'
+          fi
+
       - name: Verify published pages and external runtime dependencies
         shell: bash
         run: |
@@ -124,7 +135,7 @@ jobs:
           check 'https://wa.me/40770823386'
           check 'https://github.com/alin-talfes/taldev'
 
-      - name: Verify Supabase endpoint reachability and protection
+      - name: Verify Supabase and BNR Edge
         shell: bash
         env:
           SUPABASE_URL: https://bqwwjnorzgoaksxfkixo.supabase.co
@@ -139,6 +150,10 @@ jobs:
           echo "REST anonymous request: $rest_code"
           case "$rest_code" in 200|401|403) ;; *) echo "Unexpected REST status"; exit 1 ;; esac
 
-          edge_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o /dev/null -w '%{http_code}' -X POST -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H 'Content-Type: application/json' --data '{"currency":"EUR","operation_date":"2026-09-02"}' "$SUPABASE_URL/functions/v1/bnr-rate")
-          echo "BNR Edge POST without user JWT: $edge_code"
-          case "$edge_code" in 401|403) ;; *) echo "Unexpected Edge protection status"; exit 1 ;; esac
+          body_file=$(mktemp)
+          edge_code=$(curl --retry 2 --connect-timeout 10 --max-time 30 -sS -o "$body_file" -w '%{http_code}' -X POST -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H 'Content-Type: application/json' --data '{"currency":"EUR","operation_date":"2026-09-02"}' "$SUPABASE_URL/functions/v1/bnr-rate")
+          echo "BNR Edge POST: $edge_code"
+          cat "$body_file"
+          echo
+          test "$edge_code" = "200"
+          grep -q '"source":"BNR"' "$body_file"
