@@ -355,3 +355,4 @@ revoke execute on function public.set_received_invoice_exchange_rate(uuid,numeri
 revoke execute on function public.register_fx_transaction(text,uuid,numeric,date,numeric,date,numeric,text,uuid,text,text,text,text) from authenticated;
 
 commit;
+

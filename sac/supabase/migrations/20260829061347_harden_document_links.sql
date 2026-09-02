@@ -34,3 +34,4 @@ revoke update on public.document_links from authenticated;
 drop policy if exists document_links_update_own on public.document_links;
 
 commit;
+

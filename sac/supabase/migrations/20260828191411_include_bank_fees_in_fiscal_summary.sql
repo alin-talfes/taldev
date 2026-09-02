@@ -33,3 +33,4 @@ begin
 end $$;
 revoke all on function public.get_fiscal_summary(integer) from public,anon;
 grant execute on function public.get_fiscal_summary(integer) to authenticated;
+

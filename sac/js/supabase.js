@@ -13,7 +13,7 @@ function ensureSupabaseLoaded() {
 async function loadSupabaseFromCDN() {
   return new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js';
+    script.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.4/dist/umd/supabase.min.js';
     script.onload = () => resolve();
     script.onerror = () => reject(new Error('Nu s-a putut încărca Supabase SDK'));
     document.head.appendChild(script);

@@ -143,3 +143,4 @@ revoke execute on function public.dispose_fixed_asset(uuid,text,date,text) from 
 grant execute on function public.dispose_fixed_asset(uuid,text,date,text) to authenticated, service_role;
 
 commit;
+
