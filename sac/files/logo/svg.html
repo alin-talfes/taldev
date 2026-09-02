@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>taldev() — Export PNG</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&display=swap');
+  body{font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif;background:#EEF2F5;padding:32px 20px 80px;margin:0;color:#0A2540;}
+  h1{font-size:20px;margin:0 0 6px;}
+  p.sub{color:#5B6B7A;font-size:13px;margin:0 0 24px;}
+  .section-title{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#5B6B7A; margin:28px 0 10px; }
+  .card{
+    background:#fff;border:1px solid #E1E7EC;border-radius:14px;
+    padding:14px 16px;margin-bottom:10px;
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .card .preview{
+    width:120px;height:50px;display:flex;align-items:center;justify-content:center;
+    background:
+      linear-gradient(45deg,#f0f0f0 25%,transparent 25%),
+      linear-gradient(-45deg,#f0f0f0 25%,transparent 25%),
+      linear-gradient(45deg,transparent 75%,#f0f0f0 75%),
+      linear-gradient(-45deg,transparent 75%,#f0f0f0 75%);
+    background-size:12px 12px;
+    background-position:0 0,0 6px,6px -6px,-6px 0;
+    border-radius:8px;flex:none;overflow:hidden;
+  }
+  .card .preview.icon{ width:50px; height:50px; }
+  .card .preview.dark-preview{ background:#0B1220; }
+  .card .name{ font-weight:700; font-size:13px; flex:1 1 170px; min-width:150px; }
+  select, button{
+    font-family:inherit; font-size:13px; padding:8px 10px; border-radius:8px;
+    border:1px solid #D6DEE4; background:#fff; cursor:pointer;
+  }
+  button{ background:#0A2540; color:#fff; border:none; font-weight:700; }
+  button:hover{ background:#123a5c; }
+</style>
+</head>
+<body>
+
+<h1>taldev() — Export PNG</h1>
+<p class="sub">Alege rezoluția și descarcă. Fundalul în carouri gri = transparent. Randare locală, în browser — nimic nu se trimite nicăieri.</p>
+
+<div class="section-title">Logo principal</div>
+<div id="logo-list"></div>
+
+<div class="section-title">Iconiță „&lt;t&gt;"</div>
+<div id="icon-list"></div>
+
+<script>
+const svgSources = {
+'logo-white-bg': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130"><rect width="400" height="130" fill="#FFFFFF"/><text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800"><tspan fill="#0A2540">taldev</tspan><tspan fill="#00C2CB">()</tspan></text><text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3"><tspan font-weight="800" fill="#0A2540">TALFEȘ </tspan><tspan font-weight="600" fill="#00A8AF">DEVELOPMENT</tspan></text></svg>`,
+'logo-dark': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130"><rect width="400" height="130" fill="#0B1220"/><text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800"><tspan fill="#FFFFFF">taldev</tspan><tspan fill="#00C2CB">()</tspan></text><text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3"><tspan font-weight="800" fill="#FFFFFF">TALFEȘ </tspan><tspan font-weight="600" fill="#00C2CB">DEVELOPMENT</tspan></text></svg>`,
+'logo-transparent-color': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130"><text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800"><tspan fill="#0A2540">taldev</tspan><tspan fill="#00C2CB">()</tspan></text><text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3"><tspan font-weight="800" fill="#0A2540">TALFEȘ </tspan><tspan font-weight="600" fill="#00A8AF">DEVELOPMENT</tspan></text></svg>`,
+'logo-mono-black': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130"><text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800" fill="#111111">taldev()</text><text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3" fill="#111111">TALFEȘ DEVELOPMENT</text></svg>`,
+'logo-mono-white': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 130"><text x="200" y="60" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800" fill="#FFFFFF">taldev()</text><text x="200" y="96" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="22" letter-spacing="3" fill="#FFFFFF">TALFEȘ DEVELOPMENT</text></svg>`,
+'icon-badge-navy': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="20" fill="#0A2540"/><text x="50" y="66" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800"><tspan fill="#00C2CB">&lt;</tspan><tspan fill="#FFFFFF">t</tspan><tspan fill="#00C2CB">&gt;</tspan></text></svg>`,
+'icon-badge-teal': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="4" y="4" width="92" height="92" rx="20" fill="#00C2CB"/><text x="50" y="66" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="44" font-weight="800"><tspan fill="#0A2540">&lt;</tspan><tspan fill="#FFFFFF">t</tspan><tspan fill="#0A2540">&gt;</tspan></text></svg>`,
+'icon-transparent-color': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="66" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="56" font-weight="800"><tspan fill="#00C2CB">&lt;</tspan><tspan fill="#0A2540">t</tspan><tspan fill="#00C2CB">&gt;</tspan></text></svg>`,
+'icon-transparent-mono-black': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="66" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="56" font-weight="800" fill="#111111">&lt;t&gt;</text></svg>`,
+'icon-transparent-mono-white': `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text x="50" y="66" text-anchor="middle" font-family="'JetBrains Mono','Fira Code','SFMono-Regular',Consolas,Menlo,monospace" font-size="56" font-weight="800" fill="#FFFFFF">&lt;t&gt;</text></svg>`
+};
+
+const logoItems = [
+  { id:'logo-white-bg',         label:'Fundal alb (opac)',          dark:false },
+  { id:'logo-dark',              label:'Fundal închis (opac)',       dark:true  },
+  { id:'logo-transparent-color', label:'Transparent — culori principale', dark:false },
+  { id:'logo-mono-black',        label:'Monocrom negru (transparent)', dark:false },
+  { id:'logo-mono-white',        label:'Monocrom alb (transparent)', dark:true  },
+];
+
+const iconItems = [
+  { id:'icon-badge-navy',            label:'Badge navy (opac)',              dark:false },
+  { id:'icon-badge-teal',            label:'Badge teal (opac)',              dark:false },
+  { id:'icon-transparent-color',     label:'Transparent — culori principale', dark:false },
+  { id:'icon-transparent-mono-black',label:'Monocrom negru (transparent)',   dark:false },
+  { id:'icon-transparent-mono-white',label:'Monocrom alb (transparent)',     dark:true  },
+];
+
+function buildCard(item, isIcon){
+  const card = document.createElement('div');
+  card.className = 'card';
+
+  const preview = document.createElement('div');
+  preview.className = 'preview' + (isIcon ? ' icon' : '') + (item.dark ? ' dark-preview' : '');
+  preview.innerHTML = svgSources[item.id];
+  const svgEl = preview.querySelector('svg');
+  svgEl.setAttribute('width', isIcon ? '42' : '108');
+  svgEl.setAttribute('height', isIcon ? '42' : '35');
+  card.appendChild(preview);
+
+  const name = document.createElement('div');
+  name.className = 'name';
+  name.textContent = item.label;
+  card.appendChild(name);
+
+  const select = document.createElement('select');
+  const sizes = isIcon
+    ? [[256,256],[512,512],[1024,1024],[2048,2048]]
+    : [[800,260],[1600,520],[2400,780]];
+  sizes.forEach(([w,h]) => {
+    const opt = document.createElement('option');
+    opt.value = w + 'x' + h;
+    opt.textContent = w + ' × ' + h + 'px';
+    select.appendChild(opt);
+  });
+  card.appendChild(select);
+
+  const btn = document.createElement('button');
+  btn.textContent = 'Descarcă PNG';
+  btn.onclick = () => downloadPNG(item.id, select.value);
+  card.appendChild(btn);
+
+  return card;
+}
+
+function render(){
+  const logoList = document.getElementById('logo-list');
+  logoItems.forEach(item => logoList.appendChild(buildCard(item, false)));
+  const iconList = document.getElementById('icon-list');
+  iconItems.forEach(item => iconList.appendChild(buildCard(item, true)));
+}
+
+function downloadPNG(id, sizeStr){
+  const [w, h] = sizeStr.split('x').map(Number);
+  const svgText = svgSources[id];
+  const blob = new Blob([svgText], {type:'image/svg+xml;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+    URL.revokeObjectURL(url);
+    canvas.toBlob(pngBlob => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(pngBlob);
+      a.download = 'taldev-' + id + '-' + w + 'x' + h + '.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }, 'image/png');
+  };
+  img.src = url;
+}
+
+render();
+</script>
+</body>
+</html>
