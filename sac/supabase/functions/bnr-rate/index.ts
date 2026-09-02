@@ -43,6 +43,7 @@ function parseRateFromXml(xml: string, currency: string, beforeDate: string) {
 
 async function loadYear(year: number) {
   const urls = [
+    `https://curs.bnr.ro/files/xml/years/nbrfxrates${year}.xml`,
     `https://www.bnr.ro/files/xml/years/nbrfxrates${year}.xml`,
     `https://bnr.ro/files/xml/years/nbrfxrates${year}.xml`,
   ];
