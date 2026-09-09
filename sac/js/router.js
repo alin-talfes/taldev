@@ -3,7 +3,7 @@
 // Permite ruta #/reset-password fără autentificare pentru fluxul de recuperare a parolei.
 // Include rute pentru dashboard, setări, clienți, furnizori, facturi, proforme,
 // facturi primite, alte încasări/cheltuieli, RJIP, documente, inventar, mijloace fixe,
-// rapoarte, aporturi proprii și situație fiscală.
+// rapoarte, aporturi proprii, situație fiscală și audit.
 
 import { isAuthenticated, showAuthScreen } from './auth.js';
 import * as dashboard from './modules/dashboard.js';
@@ -21,6 +21,7 @@ import * as fixedAssets from './modules/fixed-assets.js';
 import * as reports from './modules/reports.js';
 import * as aporturi from './modules/aporturi.js';
 import * as fiscal from './modules/fiscal.js';
+import * as audit from './modules/audit.js';
 
 const routes = {
   'dashboard': { title: 'Meniu principal', render: dashboard.render, destroy: dashboard.destroy },
@@ -37,7 +38,8 @@ const routes = {
   'fixed-assets': { title: 'Mijloace fixe', render: fixedAssets.render, destroy: fixedAssets.destroy },
   'reports': { title: 'Rapoarte', render: reports.render, destroy: reports.destroy },
   'aporturi': { title: 'Aport propriu', render: aporturi.render, destroy: aporturi.destroy },
-  'fiscal': { title: 'Situație fiscală', render: fiscal.render, destroy: fiscal.destroy }
+  'fiscal': { title: 'Situație fiscală', render: fiscal.render, destroy: fiscal.destroy },
+  'audit': { title: 'Audit', render: audit.render, destroy: audit.destroy }
 };
 
 let currentRoute = null;
