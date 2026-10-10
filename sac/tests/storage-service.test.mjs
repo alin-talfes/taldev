@@ -45,9 +45,15 @@ test('respinge fișiere peste limita implicită și respectă limita configurat�
   );
 });
 
-test('calea de stocare elimină caracterele nepermise din categorie și nume', () => {
+test('calea de stocare folosește UUID-ul proprietarului și categorii permise', () => {
   assert.equal(
-    buildStoragePath('user-123', 'invoices/../../', 'a b?.pdf'),
-    'user-123/invoices/a b-.pdf'.replace('a b-', 'ab-')
+    buildStoragePath('550e8400-e29b-41d4-a716-446655440000', 'invoices', 'ab.pdf'),
+    '550e8400-e29b-41d4-a716-446655440000/invoices/ab.pdf'
   );
+  assert.equal(
+    buildStoragePath('550e8400-e29b-41d4-a716-446655440000', 'invoices/../../', 'a b?.pdf'),
+    '550e8400-e29b-41d4-a716-446655440000/other/ab.pdf'
+  );
+  assert.throws(() => buildStoragePath('user-123', 'invoices', 'a.pdf'), /UUID valid/);
+  assert.throws(() => buildStoragePath('550e8400-e29b-41d4-a716-446655440000', 'other', '!!!'), /Numele fișierului/);
 });
