@@ -20,8 +20,23 @@ const ALLOWED_MIME_TYPES = [
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   'application/vnd.ms-excel',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-  'text/csv'
+  'text/csv',
+  // Browsers may omit MIME metadata for files selected by the user.
+  ''
 ];
+
+const EXTENSION_MIME_TYPES = {
+  pdf: ['application/pdf'],
+  xml: ['application/xml', 'text/xml'],
+  jpg: ['image/jpeg'],
+  jpeg: ['image/jpeg'],
+  png: ['image/png'],
+  doc: ['application/msword', 'application/octet-stream'],
+  docx: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/zip', 'application/octet-stream'],
+  xls: ['application/vnd.ms-excel', 'application/octet-stream'],
+  xlsx: ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/zip', 'application/octet-stream'],
+  csv: ['text/csv', 'text/plain', 'application/vnd.ms-excel', 'application/octet-stream']
+};
 
 /**
  * Validează un fișier înainte de încărcare
@@ -34,6 +49,10 @@ export function validateFile(file, options = {}) {
   const allowedExtensions = options.allowedExtensions || ALLOWED_EXTENSIONS;
   const allowedMimeTypes = options.allowedMimeTypes || ALLOWED_MIME_TYPES;
 
+  if (!file || typeof file.name !== 'string' || !Number.isFinite(file.size) || file.size < 0) {
+    return { valid: false, error: 'Fișier invalid sau lipsă' };
+  }
+
   if (file.size > maxSize) {
     return {
       valid: false,
@@ -41,16 +60,26 @@ export function validateFile(file, options = {}) {
     };
   }
 
-  const extension = file.name.split('.').pop().toLowerCase();
-  if (!allowedExtensions.includes(extension)) {
+  const normalizedName = file.name.trim();
+  const extension = normalizedName.includes('.') ? normalizedName.split('.').pop().toLowerCase() : '';
+  if (!normalizedName || !allowedExtensions.includes(extension)) {
     return {
       valid: false,
       error: `Format de fișier nepermis (.${extension}). Formate permise: ${allowedExtensions.join(', ')}`
     };
   }
 
-  if (file.type && allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(file.type)) {
-    console.warn(`MIME type neașteptat: ${file.type}`);
+  const mimeType = String(file.type || '').toLowerCase().trim();
+  if (mimeType && allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(mimeType)) {
+    return { valid: false, error: `Tip MIME nepermis: ${mimeType}` };
+  }
+
+  const expectedMimeTypes = EXTENSION_MIME_TYPES[extension] || [];
+  if (mimeType && expectedMimeTypes.length > 0 && !expectedMimeTypes.includes(mimeType)) {
+    return {
+      valid: false,
+      error: `Extensia .${extension} nu corespunde tipului MIME ${mimeType}`
+    };
   }
 
   return { valid: true };
