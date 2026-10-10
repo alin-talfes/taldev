@@ -43,4 +43,7 @@ test('manifestul sitemap nu indexează aplicația autentificată', () => {
   assert.doesNotMatch(sitemap, /\/sac\//);
   assert.match(sitemap, /<lastmod>2026-10-10<\/lastmod>/);
   assert.match(readFileSync('index.html', 'utf8'), /name="robots" content="noindex, nofollow"/i);
+  const api = readFileSync('js/api.js', 'utf8');
+  assert.match(api, /validateFile\(file\)/);
+  assert.match(api, /buildStoragePath\(userId, metadata\.category/);
 });
