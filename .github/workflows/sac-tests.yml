@@ -1,0 +1,43 @@
+name: SAC checks
+
+on:
+  pull_request:
+    paths:
+      - "sac/**"
+      - "README.md"
+      - "sitemap.xml"
+      - ".github/workflows/sac-tests.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "sac/**"
+      - "README.md"
+      - "sitemap.xml"
+      - ".github/workflows/sac-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Tests and syntax
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sac
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run automated tests
+        run: npm test
+
+      - name: Check JavaScript syntax
+        run: npm run check
