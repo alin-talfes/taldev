@@ -20,7 +20,10 @@ const ALLOWED_MIME_TYPES = [
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   'application/vnd.ms-excel',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-  'text/csv'
+  'text/csv',
+  'text/plain',
+  'application/zip',
+  'application/octet-stream'
 ];
 
 const ALLOWED_CATEGORIES = new Set([
