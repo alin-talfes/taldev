@@ -41,5 +41,6 @@ test('validarea documentelor respinge tipurile MIME nepermise și extensiile fă
 test('manifestul sitemap nu indexează aplicația autentificată', () => {
   const sitemap = readFileSync('../sitemap.xml', 'utf8');
   assert.doesNotMatch(sitemap, /\/sac\//);
+  assert.match(sitemap, /<lastmod>2026-10-10<\/lastmod>/);
   assert.match(readFileSync('index.html', 'utf8'), /name="robots" content="noindex, nofollow"/i);
 });
