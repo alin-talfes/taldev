@@ -28,3 +28,18 @@ test('istoricul local conține exact 27 de migrații cu versiuni și nume unice'
   assert.equal(new Set(migrations.map(file => file.split('_', 1)[0])).size, migrations.length);
   assert.equal(new Set(migrations.map(file => file.replace(/^\d+_/, ''))).size, migrations.length);
 });
+
+test('validarea documentelor respinge tipurile MIME nepermise și extensiile fără punct', async () => {
+  const { validateFile } = await import('../js/services/storage-service.js');
+  assert.equal(validateFile({ name: 'document.pdf', type: 'application/pdf', size: 1 }).valid, true);
+  assert.equal(validateFile({ name: 'document.pdf', type: 'text/html', size: 1 }).valid, false);
+  assert.equal(validateFile({ name: 'document.pdf', type: 'image/png', size: 1 }).valid, false);
+  assert.equal(validateFile({ name: 'document', type: 'application/pdf', size: 1 }).valid, false);
+  assert.equal(validateFile(null).valid, false);
+});
+
+test('manifestul sitemap nu indexează aplicația autentificată', () => {
+  const sitemap = readFileSync('../sitemap.xml', 'utf8');
+  assert.doesNotMatch(sitemap, /\/sac\//);
+  assert.match(readFileSync('index.html', 'utf8'), /name="robots" content="noindex, nofollow"/i);
+});
