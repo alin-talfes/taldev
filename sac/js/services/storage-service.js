@@ -20,8 +20,30 @@ const ALLOWED_MIME_TYPES = [
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   'application/vnd.ms-excel',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-  'text/csv'
+  'text/csv',
+  'text/plain',
+  'application/zip',
+  'application/octet-stream'
 ];
+
+const ALLOWED_CATEGORIES = new Set([
+  'invoices', 'received-invoices', 'expenses', 'contracts', 'assets', 'other'
+]);
+
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+const EXTENSION_MIME_TYPES = {
+  pdf: ['application/pdf'],
+  xml: ['application/xml', 'text/xml'],
+  jpg: ['image/jpeg'],
+  jpeg: ['image/jpeg'],
+  png: ['image/png'],
+  doc: ['application/msword', 'application/octet-stream'],
+  docx: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/zip', 'application/octet-stream'],
+  xls: ['application/vnd.ms-excel', 'application/octet-stream'],
+  xlsx: ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/zip', 'application/octet-stream'],
+  csv: ['text/csv', 'text/plain', 'application/vnd.ms-excel', 'application/octet-stream']
+};
 
 /**
  * Validează un fișier înainte de încărcare
@@ -30,9 +52,13 @@ const ALLOWED_MIME_TYPES = [
  * @returns {object} { valid: boolean, error?: string }
  */
 export function validateFile(file, options = {}) {
-  const maxSize = options.maxSize || DEFAULT_MAX_SIZE;
-  const allowedExtensions = options.allowedExtensions || ALLOWED_EXTENSIONS;
-  const allowedMimeTypes = options.allowedMimeTypes || ALLOWED_MIME_TYPES;
+  const maxSize = options.maxSize ?? DEFAULT_MAX_SIZE;
+  const allowedExtensions = options.allowedExtensions ?? ALLOWED_EXTENSIONS;
+  const allowedMimeTypes = options.allowedMimeTypes ?? ALLOWED_MIME_TYPES;
+
+  if (!file || typeof file.name !== 'string' || !Number.isFinite(file.size) || file.size < 0) {
+    return { valid: false, error: 'Fișier invalid sau lipsă' };
+  }
 
   if (file.size > maxSize) {
     return {
@@ -41,16 +67,26 @@ export function validateFile(file, options = {}) {
     };
   }
 
-  const extension = file.name.split('.').pop().toLowerCase();
-  if (!allowedExtensions.includes(extension)) {
+  const normalizedName = file.name.trim();
+  const extension = normalizedName.includes('.') ? normalizedName.split('.').pop().toLowerCase() : '';
+  if (!normalizedName || !allowedExtensions.includes(extension)) {
     return {
       valid: false,
       error: `Format de fișier nepermis (.${extension}). Formate permise: ${allowedExtensions.join(', ')}`
     };
   }
 
-  if (file.type && allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(file.type)) {
-    console.warn(`MIME type neașteptat: ${file.type}`);
+  const mimeType = String(file.type || '').toLowerCase().trim();
+  if (mimeType && allowedMimeTypes.length > 0 && !allowedMimeTypes.includes(mimeType)) {
+    return { valid: false, error: `Tip MIME nepermis: ${mimeType}` };
+  }
+
+  const expectedMimeTypes = EXTENSION_MIME_TYPES[extension] || [];
+  if (mimeType && expectedMimeTypes.length > 0 && !expectedMimeTypes.includes(mimeType)) {
+    return {
+      valid: false,
+      error: `Extensia .${extension} nu corespunde tipului MIME ${mimeType}`
+    };
   }
 
   return { valid: true };
@@ -95,9 +131,17 @@ export function generateSafeFilename(originalName, prefix = '') {
  * @returns {string} calea completă în bucket
  */
 export function buildStoragePath(userId, category, filename) {
-  const safeCategory = category.replace(/[^a-zA-Z0-9-_]/g, '');
-  const safeFilename = filename.replace(/[^a-zA-Z0-9._-]/g, '');
-  return `${userId}/${safeCategory}/${safeFilename}`;
+  if (typeof userId !== 'string' || !UUID_PATTERN.test(userId)) {
+    throw new Error('ID-ul utilizatorului trebuie să fie un UUID valid');
+  }
+
+  const safeCategory = ALLOWED_CATEGORIES.has(category) ? category : 'other';
+  const safeFilename = String(filename || '').replace(/[^a-zA-Z0-9._-]/g, '');
+  if (!safeFilename || safeFilename === '.' || safeFilename === '..') {
+    throw new Error('Numele fișierului este invalid');
+  }
+
+  return `${userId.toLowerCase()}/${safeCategory}/${safeFilename}`;
 }
 
 /**

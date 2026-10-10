@@ -5,6 +5,7 @@
 
 import { getSupabase } from './supabase.js';
 import { generateIdempotencyKey, sanitizeSearch } from './utils.js';
+import { validateFile, buildStoragePath, generateSafeFilename } from './services/storage-service.js';
 
 async function getClient() {
   return await getSupabase();
@@ -1365,9 +1366,11 @@ export const documentsApi = {
       if (!user) throw new Error('Utilizator neautentificat');
 
       const userId = user.id;
-      const fileExt = file.name.split('.').pop().toLowerCase();
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(2, 8)}.${fileExt}`;
-      const storagePath = `${userId}/${metadata.category || 'other'}/${fileName}`;
+      const validation = validateFile(file);
+      if (!validation.valid) throw new Error(validation.error);
+
+      const fileName = generateSafeFilename(file.name, 'document');
+      const storagePath = buildStoragePath(userId, metadata.category || 'other', fileName);
 
       const { error: uploadError } = await supabase.storage
         .from('documents')

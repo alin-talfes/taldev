@@ -1,378 +1,75 @@
-# TALDEV — Site de prezentare
+# TALDEV — Talfeș Development
 
-Site de prezentare pentru **TALDEV — Talfeș Development**, un proiect independent de dezvoltare web.
-Construit cu HTML, CSS și JavaScript vanilla, fără dependențe externe.  
-Scopul este de a prezenta serviciile, procesul de lucru, pachetele și datele de contact.
+Site-ul public TALDEV prezintă servicii de dezvoltare web, aplicații de business și automatizări. Repository-ul include și aplicația SAC PFA și demonstrații statice/interactiv-simulate.
 
----
+**Site public:** https://alin-talfes.github.io/taldev/  
+**Tehnologii principale:** HTML, CSS, JavaScript; pentru SAC PFA: Supabase Auth, Postgres și Storage.
 
-## Cuprins
-
-- [Prezentare generală](#prezentare-generală)
-- [Tehnologii folosite](#tehnologii-folosite)
-- [Structura fișierelor](#structura-fișierelor)
-- [Instalare și rulare](#instalare-și-rulare)
-- [Detalii HTML](#detalii-html)
-- [Detalii CSS](#detalii-css)
-- [Detalii JavaScript](#detalii-javascript)
-- [Personalizare](#personalizare)
-- [Optimizare SEO](#optimizare-seo)
-- [Accesibilitate](#accesibilitate)
-- [Contact](#contact)
-
----
-
-## Prezentare generală
-
-Site-ul este organizat în mai multe pagini statice, cu navigare comună, design responsive și animații discrete.
-Este construit ca un site static, ușor de găzduit pe orice serviciu (Netlify, Vercel, GitHub Pages, hosting simplu).
-
-Mesajul principal este: **Site-uri. Aplicații. Automatizări.**
-
----
-
-## Tehnologii folosite
-
-- **HTML5** – structură semantică
-- **CSS3** – stilizare, variabile, Flexbox, Grid, animații
-- **JavaScript (ES6)** – interactivitate, animații, observatori
-- **Google Fonts** – Poppins, Inter, JetBrains Mono
-- **Fără framework-uri externe**
-
----
-
-## Structura fișierelor
+## Structura repository-ului
 
 ```text
-/ (root)
-│
-├── index.html
-├── servicii.html
-├── favicon.svg
-├── demo/
-│   ├── index.html
-│   ├── sacpfa.html
-│   └── demo.css
-│
-├── styles/
-│   └── style.css
-│
-├── js/
-│   └── script.js
-│
-└── files/
-    ├── cert.pdf
-    ├── cv.pdf
-    ├── header.png
-    └── studii.pdf
+/
+├── index.html                 # Pagina principală TALDEV
+├── servicii/index.html        # Servicii, pachete și prețuri
+├── despre/index.html          # Despre TALDEV
+├── demo/index.html            # Catalog de demonstrații
+├── demo/sacpfa/index.html     # Demo vizual SAC PFA, cu date fictive
+├── demo/pontaj/index.html     # Demo interactiv pontaj, cu date fictive
+├── demo/mru/index.html        # Demo interactiv MRU, cu date fictive
+├── styles/style.css           # Stiluri pentru site-ul public
+├── js/script.js               # Navigare, temă și animații
+├── files/                     # Active publice și documente de prezentare
+├── sac/                       # Aplicație SAC PFA conectată la Supabase
+│   ├── js/                    # UI, API și servicii
+│   ├── supabase/migrations/   # Migrații SQL versionate
+│   ├── supabase/functions/    # Edge Functions
+│   └── tests/                 # Teste Node.js
+├── sitemap.xml
+└── robots.txt
 ```
 
----
+## Rulare locală
 
-## Instalare și rulare
+Pentru site-ul public, deschide repository-ul cu un server static (de exemplu VS Code Live Server). Un server HTTP local este preferabil deschiderii directe a fișierelor, deoarece paginile folosesc rute relative și unele module ES.
 
-1. Clonează repository-ul:
-   ```bash
-   git clone https://github.com/alin-talfes/taldev.git
-   ```
-2. Deschide `index.html` direct în browser sau folosește un server local (ex: Live Server în VS Code).
-3. Nu necesită build, dependențe sau configurare.
+Pentru testele SAC PFA este necesar Node.js. Din directorul `sac/`:
 
----
-
-## Detalii HTML
-
-### Head și meta
-
-- `meta description` – descriere pentru motoare de căutare.
-- `meta author` – TALFEȘ REMUS-ALIN P.F.A.
-- `meta keywords` – cuvinte cheie relevante.
-- `title` – „TALDEV - Talfeș Development”
-- `link favicon` – `favicon.svg`, construit pe identitatea vizuală TALDEV.
-- `preconnect` și `link` către Google Fonts (Poppins, Inter, JetBrains Mono).
-- `script type="application/ld+json"` – date structurate `ProfessionalService` cu oferte.
-
-### Header și navigare
-
-- `header#navbar` – sticky, cu backdrop blur.
-- Folosește logo-ul oficial din `files/header.png`.
-- Include comutator accesibil pentru tema luminoasă/întunecată.
-- Buton hamburger (`button#navToggle`) pentru mobil.
-- Meniul (`nav#navMenu`) oferă acces la: Acasă, Servicii, Demo-uri și Contact.
-- Pagina curentă este indicată semantic prin `aria-current="page"`.
-- Fără buton WhatsApp în header (există doar butonul plutitor).
-
-### Hero
-
-- `h1#typing-title` – textul „Site-uri. Aplicații. Automatizări.” este animat doar când utilizatorul nu preferă mișcare redusă.
-- `p.hero-text` – descriere scurtă.
-- `div.hero-actions` – butoane CTA către contact și pagina de servicii.
-- `ul.hero-trust` – avantajele principale ale colaborării.
-
-### Pagina principală
-
-- `index.html` conține prezentarea TALDEV, rezumatul serviciilor, publicul țintă, procesul de lucru, avantajele, certificările și contactul.
-
-### Servicii
-
-- `servicii.html` conține oferta comercială completă și gridul de 6 servicii:
-  - Site-uri profesionale
-  - Aplicații web
-  - Automatizări & integrări
-  - Magazine online custom
-  - Design & branding
-  - Mentenanță & suport
-
-### Pentru cine
-
-- Secțiune `section#pentru-cine` cu 6 carduri:
-  - Firme mici
-  - Profesioniști independenți
-  - Servicii locale
-  - Antreprenori
-  - Afaceri care doresc automatizare
-  - Proiecte noi
-
-### Cum lucrăm
-
-- Secțiune `section#cum-lucram` cu 5 pași.
-- Fiecare pas conține:
-  - `span.step-number` – număr 1-5
-  - `h3` – titlul pasului
-  - `p` – descriere
-- Numărul și titlul sunt pe același rând (flex).
-
-### Pachete
-
-- Secțiune `section#pachete` cu 3 carduri:
-  - Site Start – de la 1.490 lei
-  - Site Business – de la 2.990 lei
-  - Aplicație web Custom – de la 4.990 lei
-- Fiecare card conține listă de caracteristici și buton „Solicită ofertă”.
-
-### Servicii suplimentare
-
-- Automatizări – de la 590 lei.
-- Design & branding – de la 390 lei.
-- Mentenanță – de la 149 lei/lună.
-- Dezvoltare și consultanță – 120 lei/oră.
-
-### Ce este inclus
-
-- Secțiune `section#ce-este-inclus` cu 6 itemi:
-  - Design responsive
-  - Performanță și accesibilitate
-  - Testare înainte de lansare
-  - SEO tehnic de bază
-  - Configurare funcționalități
-  - Predarea accesurilor
-- Notă despre costuri suplimentare.
-
-### Demo-uri
-
-- `demo/index.html` este catalogul demonstrațiilor.
-- `demo/sacpfa.html` conține dashboardul vizual al Sistemului de Administrare și Contabilitate al Persoanei Fizice Autorizate.
-- `demo/demo.css` conține exclusiv stilurile dashboardului demonstrativ.
-- Datele din demonstrație sunt fictive, iar controalele nu execută operațiuni.
-
-### De ce Talfeș Development
-
-- Secțiune `section#de-ce` cu 4 carduri:
-  - Prețuri transparente
-  - Soluții adaptate
-  - Comunicare directă
-  - Fără complexitate inutilă
-
-### Educație și certificare
-
-- Secțiune `section#educatie-certificare`.
-- Card alb cu două grupuri separate printr-o linie:
-  - **Grup 1 – Educație**: licență, bacalaureat, curs formator + linkuri PDF.
-  - **Grup 2 – Certificare**: MTA HTML5 + link PDF.
-
-### Contact
-
-- Secțiune `section#contact`.
-- Titlu „Ai un proiect?” și descriere.
-- Butoane pentru telefon, e-mail și WhatsApp.
-
-### Footer
-
-- Fundal bleumarin închis.
-- Logo TALDEV + descriere.
-- Datele de identificare și contact ale PFA.
-- Linkuri către WhatsApp, Email, GitHub.
-
-### Butoane flotante
-
-- `a.whatsapp-float` – buton rotund WhatsApp, fix în colțul dreapta-jos.
-- `button#backToTop` – buton „înapoi sus”, apare după 400px scroll.
-
----
-
-## Detalii CSS
-
-### Variabile globale
-
-Sunt definite în `:root`:
-
-```css
---bg-start: #F4F8FA;
---bg-end: #E9F2F6;
---bg-card: #FFFFFF;
---text-primary: #0A2540;
---text-secondary: rgba(10,37,64,0.7);
---text-muted: rgba(10,37,64,0.5);
---accent: #00C2CB;
---accent-hover: #00A8AF;
---accent-rgb: 0,194,203;
---border-light: rgba(10,37,64,0.1);
---shadow-sm: 0 2px 8px rgba(10,37,64,0.05);
---shadow-md: 0 8px 24px rgba(10,37,64,0.08);
---transition: 0.3s ease;
---border-radius: 20px;
---border-radius-sm: 12px;
---font-heading: 'Poppins', sans-serif;
---font-body: 'Inter', sans-serif;
---font-mono: 'JetBrains Mono', monospace;
+```bash
+npm test
+npm run check
 ```
 
-Culorile respectă paleta logo-ului: bleumarin închis (#0A2540) și turcoaz deschis (#00C2CB).
+`npm test` execută suita Node.js (inclusiv testele de logică financiară, integritate și validare upload). `npm run check` verifică sintaxa fișierelor JavaScript din aplicația SAC.
 
-### Clase comune
+## Aplicația SAC PFA
 
-- `.container` – centrat, max-width 900px.
-- `.section` – padding vertical 40px.
-- `.section-title` – cu bară accent înainte.
-- `.section-subtitle` – text secundar.
+Aplicația din `/sac/` folosește Supabase pentru autentificare, persistența datelor și documente. Cheia publishable din client este publică prin natura arhitecturii browser; **nu introduce niciodată o cheie `service_role` sau o cheie secretă în fișierele livrate browserului**. Separarea datelor între utilizatori trebuie asigurată la nivelul bazei de date și Storage prin RLS/politici, nu doar prin controale din interfață.
 
-### Stilizarea butoanelor
+Înainte de a utiliza SAC pentru documente sau evidențe reale, verifică în proiectul Supabase activ:
+- starea și configurația bucket-ului `documents`, inclusiv limita de dimensiune și MIME types permise;
+- politicile RLS pentru toate tabelele expuse și politicile de acces Storage;
+- fluxurile de backup, retenție, export și recuperare;
+- configurația autentificării, resetarea parolei și URL-urile de redirecționare.
 
-Toate butoanele folosesc clasa `.btn` cu:
+Validarea din browser ajută la UX și reduce upload-urile accidentale, dar nu este o barieră de securitate suficientă singură. Restricțiile de tip și dimensiune trebuie configurate și verificate în Supabase Storage.
 
-- border-radius: 999px (formă de pilulă)
-- border: 2px solid transparent
-- tranziție la hover
+**Limitare:** SAC nu trebuie prezentat ca înlocuitor al verificării unui contabil și nu trebuie presupus că transmisiile ANAF/e-Factura au loc automat decât dacă există o integrare server-side activă, testată și documentată.
 
-Variante:
+## Demo-uri
 
-- `.btn-primary` – fundal turcoaz, text alb, border bleumarin.
-- `.btn-secondary` – transparent, text bleumarin, border bleumarin.
-- `.btn-whatsapp` – fundal verde WhatsApp, border bleumarin.
-- `.btn-email` – fundal bleumarin, text alb, border turcoaz.
+Elementele din `demo/` sunt construite pentru a prezenta interfețe și fluxuri. Folosește numai date fictive în demonstrații. Demo-urile MRU și pontaj sunt marcate `noindex`; ele nu sunt medii de lucru și nu trebuie utilizate pentru date reale despre angajați.
 
-### Stilizarea cardurilor
+## SEO și indexare
 
-Toate cardurile (`.service-card`, `.pricing-card`, `.audience-item`, `.included-item`, `.why-item`, `.process-step`, `.cert-small`) au:
+Sitemap-ul include paginile publice de prezentare și catalogul demo. Pagina de autentificare SAC este marcată `noindex, nofollow` și exclusă din sitemap. Această setare ține pagina departe de rezultatele motoarelor de căutare, dar **nu protejează datele**; protecția reală se bazează pe autentificare, RLS și autorizarea Storage.
 
-- fundal alb (`--bg-card`)
-- border: 2px solid `--accent` (turcoaz)
-- border-radius: `--border-radius` (20px)
-- box-shadow: `--shadow-md`
+## Modificări și migrații
 
-Aceasta asigură un design uniform.
-
-### Animații
-
-- `@keyframes blink` – cursorul de la animația de scriere.
-- `.reveal` – fade + translateY pentru apariția elementelor.
-- `.reveal.visible` – starea finală.
-
-### Responsive
-
-- Puncte de breakpoint: 640px, 900px, 639px.
-- Pe mobil, meniul devine hamburger, gridurile se rearanjează.
-- Logo-ul se micșorează pe ecrane mici.
-
----
-
-## Detalii JavaScript
-
-### Animația de scriere
-
-- La încărcare, elementul `#typing-title` este scris caracter cu caracter (42ms per caracter), exceptând utilizatorii care preferă mișcare redusă.
-- Cursorul intermitent este adăugat prin CSS `::after`.
-
-### Meniu mobil
-
-- `navToggle` deschide/închide meniul.
-- Se închide la click pe un link sau în afara meniului.
-- Atributul `aria-expanded` este actualizat pentru accesibilitate.
-
-### Link activ
-
-- Folosește `IntersectionObserver` pentru a evidenția link-ul corespunzător secțiunii vizibile.
-- Clasa `.active` este aplicată link-ului activ.
-
-### Animații reveal
-
-- Toate elementele cu clasa `.reveal` sunt observate.
-- Când intră în viewport (threshold 0.15), li se adaugă `.visible` și nu mai sunt observate.
-
-### Buton back-to-top
-
-- Apare după 400px scroll.
-- La click, derulează lin în sus.
-
----
-
-## Personalizare
-
-### Culori
-
-Modifică variabilele din `:root` în `styles/style.css` pentru a schimba paleta.
-
-Exemplu:
-
-```css
---accent: #ff6600;
---text-primary: #222222;
-```
-
-### Fonturi
-
-Fonturile sunt încărcate din Google Fonts. Poți schimba importul în `index.html` și variabilele `--font-heading`, `--font-body`, `--font-mono`.
-
-### Texte și conținut
-
-Toate textele sunt direct în `index.html`. Caută secțiunile corespunzătoare și editează.
-
-### Fișiere PDF
-
-Linkurile din secțiunea „Educație și certificare” indică:
-
-- `files/studii.pdf`
-- `files/cv.pdf`
-- `files/cert.pdf`
-
-Asigură-te că aceste fișiere există în directorul `files/`.
-
----
-
-## Optimizare SEO
-
-- Meta description și keywords.
-- Date structurate JSON-LD (`ProfessionalService`).
-- Titluri ierarhice corecte.
-- Text alternativ pentru logo (`aria-label`).
-- Linkuri externe cu `rel="noopener"`.
-
----
-
-## Accesibilitate
-
-- Focus vizibil personalizat.
-- Atribut `aria-expanded` pentru meniul mobil.
-- `aria-label` pentru butoanele flotante.
-- Suport complet `prefers-reduced-motion`.
-- Contrast îmbunătățit pentru butoane și linkuri.
-- Meniul mobil poate fi închis cu tasta Escape.
-
----
+Păstrează modificările în ramuri de lucru și integrează-le prin Pull Request. Pentru schema Supabase, adaugă migrații noi și nu rescrie migrațiile istorice care au fost aplicate în producție. Rulează testele înainte de merge.
 
 ## Contact
 
-- **WhatsApp**: [wa.me/alin.talfes](https://wa.me/40770823386)
-- **Telefon**: [+40 770 823 386](tel:+40770823386)
-- **Email**: [alin.talfes@outlook.com](mailto:alin.talfes@outlook.com)
-- **GitHub**: [github.com/alin-talfes](https://github.com/alin-talfes)
+- **Email:** [alin.talfes@outlook.com](mailto:alin.talfes@outlook.com)
+- **Telefon:** [+40 770 823 386](tel:+40770823386)
+- **WhatsApp:** [Contact TALDEV](https://wa.me/40770823386)
+- **GitHub:** [alin-talfes](https://github.com/alin-talfes)
