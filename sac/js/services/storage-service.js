@@ -20,10 +20,14 @@ const ALLOWED_MIME_TYPES = [
   'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
   'application/vnd.ms-excel',
   'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-  'text/csv',
-  // Browsers may omit MIME metadata for files selected by the user.
-  ''
+  'text/csv'
 ];
+
+const ALLOWED_CATEGORIES = new Set([
+  'invoices', 'received-invoices', 'expenses', 'contracts', 'assets', 'other'
+]);
+
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 const EXTENSION_MIME_TYPES = {
   pdf: ['application/pdf'],
@@ -45,9 +49,9 @@ const EXTENSION_MIME_TYPES = {
  * @returns {object} { valid: boolean, error?: string }
  */
 export function validateFile(file, options = {}) {
-  const maxSize = options.maxSize || DEFAULT_MAX_SIZE;
-  const allowedExtensions = options.allowedExtensions || ALLOWED_EXTENSIONS;
-  const allowedMimeTypes = options.allowedMimeTypes || ALLOWED_MIME_TYPES;
+  const maxSize = options.maxSize ?? DEFAULT_MAX_SIZE;
+  const allowedExtensions = options.allowedExtensions ?? ALLOWED_EXTENSIONS;
+  const allowedMimeTypes = options.allowedMimeTypes ?? ALLOWED_MIME_TYPES;
 
   if (!file || typeof file.name !== 'string' || !Number.isFinite(file.size) || file.size < 0) {
     return { valid: false, error: 'Fișier invalid sau lipsă' };
@@ -124,9 +128,17 @@ export function generateSafeFilename(originalName, prefix = '') {
  * @returns {string} calea completă în bucket
  */
 export function buildStoragePath(userId, category, filename) {
-  const safeCategory = category.replace(/[^a-zA-Z0-9-_]/g, '');
-  const safeFilename = filename.replace(/[^a-zA-Z0-9._-]/g, '');
-  return `${userId}/${safeCategory}/${safeFilename}`;
+  if (typeof userId !== 'string' || !UUID_PATTERN.test(userId)) {
+    throw new Error('ID-ul utilizatorului trebuie să fie un UUID valid');
+  }
+
+  const safeCategory = ALLOWED_CATEGORIES.has(category) ? category : 'other';
+  const safeFilename = String(filename || '').replace(/[^a-zA-Z0-9._-]/g, '');
+  if (!safeFilename || safeFilename === '.' || safeFilename === '..') {
+    throw new Error('Numele fișierului este invalid');
+  }
+
+  return `${userId.toLowerCase()}/${safeCategory}/${safeFilename}`;
 }
 
 /**
